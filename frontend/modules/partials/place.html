@@ -1,7 +1,21 @@
 Place: {{placeID}}
 
+<!--
 <ul>
     <li ng-repeat="(key, value) in placevalues">{{key}}: {{value}}</li>
 </ul>
+-->
+<div>
+  <md-content class="md-padding">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab ng-repeat="(key, value) in placevalues" label="{{key}}">
+        <md-content class="md-padding">
+          <h1 class="md-display-2 capitalizeFirst">{{key}}</h1>
+          <p>{{value}}</p>
+		</md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
 
 <a href="#/">Go back to place selection</a>

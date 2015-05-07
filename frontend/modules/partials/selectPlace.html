@@ -4,6 +4,6 @@
 <br></br>
 <md-select placeholder="Pick" ng-model="selectedDistrict">
     <md-option ng-repeat="district in districts" value="{{district}}">{{district}}</md-option>
-</md-select>
-
-<a href="#/place/{{selectedCity}} {{selectedDistrict}}">Open Test Place</a>
+</md-select>    
+<br></br>
+<md-button class="md-raised" href="#/place/{{selectedCity}} {{selectedDistrict}}">Open Place</md-button>
