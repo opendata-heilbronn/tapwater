@@ -16,6 +16,22 @@ var tw = {
             .when('/place/:id', {
                 controller: 'PlaceCtrl',
                 templateUrl: 'modules/partials/place.html'
+            })
+             .when('/contact', {
+                controller: 'NavController',
+                templateUrl: 'modules/partials/contact.html'
+            })
+             .when('/about', {
+                controller: 'NavController',
+                templateUrl: 'modules/partials/about.html'
+            })
+             .when('/participants', {
+                controller: 'NavController',
+                templateUrl: 'modules/partials/participants.html'
+            })
+             .when('/impressum', {
+                controller: 'NavController',
+                templateUrl: 'modules/partials/impressum.html'
             });
     });
 })(angular);
