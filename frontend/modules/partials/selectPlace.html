@@ -1,5 +1,9 @@
-<md-select placeholder="Pick" ng-model="selectedCity">
+<md-select placeholder="Pick" ng-model="selectedCity" ng-change="getDistrictsOfCity(selectedCity)">
     <md-option ng-repeat="city in cities" value="{{city}}">{{city}}</md-option>
 </md-select>
+<br></br>
+<md-select placeholder="Pick" ng-model="selectedDistrict">
+    <md-option ng-repeat="district in districts" value="{{district}}">{{district}}</md-option>
+</md-select>
 
-<a href="#/place/test">Open Test Place</a>
+<a href="#/place/{{selectedCity}} {{selectedDistrict}}">Open Test Place</a>
