@@ -13,5 +13,9 @@
        $scope.gotu = function() {
            $location.path("/impressum")           
        }
+       $scope.goty = function() {
+           $location.path("/")           
+       } 
+
     });
 })(angular);

@@ -9,6 +9,9 @@
 <body>
  <div align="center">
  <div ng-controller="NavController">
+<md-button class="md-fab md-primary" ng-click="goty()"> 
+<md-icon md-svg-src="image/index.svg"></md-icon>
+</md-button>
 <md-button class="md-fab md-primary" ng-click="goto()"> 
 <md-icon md-svg-src="image/contact.svg"></md-icon>
 </md-button>
@@ -21,8 +24,19 @@
 <md-button class="md-fab md-primary" ng-click="gotu()"> 
 <md-icon md-svg-src="image/impressum.svg"></md-icon>
 </md-button>
-
  </div>
+ 
+<!---<div ng-controller="SearchCtrl">
+  <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText)" md-item-text="item.display">
+  <md-item-template>
+    <span md-highlight-text="searchText">{{item.display}}</span>
+  </md-item-template>
+  <md-not-found>
+    No matches found.
+  </md-not-found>
+</md-autocomplete>
+</div> --->
+
 
 <div ng-view></div>
  </div>
@@ -37,6 +51,7 @@
 <script src="modules/SelectPlaceCtrl.js"></script>
 <script src="modules/PlaceCtrl.js"></script>
 <script src="modules/NavController.js"></script>
+<script src="modules/SearchCtrl.js"></script>
 <script src="data/locations.js"></script>
 <script src="data/zones.js"></script>
 <script src="data/minerals-max.js"></script>
