@@ -12,6 +12,9 @@ Place: {{placeID}}
         <md-content class="md-padding">
           <h1 class="md-display-2 capitalizeFirst">{{key}}</h1>
           <p>{{value}}</p>
+          <div style="height:400px; width:150px;background:#ccc; position:relative;">
+            <div style="bottom:0;height:{{calculateHeight(key, value)}}px; width:100%; background:blue; position:absolute;"></div>
+          </div>
 		</md-content>
       </md-tab>
     </md-tabs>
