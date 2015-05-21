@@ -5,6 +5,10 @@ body {
 	text-transform: uppercase;	
 }
 
+md-option {
+  background: #FFF;
+}
+
 md-content .md-header {
   background: #ffffff;
 }
