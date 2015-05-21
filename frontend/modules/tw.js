@@ -33,5 +33,10 @@ var tw = {
                 controller: 'NavController',
                 templateUrl: 'modules/partials/impressum.html'
             });
+           /*  .when('/index', {
+                controller: 'NavController',
+                templateUrl: 'frontend/index.html'
+            });*/
+
     });
 })(angular);
