@@ -354,7 +354,7 @@ tw.data.locations = {
 		"Neckarmühlbach": {}
 	},
 	"Heilbronn": {
-		"abc": {
+		"": {
 			"9": [
 				"Äußere Mausklinge",
 				"Äußerer Pfühl",

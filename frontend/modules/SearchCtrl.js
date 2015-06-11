@@ -4,6 +4,4 @@
         $scope.city = Object.keys(tw.data.locations);      
   }  
   );
-   
-  
-  
+})
