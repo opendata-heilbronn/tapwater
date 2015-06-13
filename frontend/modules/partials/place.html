@@ -8,10 +8,13 @@ Place: {{placeID}}
 <div>
   <md-content class="md-padding">
     <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab ng-repeat="(key, value) in placevalues" label="{{key}}">
+      <md-tab ng-repeat="mineralName in minerals" label="{{mineralName}}">
         <md-content class="md-padding">
-          <h1 class="md-display-2 capitalizeFirst">{{key}}</h1>
-          <p>{{value}}</p>
+          <h1 class="md-display-2 capitalizeFirst">{{mineralName}}</h1>
+          <p>Mineralien-Wert: {{getPlaceValue(mineralName)}} | Max: {{getMineralMax(mineralName)}} | Grenzwert: {{getMineralLegalLimit(mineralName)}}</p>
+          <div style="height:400px; width:150px;background:#ccc; position:relative;">
+            <div style="bottom:0;height:{{calculateHeight(mineralName)}}px; width:100%; background:blue; position:absolute;"></div>
+          </div>
 		</md-content>
       </md-tab>
     </md-tabs>
