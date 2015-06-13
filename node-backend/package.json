@@ -1,0 +1,12 @@
+{
+  "name": "tapwater-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.0.5",
+    "mongoose-geojson-schema": "0.0.2"
+  }
+}
