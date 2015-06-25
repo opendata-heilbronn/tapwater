@@ -11,11 +11,10 @@ Place: {{placeID}}
       <md-tab ng-repeat="mineralName in minerals" label="{{mineralName}}">
         <md-content class="md-padding">
           <h1 class="md-display-2 capitalizeFirst">{{mineralName}}</h1>
-          <p>Mineralien-Wert: {{getPlaceValue(mineralName)}} | Max: {{getMineralMax(mineralName)}} |  ScannedMax: {{scanMineralMax(mineralName)}} | Grenzwert: {{getMineralLegalLimit(mineralName)}}</p>
-          
+          <p>Mineralien-Wert: {{getPlaceValue(mineralName)}} | Max: {{getMineralMax(mineralName)}} | Grenzwert: {{getMineralLegalLimit(mineralName)}}</p>
           <div style="height:420px; width:150px;background:#ccc; position:relative;">
-          <div style="bottom:0;height:{{calculateHeight(mineralName)}}px; width:100%; background:blue; position:absolute;"></div>
-            <div style="position:absolute;bottom:0;left:0;width:150px;height:73px;background-image:url('/tapwater/frontend/image/gauge-background.png');"></div>
+            <div style="bottom:0;height:{{calculateHeight(mineralName)}}px; width:100%; background:blue; position:absolute;"></div>
+            
             <div ng-repeat="scaleValue in calculateScaleValues(mineralName)">
               <div style="position:absolute;bottom:{{400-100*$index}}px;left:20px;height:1px;width:10px;background:#000000;"></div>
               <div style="position:absolute;bottom:{{391-100*$index}}px;left:38px;">{{scaleValue}}</div>
