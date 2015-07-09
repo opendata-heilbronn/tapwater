@@ -9,6 +9,7 @@
             var zoneObject = tw.data.zones[$routeParams.id];
             return zoneObject[mineralName];      
         }
+        
         $scope.scanMineralMax = function(mineralName) {
             var mineralMax = 0;
             var mineralValue = 0;
@@ -20,7 +21,25 @@
             }      
             )
             return mineralMax;
-        }            
+        }   
+        
+        $scope.mineralAverage = function(mineralName) {
+            var mineralValue = 0;
+            var mineralSum = 0;
+            var mineralAverage = 0;
+            var i = 0;
+            Object.keys(tw.data.zones).forEach(function(key) {
+                mineralValue = tw.data.zones[key][mineralName];
+                if (!isNaN(mineralValue) && mineralValue) {
+                    mineralSum = mineralSum + parseInt(mineralValue,10);
+                    i++;
+                }
+            }
+            )
+            console.log (mineralSum, i);
+            mineralAverage = mineralSum / i;    
+            return mineralAverage;
+        }         
             
         $scope.getMineralMax = function(mineralName) {
             return tw.data.minerals[mineralName][0];
@@ -35,7 +54,7 @@
         $scope.calculateScaleValues = function(mineralName) {
             var scaleHeight = heightOfMaxScale;
             var scaleValueArray=[];
-            for (var i = 0; i <= 3; i++) {
+            for (var i = 0; i <= 4; i++) {
                 scaleValueArray[i] = $scope.getMineralMax(mineralName) / heightOfMaxScale * scaleHeight;
                 scaleHeight = scaleHeight-100;
             }
