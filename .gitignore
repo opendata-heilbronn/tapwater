@@ -1,1 +1,7 @@
 .settings
+.hg
+*.iml
+.idea
+.DS_Store
+bin
+node_modules

@@ -4,6 +4,13 @@
 <br></br>
 <md-select placeholder="Pick" ng-model="selectedDistrict">
     <md-option ng-repeat="district in districts" value="{{district}}">{{district}}</md-option>
-</md-select>    
+</md-select>
 <br></br>
 <md-button class="md-raised" href="#/place/{{selectedCity}} {{selectedDistrict}}">Open Place</md-button>
+
+<md-input-container>
+    <label>Address</label>
+    <input ng-model="address" geocode-address>
+</md-input-container>
+
+<md-button class="md-raised" locate-me-button>Locate me</md-button>
