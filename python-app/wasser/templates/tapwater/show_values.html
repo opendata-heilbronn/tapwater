@@ -1,0 +1,1028 @@
+{% extends 'tapwater/base.html' %}
+
+{% load tz %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load template_user_tags %}
+
+{% block content %}
+    <link href="{% static 'css/chartist.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/chartist-plugin-tooltip.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/chartist-plugin-tooltip.css.map' %}" rel="stylesheet" />
+    <link href="{% static 'css/chartist.min.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/tapwater/chartist.min.js' %}"></script>
+    <script src="{% static 'js/tapwater/chartist-plugin-axistitle.js' %}"></script>
+    <script src="{% static 'js/tapwater/chartist-plugin-tooltip.js' %}"></script>
+    <script src="{% static 'js/tapwater/clipboard.min.js' %}"></script>
+    <script type="text/javascript">
+        $.LoadingOverlay("show"); // show loading modal
+    </script>
+    <div class="pull-right hidden-xs">
+        <h1 id="regionHeader"><small>{% trans "tapwater_index_home_name" %}</small></h1>
+    </div>
+    <div class="form-inline form-choose-location-quick">
+        <a href="{% url 'index' %}" class="btn btn-warning" role="button">
+            <span class="glyphicon glyphicon-step-backward">
+            </span> {% trans "tapwater_index_back_to_start" %}
+        </a>
+
+        {% if zone_data %}
+            <button type="button" id="shareLinkButton" class="btn btn-info" data-toggle="modal" data-target="#shareDialog" style="margin-left:20px;">
+                <span class="glyphicon glyphicon-envelope"></span> {% trans "tapwater_share_measurement_values" %}
+            </button>
+        {% endif %}
+        {% if user.is_authenticated and user.is_superuser %}
+            <a href="{% url 'admin_index' %}" class="btn btn-success" role="button" style="margin-left:20px;">
+                <span class="glyphicon glyphicon-home">
+                </span> {% trans "tapwater_index_administration_area" %}
+            </a>
+        {% elif request.session.user  %}
+            <a href="{% url 'users_index' %}" class="btn btn-success" role="button" style="margin-left:20px;">
+                <span class="glyphicon glyphicon-home">
+                </span> {% trans "tapwater_index_user_area" %}
+            </a>
+        {% endif %}
+        <br>
+        <br>
+        <h1> {{ request.GET.city }} {% if request.GET.district %}<span class="glyphicon glyphicon-chevron-right"></span>{% endif %} {{ request.GET.district }} {% if street %}<span class="glyphicon glyphicon-chevron-right"></span>{% endif %} {{ street }} </h1>
+    </div>
+
+
+
+
+    <div class="results" style="display: none;" id="results">
+    <a href="#" class="nav-tabs-dropdown btn btn-block btn-primary"> Tabs </a>
+    <ul id="nav-tabs-wrapper" class="nav nav-tabs nav-tabs-horizontal">
+        <li class="active nav-li-main"><a data-toggle="tab" data-attribute="sodium" href="#sodium">
+            {%  trans "tapwater_index_sodium" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="potassium" href="#potassium">
+            {% trans "tapwater_index_potassium" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="calcium" href="#calcium">
+            {% trans "tapwater_index_calcium" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="magnesium" href="#magnesium">
+            {% trans "tapwater_index_magnesium" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="chloride" href="#chloride">
+            {% trans "tapwater_index_chloride" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="nitrate" href="#nitrate">
+            {% trans "tapwater_index_nitrate" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="sulfate" href="#sulfate">
+            {% trans "tapwater_index_sulfate" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="hardness" href="#hardness">
+            {%  trans "tapwater_index_hardness" %}</a></li>
+        <li class="nav-li-main"><a data-toggle="tab" data-attribute="info" href="#info">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            {%  trans "tapwater_index_questions_and_answers" %}</a></li>
+    </ul>
+
+
+    <div id="noValuesFound" class="alert alert-warning result-without-value" style="display:none;">{% trans "tapwater_index_response_message" %}
+    </div>
+
+    <div class="result-with-value">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="section section-explanation">
+                    <div class="row gauge-glass-container" style="display:none;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                            <div class="attribute-description attribute-description-sodium" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_sodium" %}</p>
+                                <p>{% trans "tapwater_index_required_quantity_of_sodium" %}</p>
+                                <p>{% trans "tapwater_index_lack_of_sodium" %}</p>
+                                <p>{% trans "tapwater_index_recommendation_of_sodium" %}</p>
+                            </div>
+                            <div class="attribute-description attribute-description-potassium" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_potassium" %}</p>
+                                <p>{% trans "tapwater_index_lack_of_potassium" %}</p>
+                                <p>{% trans "tapwater_index_high_potassium_content" %}</p>
+                            </div>
+                            <div class="attribute-description attribute-description-calcium" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_calcium" %}</p>
+                                <p>{% trans "tapwater_index_lack_of_calcium" %}</p>
+                            </div>
+                            <div class="attribute-description attribute-description-magnesium" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_magnesium" %}</p>
+                                <p>{% trans "tapwater_index_high_magnesium_content" %}</p>
+                            </div>
+                            <div class="attribute-description attribute-description-chloride" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_chloride" %}</p>
+                                <p>{% trans "tapwater_index_high_chloride_content" %}</p>
+                            </div>
+                            <div class="attribute-description attribute-description-nitrate" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_nitrate" %}</p>
+                                <p>{% trans "tapwater_index_content_of_nitrate" %}</p>
+                                <p>{% trans "tapwater_limit_value_of_nitrate" %}</p>
+                                <p>{% trans "tapwater_index_quantity_of_nitrate" %}</p>
+                            </div>
+                            <div class="attribute-description attribute-description-sulfate" style="display:none;">
+                                <p>{% trans "tapwater_index_role_of_sulfate" %}</p>
+                                <p>{% trans "tapwater_index_mineral_water" %}</p>
+                                <p>{% trans "tapwater_index_effect_of_sulfate_on_health" %}</p>
+                                <p>{% trans "tapwater_index_less_sulfate" %}</p>
+                            </div>
+                            <br />
+                            <p><button type="button" class="btn btn-warning switch-to-section hidden-xs" data-section="compare">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                {% trans "tapwater_index_comparison_with_mineral_water" %}</button></p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5">
+                            <svg class="gauge-glass-img pull-right" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 186 837" preserveAspectRatio="xMinYMin meet">
+                                <text class="gauge-unit" x="78" y="175" text-anchor="left">
+                                    {% trans "tapwater_index_mg_l" %}</text>
+
+                                <path class="gauge-glass"
+                                      d="M145.993,832.667H38.398
+										c-16.112,0-15.916-16.613-15.916-16.613V158.107c-8.89,0-16.094-7.203-16.094-16.092v-7.179c0-8.887,7.204-16.094,16.094-16.094
+										h139.661c8.887,0,16.094,7.207,16.094,16.094v7.179c0,8.889-7.207,16.092-16.094,16.092l-0.178,657.84
+										C161.966,815.947,162.999,832.667,145.993,832.667z" />
+
+                                <g class="gauge-values">
+                                    <defs>
+                                        <clipPath id="cut-off-top">
+                                            <rect class="gauge-value-bubble-cut" x="34" y="822" width="116" height="0" />
+                                        </clipPath>
+
+                                        <pattern id="range-indicator" x="8" y="8" width="8" height="8" patternUnits="userSpaceOnUse">
+                                            <line class="range-indicator" x1="0" x2="8" y1="8" y2="0" />
+                                        </pattern>
+                                    </defs>
+
+                                    <rect class="gauge-value" x="34.5" y="822" width="115" height="0" />
+                                    <path class="gauge-value-bubbles" clip-path="url(#cut-off-top)"
+                                          d="M149.469,324.376H34.005v482.118c0,0-0.174,14.819,14.195,14.819h86.875
+											c15.169,0,14.247-14.912,14.247-14.912L149.469,324.376z M73.76,741.827c-3.763,0-6.814-3.05-6.814-6.813s3.052-6.813,6.814-6.813
+											c3.764,0,6.812,3.05,6.812,6.813S77.524,741.827,73.76,741.827z M105.182,801.029c-11.289,0-20.439-9.15-20.439-20.439
+											c0-11.288,9.15-20.439,20.439-20.439c11.29,0,20.441,9.151,20.441,20.439C125.623,791.879,116.472,801.029,105.182,801.029z
+											 M117.668,739.558c-9.198,0-16.653-7.457-16.653-16.653s7.455-16.658,16.653-16.658c9.196,0,16.653,7.462,16.653,16.658
+											S126.864,739.558,117.668,739.558z" />
+
+                                    <rect class="gauge-value-2" x="34.5" y="822" width="115" height="0" fill="url(#range-indicator)" />
+                                </g>
+
+                                <g class="gauge-bubbles">
+                                    <path
+                                            d="M141.745,24.696c0,11.292-9.15,20.441-20.442,20.441c-11.287,0-20.437-9.149-20.437-20.441
+											c0-11.288,9.149-20.439,20.437-20.439C132.595,4.257,141.745,13.409,141.745,24.696z" />
+                                    <path
+                                            d="M106.921,92.833c0,3.763-3.048,6.813-6.814,6.813c-3.763,0-6.813-3.05-6.813-6.813
+											c0-3.762,3.05-6.812,6.813-6.812C103.873,86.021,106.921,89.071,106.921,92.833z" />
+                                    <path
+                                            d="M84.963,59.335c0,9.198-7.457,16.658-16.658,16.658c-9.192,0-16.651-7.459-16.651-16.658
+											c0-9.194,7.459-16.651,16.651-16.651C77.506,42.684,84.963,50.141,84.963,59.335z" />
+                                </g>
+
+                                <g class="gauge-lines"></g>
+
+                                <line class="average-indicator" x1="36" x2="68" y1="822" y2="822"></line>
+                            </svg>
+
+                            <ul class="gauge-description gauge-glass-description pull-right list-unstyled" style="max-width:200px;">
+                                <li class="highlight"><strong>{% trans "tapwater_index_value:" %}
+                                    <span class="gauge-value"></span> {% trans "tapwater_index_mg_l" %}</strong>
+                                        {% if zone_data %}
+
+                                        {% with zone_data|first as ver %}
+                                            {% if ver.user__id == None %}
+                                                <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                        {% trans 'tapwater_index_values_unknown_user' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_unknown_user' %}">
+                                                     <span class="glyphicon glyphicon glyphicon-question-sign"></span>
+                                                 </a>
+                                            {% else %}
+                                                 {% if ver.user__verified %}
+                                                     <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                            {% trans 'tapwater_index_values_verified_authority_title' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_verified_authority' %}">
+                                                         <span class="glyphicon glyphicon glyphicon-ok-sign"></span>
+                                                     </a>
+                                                 {% else %}
+                                                    {% if ver.user__type__value == 'AuthorityUser'  %}
+                                                         <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                {% trans 'tapwater_index_values_not_verified_authority_title' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_not_verified_authority' %}">
+                                                             <span class="glyphicon glyphicon-question-sign"></span>
+                                                         </a>
+                                                    {% else %}
+                                                         <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                {% trans 'tapwater_index_values_private_person_title' %}" data-placement="top"  data-content="{% trans 'tapwater_index_values_private_person' %}">
+                                                             <span class="glyphicon glyphicon-question-sign"></span>
+                                                         </a>
+                                                    {% endif %}
+
+                                                 {% endif %}
+                                            {% endif %}
+                                        {% endwith %}
+                                        {% endif %}
+                                    </li>
+                                <li>{% trans "tapwater_index_limit_value" %}
+                                    <span class="gauge-legal-limit"></span></li>
+                                <li>{% trans "tapwater_index_average" %} <span class="gauge-average-value"></span>
+                                    {% trans "tapwater_index_mg_l" %}<br /><small>
+                                        {% trans "tapwater_index_bracket_region_name_point_red_line" %}</small></li>
+                                <li class="gauge-daily-dosis-container">
+                                    {% trans "tapwater_index_daily_requirement" %}<span class="gauge-daily-dosis">
+                                    </span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="row gauge-bar-container" style="display:none;">
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <p>{% trans "tapwater_index_water_hardness" %}</p>
+                            <p>{% trans "tapwater_index_hard_water" %}</p>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                            <div style="padding-right:34px">
+                                <img src="{%static 'img/haushalt.svg' %}" class="pull-right hidden-xs" />
+                                <table class="table table-gauge-description gauge-description gauge-bar-description">
+                                    <tr>
+                                        <th style="border:none;"><strong class="highlight">
+                                            {% trans "tapwater_index_value" %}</strong></th>
+                                        <td style="border:none;"><strong class="highlight"><span class="gauge-value"></span>
+                                            {% trans "tapwater_index_dH" %}</strong>
+                                            {% if zone_data %}
+                                                {% with zone_data|first as ver %}
+                                                    {% if ver.user__id == None %}
+                                                        <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                        {% trans 'tapwater_index_values_unknown_user' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_unknown_user' %}">
+                                                            <span class="glyphicon glyphicon glyphicon-question-sign"></span>
+                                                        </a>
+                                                    {% else %}
+                                                        {% if ver.user__verified %}
+                                                             <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                    {% trans 'tapwater_index_values_verified_authority_title' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_verified_authority' %}">
+                                                                 <span class="glyphicon glyphicon glyphicon-ok-sign"></span>
+                                                             </a>
+                                                        {% else %}
+                                                            {% if ver.user__type__value == 'AuthorityUser'  %}
+                                                                     <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                            {% trans 'tapwater_index_values_not_verified_authority_title' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_not_verified_authority' %}">
+                                                                         <span class="glyphicon glyphicon-question-sign"></span>
+                                                                     </a>
+                                                            {% else %}
+                                                                     <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                            {% trans 'tapwater_index_values_private_person_title' %}" data-placement="top"  data-content="{% trans 'tapwater_index_values_private_person' %} ">
+                                                                         <span class="glyphicon glyphicon-question-sign"></span>
+                                                                     </a>
+                                                            {% endif %}
+                                                         {% endif %}
+                                                    {% endif %}
+                                                {% endwith %}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>{% trans "tapwater_index_residual_alkalinity" %}</th>
+                                        <td><span class="gauge-value-ra"></span> {% trans "tapwater_index_dH" %}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{% trans "tapwater_index_area" %}</th>
+                                        <td><span class="gauge-value-label"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{% trans "tapwater_index_average" %}<br />
+                                            <small>{% trans "tapwater_index_region_avg_show" %}</small></th>
+                                        <td><span class="gauge-average-value"></span>
+                                            {% trans "tapwater_index_dH" %}</td>
+                                    </tr>
+                                </table>
+
+                                <p><br /></p>
+                                <svg class="gauge-bar-img" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 750 136" preserveAspectRatio="xMinYMin meet">
+                                    <defs>
+                                        <pattern id="hardness-range-indicator" x="6" y="6" width="6" height="6" patternUnits="userSpaceOnUse">
+                                            <line class="range-indicator-bar" x1="0" x2="6" y1="6" y2="0" />
+                                        </pattern>
+                                    </defs>
+
+                                    <g class="gauge-bars"></g>
+                                    <g class="gauge-bar-labels"></g>
+
+                                    <g class="gauge-value-indicators">
+                                        <rect class="gauge-bar-range-indicator" x="63.5" y="64" width="25" height="40" fill="url(#hardness-range-indicator)" />
+                                        <circle class="gauge-bar-ball" cx="63.5" cy="84" r="13" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p><br /></p>
+                    <p><button type="button" class="btn btn-warning switch-to-section hidden-md hidden-lg hidden-sm" data-section="compare">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        {% trans "tapwater_index_comparison_with_mineral_water" %}</button></p>
+                </div>
+
+                <div class="section section-compare" style="display:none;margin-top:-32px;">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 compare-nav">
+                            {% for mineral_water in mineral_waters %}
+                                {% if mineral_water.referenced %}
+                                    <button type="button" class="btn btn-primary btn-lg btn-block active" data-water="{{ mineral_water.key }}">{{ mineral_water.name }}</button>
+                                {% else %}
+                                    <button type="button" class="btn btn-primary btn-lg btn-block " data-water="{{ mineral_water.key }}">{{ mineral_water.name }}</button>
+                                {% endif %}
+                            {% endfor %}
+                            <button type="button" class="btn btn-primary btn-lg btn-block" data-water="self" style="margin-top:2em;">
+                                {% trans "tapwater_index_my_tap_water" %}</button>
+
+                            <p><br /></p>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6">
+                                    <div class="gauge-description gauge-glass-description" style="margin-top:38px;">
+                                        <table class="table table-gauge-description">
+                                            <tr>
+                                                <th style="border:none;"><strong class="comparison-water-label highlight">-</strong></th>
+                                                <td style="border:none;min-width:80px;"><strong class="comparison-water-value highlight">-</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <th>{% trans "tapwater_index_my_tap_water" %}</th>
+                                                <td><span class="comparison-water-value-self"></span><br /><small>
+                                                    {%  trans "tapwater_index_bracket_red_line" %}</small></td>
+                                            </tr>
+                                            <tr class="gauge-daily-dosis-container">
+                                                <th>{%  trans "tapwater_index_bracket_daily_requirement"%}</th>
+                                                <td><span class="gauge-daily-dosis">~</span></td>
+                                            </tr>
+                                        </table>
+
+                                        <br /><br />
+                                        <div class="attribute-description attribute-description-natrium" style="display:none;">
+                                            <p>{% trans "tapwater_index_importance_of_sodium" %}</p>
+                                            <p>{% trans "tapwater_index_importance_of_sodium_rich_water" %}</p>
+                                        </div>
+                                        <div class="attribute-description attribute-description-kalium" style="display:none;">
+                                            <p>{% trans "tapwater_index_importance_of_potassium_rich_water" %}</p>
+                                        </div>
+                                        <div class="attribute-description attribute-description-calcium" style="display:none;">
+                                            <p>{% trans "tapwater_index_importance_of_calcium_teeth" %}</p>
+                                            <p>{% trans "tapwater_index_importance_of_calcium_blood" %}</p>
+                                        </div>
+                                        <div class="attribute-description attribute-description-magnesium" style="display:none;">
+                                            <p>{% trans "tapwater_index_influence_of_magnesium_on_energy" %}</p>
+                                        </div>
+                                        <div class="attribute-description attribute-description-chlorid" style="display:none;">
+                                            <p>{% trans "tapwater_index_influence_of_chloride_on_water_balance" %}</p>
+                                            <p>{% trans "tapwater_index_chloride_in_nutrition" %}</p>
+                                        </div>
+                                        <div class="attribute-description attribute-description-nitrat" style="display:none;">
+                                            <p>{% trans "tapwater_index_nitrate_in_body" %}</p>
+                                            <p>{% trans "tapwater_index_effect_of_nitrite" %}</p>
+                                        </div>
+                                        <div class="attribute-description attribute-description-sulfat" style="display:none;">
+                                            <p>{% trans "tapwater_index_effect_of_sulfate" %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                    <svg class="bottle-img pull-right" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 258 837" preserveAspectRatio="xMinYMin meet">
+                                        <text class="gauge-unit" x="78" y="220" text-anchor="left"></text>
+
+                                        <g class="gauge-values">
+                                            <defs>
+                                                <clipPath id="bottle-cut-off-top">
+                                                    <rect class="gauge-value-bubble-cut" x="0" y="822" width="258" height="0" />
+                                                </clipPath>
+                                            </defs>
+
+                                            <rect class="gauge-value" x="20" y="822" width="216" height="0" />
+                                            <path class="gauge-value-bubbles" clip-path="url(#bottle-cut-off-top)" fill="#FFFFFF" d="M232.801,703.685c-3.221-3.223-6.781-2.344-6.781-10.338c0-4.859,8.305-2.204,8.982-17.284
+													c0.678-15.082-0.407-147.848-0.407-147.848l-214.461-0.101c0,16.436,0,152.186,0,152.186s-1.015,4.405,5.085,7.962
+													c2.542,1.187,4.915,3.391,4.407,6.781c-0.509,3.386-3.898,4.236-5.424,6.606c-1.524,2.372-4.915,2.372-4.576,16.776l0.341,28.638
+													c0,0,3.047,32.195,16.604,46.261c13.558,14.065,27.112,27.79,48.805,26.604c21.688-1.187,35.415-18.641,47.448-13.219
+													c12.03,5.422,33.722,20.335,53.716,9.999c19.994-10.338,49.985-18.302,49.985-84.05
+													C236.526,708.768,236.021,706.903,232.801,703.685z M94.626,716.209c-10.069,0-18.236-8.164-18.236-18.234
+													c0-10.071,8.167-18.236,18.236-18.236c10.073,0,18.236,8.165,18.236,18.236C112.863,708.045,104.7,716.209,94.626,716.209z
+													 M123.351,764.837c-3.36,0-6.079-2.719-6.079-6.077c0-3.357,2.719-6.078,6.079-6.078c3.354,0,6.077,2.721,6.077,6.078
+													C129.428,762.118,126.706,764.837,123.351,764.837z M168.546,743.735c-8.206,0-14.86-6.653-14.86-14.857
+													c0-8.205,6.654-14.856,14.86-14.856s14.856,6.651,14.856,14.856C183.403,737.082,176.752,743.735,168.546,743.735z"/>
+                                        </g>
+
+                                        <g class="gauge-lines"></g>
+
+                                        <line class="average-indicator" x1="20" x2="60" y1="819" y2="819"></line>
+
+                                        <g>
+                                            <path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M6.104,719.749l0.382,32.207c0,0,3.43,36.212,18.676,52.031
+													c15.249,15.819,30.495,31.257,54.89,29.922c24.395-1.335,39.833-20.964,53.365-14.866c13.529,6.1,37.927,22.871,60.414,11.246
+													c22.492-11.626,56.225-20.584,56.225-94.532c0-26.871-0.57-28.969-4.193-32.589c-3.622-3.623-7.623-2.635-7.623-11.626
+													c0-5.467,9.34-2.479,10.1-19.439c0.765-16.963,0-366.307,0-366.307s0-4.384-2.477-6.099s-4.575-0.762-4.575-10.864
+													c0-4.574,0-5.526,0-5.526s-0.571-3.241,3.052-3.623c3.618-0.38,4.953-9.147,4-17.914c-0.952-8.767-11.623-40.023-57.366-81.191
+													c-13.246-13.244-17.916-17.343-17.916-17.343H83.672c0,0-40.024,35.259-55.65,57.367c-15.628,22.109-28.971,46.123-17.154,58.128
+													c1.526,1.526,3.812,0,3.812,9.911c0,3.241-0.38,4.765-0.38,4.765s1.144,2.479-2.479,4.002c-3.621,1.526-5.146,0.573-5.146,19.06
+													s0,360.399,0,360.399s-1.142,4.955,5.719,8.956c2.859,1.335,5.526,3.813,4.956,7.625c-0.573,3.812-4.384,4.765-6.099,7.432
+													C9.536,703.548,5.722,703.548,6.104,719.749z"/>
+                                            <path fill="#FFFFFF" d="M177.759,155.542c0,0.842-0.854,1.524-1.902,1.524H80.555c-1.047,0-1.899-0.682-1.899-1.524v-4.701
+													c0-0.842,0.852-1.524,1.899-1.524h95.302c1.048,0,1.902,0.682,1.902,1.524V155.542z"/>
+                                            <path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M173.188,96.629c0-0.748-0.683-1.351-1.528-1.351H84.627
+													c-0.842,0-1.523,0.604-1.523,1.351v45.5c0,0.746,0.682,1.352,1.523,1.352h87.033c0.846,0,1.528-0.606,1.528-1.352V96.629z"/>
+                                            <path fill="#2a9fd6" d="M98.822,25.035c0,10.071,8.168,18.234,18.236,18.234c10.074,0,18.235-8.163,18.235-18.234
+													s-8.161-18.236-18.235-18.236C106.99,6.799,98.822,14.964,98.822,25.035z"/>
+                                            <path fill="#2a9fd6" d="M116.198,113.161c0,3.358,2.719,6.077,6.079,6.077c3.353,0,6.075-2.719,6.075-6.077
+													c0-3.357-2.723-6.079-6.075-6.079C118.917,107.082,116.198,109.803,116.198,113.161z"/>
+                                            <path fill="#2a9fd6" d="M134.057,72.761c0,8.205,6.658,14.858,14.86,14.858c8.206,0,14.86-6.654,14.86-14.858
+													c0-8.204-6.654-14.856-14.86-14.856C140.715,57.906,134.057,64.557,134.057,72.761z"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><br /></p>
+                    <p><br /></p>
+                    <p><button type="button" class="btn btn-warning switch-to-section" data-section="explanation">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        {% trans "tapwater_index_return" %}</button></p>
+                    <p><br /></p>
+                    <p><small>{% trans "tapwater_index_nationally_acclaimed_water" %}</small></p>
+                </div>
+
+                <div class="section section-map" style="display:none;">
+                    <div class="alert alert-warning">{% trans "tapwater_index_availibility_of_map" %}</div>
+
+                    <p>{% trans "tapwater_index_streets_with_lowest_values" %}</p>
+
+                    <svg class="map-img" style="width:600px;height:600px;" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1170 1170" preserveAspectRatio="xMinYMin meet">
+                        <g class="areas"></g>
+                        <g class="zones"></g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                {% if zone_data %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">{% trans "tapwater_index_information_on" %}
+                            <span class="zone-id"></span></h4>
+                    </div>
+                    <div class="panel-body">
+                        <p class="zone-year-container">
+                            {% trans "tapwater_index_data_from_year" %} <span class="zone-data-year"></span>
+                        </p>
+                        <p>
+                            <span class="zone-description"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    {% trans "tapwater_index_water_origin" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_sources_wells_in_municipality_and_district" %}</p>
+                                <p>{% trans "tapwater_index_nitrate_in_heilbronn_water" %}</p>
+                                <p>{% trans "tapwater_index_water_demand_in_heilbronn" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    {% trans "tapwater_index_admixture_of_lake_constance_water" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_drinking_water_from_own_source" %}</p>
+                                <p>{% trans "tapwater_index_commune_Jagsthausen_own_water" %}</p>
+                                <blockquote>
+                                    <p>{% trans "tapwater_index_admixture_of_water_other_communes" %}</p>
+                                    <footer>{% trans "tapwater_index_mayor_Roland_Halter" %}</footer>
+                                </blockquote>
+                                <p>{% trans "tapwater_index_compliant_from_authority" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    {% trans "tapwater_index_taste_of_drinking_water" %} </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_taste_of_water_from_minerals" %}</p>
+                                <p>{% trans "tapwater_index_water_with_much_sodium_potasium" %}</p>
+                                <p>{% trans "tapwater_index_unpleasant_taste_of_water" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                    {% trans "tapwater_index_meaning_of_water_hardness_for_me" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_hard_water_everywhere" %}</p>
+                                <p>{% trans "tapwater_index_limit_of_water_hardness_in_heilbronn" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                    {% trans "tapwater_index_why_we_dont_have_soft_water" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_most_of_heilbronn_drinking_water_wells" %}</p>
+                                <p>{% trans "tapwater_index_hardness_degree_of_heilbronn_water" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                    {% trans "tapwater_index_how_different_hardness_degree_developed" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_the_taste_of_water_from_minerals" %}</p>
+                                <p>{% trans "tapwater_index_minerals_substances_in_drinking_water" %}</p>
+                                <p>{% trans "tapwater_index_hardness_of_water_depending_on_minerals" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                    {% trans "tapwater_index_unit_german_hardness" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{% trans "tapwater_index_outdated_unit" %}</p>
+                                <p>{% trans "tapwater_index_areas:" %}</p>
+                                <ul>
+                                    <li>{% trans "tapwater_index_soft" %}</li>
+                                    <li>{% trans "tapwater_index_normal" %}</li>
+                                    <li>{% trans "tapwater_index_hard" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                                    {% trans "tapwater_index_additional_links" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseEight" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a href="http://www.stimme.de/3047311">
+                                        {% trans "tapwater_index_heilbronn_water_mineral_richness" %}</a>
+                                    <li><a href="http://www.gesetze-im-internet.de/bundesrecht/trinkwv_2001/gesamt.pdf">
+                                        {% trans "tapwater_index_drinking_water_approvisioning" %}</a></li>
+                                    <li><a href="http://www.mlr.baden-wuerttemberg.de/mlr/allgemein/Liste%20d%20Untersuchungsstellen-Trinkw.pdf">
+                                        {% trans "tapwater_index_labor_examination_of_drinking_water_quality" %}
+                                    </a></li>
+                                    <li><a href="http://www.umweltbundesamt.de/sites/default/files/medien/378/publikationen/rund_um_das_trinkwasser.pdf">
+                                        {% trans "tapwater_index_broschure_of_federal_environment_agency" %}
+                                    </a></li>
+                                    <li><a href="https://www.stadtwerke-heilbronn.de/index/hsw/hsw_wasser.html">
+                                        {% trans "tapwater_index_municipal utility_heilbron_section_water" %}
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+                                    {% trans "tapwater_index_sources" %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseNine" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>{% trans "tapwater_index_company_name" %}</li>
+                                    <li>{% trans "tapwater_index_german_society_for_nutrition" %}</li>
+                                    <li>{% trans "tapwater_index_federal_instituf_of_risk_assessment" %}</li>
+                                    <li>{% trans "tapwater_index_website_of_communes_in_heilbronn_district" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+    </div>
+    <div class="tab-content">
+        <div id="sodium" class="tab-pane fade in active">
+            {% if zone_data %}
+            <script type="text/javascript">
+
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+                    //window.dispatchEvent(new Event('resize'));
+                   window.addEventListener('resize', function(event){
+                    $(window).resize(initTapwaterValues);
+                    });
+                 });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_sodium" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="sodium_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="hardness" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_hardness" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="hardness_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="calcium" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_calcium" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="calcium_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="potassium" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_potassium" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="potassium_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="sulfate" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_sulfate" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="sulfate_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="nitrate" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_nitrate" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="nitrate_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="chloride" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_chloride" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="chloride_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="magnesium" class="tab-pane fade">
+            {% if zone_data %}
+            <script type="text/javascript">
+             $('a[data-toggle=tab').on('shown.bs.tab', function (e) {
+              window.dispatchEvent(new Event('resize'));
+            });
+            </script>
+            <h2>{% trans 'tapwater_chart_title' %} {%  trans "tapwater_index_magnesium" %}</h2>
+            <p>{% trans "tapwater_index_chart_info" %}</p>
+            <div class="ct-chart ct-major-eleventh" id="magnesium_chart"></div>
+            <br>
+             {% endif %}
+        </div>
+
+        <div id="info" class="tab-pane fade">
+
+        </div>
+</div>
+
+    {% if zone_data %}
+
+     <div class="history-container" id="history-table">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                 <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>&nbsp;{% trans 'tapwater_history' %}</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTen" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans 'administration_show_history_creation_date' %}</th>
+                                                <th>{% trans 'administration_show_history_user' %}</th>
+                                                <th>{% trans 'administration_show_history_date_of_measurement' %}</th>
+                                                <th>{% trans 'tapwater_index_sodium' %}</th>
+                                                <th>{% trans 'tapwater_index_potassium' %}</th>
+                                                <th>{% trans 'tapwater_index_calcium' %}</th>
+                                                <th>{% trans 'tapwater_index_magnesium' %}</th>
+                                                <th>{% trans 'tapwater_index_chloride' %}</th>
+                                                <th>{% trans 'tapwater_index_nitrate' %}</th>
+                                                <th>{% trans 'tapwater_index_sulfate' %}</th>
+                                                <th>{% trans 'tapwater_index_hardness' %}</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for ver in zone_data %}
+                                            <tr>
+                                                <td>{{ ver.created|localtime }}
+                                                </td>
+                                                 <td>
+                                                     {% if ver.user__id == None %}
+                                                         <a href="#" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                            {% trans 'tapwater_index_values_unknown_user' %}" data-placement="top" data-content="{% trans 'tapwater_index_values_unknown_user' %}">
+                                                             <span class="glyphicon glyphicon glyphicon-question-sign"></span>
+                                                         </a>
+                                                     {% else %}
+                                                         {% if ver.user__verified %}
+                                                         <a href="#" data-container="body" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                {% trans 'authority_user' %}" data-content="
+                                                                {% trans 'authority' %} {{ ver.user__authority }} <br>
+                                                                {% trans 'registered_since' %}
+                                                                {{ ver.user__registration_date|localtime|date:'M, Y'}}">
+                                                             {{ ver.user__lastname }}
+                                                             <span class="glyphicon glyphicon glyphicon-ok-sign"></span>
+                                                         </a>
+                                                        {% else %}
+                                                            {% if ver.user__type__value == 'AuthorityUser'  %}
+                                                             <a href="#" data-container="body" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                    {% trans 'authority_user' %}" data-content="
+                                                                    {% trans 'authority' %} {{ ver.user__authority }} <br>
+                                                                    {% trans 'registered_since' %} {{ ver.user__registration_date|localtime|date:'M, Y'}}
+                                                                 ">
+                                                                 {{ ver.user__authority }}
+                                                                 <span class="glyphicon glyphicon glyphicon-question-sign"></span>
+                                                             </a>
+                                                            {% else %}
+                                                             <a href="#" data-container="body" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                                                                    {% trans 'private_user' %}" data-content="
+                                                                    {% trans 'registered_since' %} {{ ver.user__registration_date|localtime|date:'M, Y'}}
+                                                                 ">
+                                                                 {{ ver.user__lastname }}
+                                                                 <span class="glyphicon glyphicon glyphicon-question-sign"></span>
+                                                             </a>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                     {% endif %}
+                                                </td>
+                                                <td>{{ ver.date }}</td>
+                                                <td>{{ver.minerals__sodium}}</td>
+                                                <td>{{ver.minerals__potassium}}</td>
+                                                <td>{{ver.minerals__calcium}}</td>
+                                                <td>{{ver.minerals__magnesium}}</td>
+                                                <td>{{ver.minerals__chloride}}</td>
+                                                <td>{{ver.minerals__nitrate}}</td>
+                                                <td>{{ver.minerals__sulfate}}</td>
+                                                <td>{{ ver.hardness }}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+        {% endif %}
+</div>
+<br><br>
+    {% block share %}
+        {% include 'tapwater/modals/share.html' %}
+    {% endblock %}
+
+    {% block javascript %}
+        <script src="{% static 'js/tapwater/app.js' %}"></script>
+        <script src="{% static 'js/tapwater/lib/d3.js' %}"></script>
+        <script src="{% static 'js/tapwater/lib/colorbrewer.js' %}"></script>
+        <script src="{% static 'js/tapwater/utils.js' %}"></script>
+        <script src="{% static 'js/tapwater/gauge.js' %}"></script>
+        <script src="{% static 'js/tapwater/comparison.js' %}"></script>
+        <script src="{% static 'js/tapwater/chart.js' %}"></script>
+
+        <script type="text/javascript">
+            /**
+             * Load the mineral water values into json
+             */
+            function setMineralWater() {
+                tw.data.referenceWaters = [];
+                var element = {};
+                var mineralWaters = '{{ mineral_waters_json|escapejs }}';
+                mineralWaters = JSON.parse( mineralWaters );
+
+                mineralWaters.forEach(function(data) {
+                    element = {};
+                    element.sodium = data.fields.sodium;
+                    element.potassium = data.fields.potassium;
+                    element.calcium = data.fields.calcium;
+                    element.magnesium = data.fields.magnesium;
+                    element.chloride = data.fields.chloride;
+                    element.nitrate = data.fields.nitrate;
+                    element.sulfate = data.fields.sulfate;
+                    element.sources = data.fields.sources;
+
+                    tw.data.referenceWaters[data.fields.key] = element;
+                    }
+                );
+            }
+
+            /**
+             * Load the average values
+             */
+            function setAverageValues() {
+                tw.data.averageValues = {
+                    "sodium": '{{average_values.sodium}}',
+                    "potassium": '{{average_values.potassium}}',
+                    "calcium": '{{average_values.calcium}}',
+                    "magnesium": '{{average_values.magnesium}}',
+                    "chloride": '{{average_values.chloride}}',
+                    "nitrate": '{{average_values.nitrate}}',
+                    "sulfate": '{{average_values.sulfate}}',
+                    "hardness": '{{average_values.hardness}}'
+                };
+
+            }
+
+            /**
+             * Load nutrient daily dosis values
+             */
+            function setNutrientDailyDosis() {
+                tw.data.nutrientDailyDosis = {
+                    "potassium": '{{ nutrient_daily_dosis.potassium }}',
+                    "calcium": '{{ nutrient_daily_dosis.calcium }}',
+                    "magnesium": '{{ nutrient_daily_dosis.magnesium }}'
+                };
+            }
+
+            /**
+             * set values from database and also translations
+             */
+            function initTapwaterValues() {
+                setMineralWater();
+                setAverageValues();
+                setNutrientDailyDosis();
+
+                tw.zoneData["sodium"] = '{{zone_data_last.sodium}}';
+                tw.zoneData["sulfate"] = '{{zone_data_last.sulfate}}';
+                tw.zoneData["potassium"] = '{{zone_data_last.potassium}}';
+                tw.zoneData["calcium"] = '{{zone_data_last.calcium}}';
+                tw.zoneData["magnesium"] = '{{zone_data_last.magnesium}}';
+                tw.zoneData["chloride"] = '{{zone_data_last.chloride}}';
+                tw.zoneData["nitrate"] = '{{zone_data_last.nitrate}}';
+                tw.zoneData["hardness"] = '{{zone_data_last.hardness}}';
+                tw.zoneData["yearly_averages"] = '{{ zone_data_last.date }}';
+                tw.zoneData["remarks"] = '{{ zone_data_last.remarks }}';
+
+                tw.zoneId = generateZoneId('{{ request.GET.city }}',
+                        '{{ request.GET.district }}',
+                        '{{ request.GET.zone }}|{{ request.GET.street }}');
+
+                tw.hardnessSoft = '{% trans "tapwater_index_hardnessSoft" %}';
+                tw.hardnessMiddle = '{% trans "tapwater_index_hardnessMiddle" %}';
+                tw.hardnessHard = '{% trans "tapwater_index_hardnessHard" %}';
+                tw.hardnessVeryHard = '{% trans "tapwater_index_hardnessVeryHard" %}';
+                tw.dataUrl = "{% url 'load_tapwater_locations' %}";
+            }
+
+            /**
+             * Init chart values
+             */
+            function initCharts() {
+                var chart_data = '{{ chart_data|escapejs }}';
+                chart_data = JSON.parse( chart_data );
+
+                chart_data.forEach(function(data) {
+                    chart.addSodium(data.sodium);
+                    chart.addHardness(data.hardness);
+                    chart.addCalcium(data.calcium);
+                    chart.addPotassium(data.potassium);
+                    chart.addSulfate(data.sulfate);
+                    chart.addChloride(data.chloride);
+                    chart.addNitrate(data.nitrate);
+                    chart.addMagnesium(data.magnesium);
+                    chart.addDate(data.date);
+                    }
+                );
+
+                var xAxis = '{% trans "tapwater_chart_xaxis" %}';
+                var yAxis = '{% trans "tapwater_chart_yaxis" %}';
+                chart.createCharts(xAxis, yAxis);
+            }
+
+            /**
+             * Share measurement values
+             */
+            function setShareLinkButton() {
+                $("#shareLink").click(function(){
+                    this.select();
+                });
+            }
+
+            $(document).ready(function() {
+                setShareLinkButton();
+                // init application values
+                initTapwaterValues();
+                tw.initTapwater(); // init tapwater application
+                $("#results").show(); // Show result div
+                $.LoadingOverlay("hide"); // hide loading modal
+
+                initCharts();
+            });
+
+            $(function () {
+              $('[data-toggle="popover"]').popover()
+            });
+
+            $('.nav-tabs-dropdown').each(function(i, elm) {
+                $(elm).text($(elm).next('ul').find('li.active a').text());
+            });
+
+            $('.nav-tabs-dropdown').on('click', function(e) {
+                e.preventDefault();
+                $(e.target).toggleClass('open').next('ul').slideToggle();
+            });
+
+            $('#nav-tabs-wrapper a[data-toggle="tab"]').on('click', function(e) {
+                var tabClicked = String(e.target).split("#")[1];
+                if (tabClicked !== "info") {
+                    $("#history-table").show();
+
+                } else {
+                    $("#history-table").hide();
+                }
+                e.preventDefault();
+                $(e.target).closest('ul').hide().prev('a').removeClass('open').text($(this).text());
+            });
+
+        </script>
+    {% endblock %}
+
+{% endblock %}

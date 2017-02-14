@@ -1,0 +1,51 @@
+{% extends 'administration/base.html' %}
+{% load tz %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load template_user_tags %}
+
+{% block content %}
+
+ <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans 'administration_show_history_title' %}</strong> <small></small></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>{% trans 'administration_show_history_creation_date' %}</th>
+                            <th>{% trans 'administration_show_history_user' %}</th>
+                            <th>{% trans 'administration_show_history_date_of_measurement' %}</th>
+                            <th>{% trans 'tapwater_index_sodium' %}</th>
+                            <th>{% trans 'tapwater_index_potassium' %}</th>
+                            <th>{% trans 'tapwater_index_calcium' %}</th>
+                            <th>{% trans 'tapwater_index_magnesium' %}</th>
+                            <th>{% trans 'tapwater_index_chloride' %}</th>
+                            <th>{% trans 'tapwater_index_nitrate' %}</th>
+                            <th>{% trans 'tapwater_index_sulfate' %}</th>
+                            <th>{% trans 'tapwater_index_hardness' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for v in measurement %}
+                            <tr>
+                              <td>{{ v.created|localtime }}</td>
+                              <td>{{ v.user.lastname }}</td>
+                              <td>{{ v.date }}</td>
+                              <td>{{v.hardness}}</td>
+                              <td>{{v.minerals.potassium}}</td>
+                              <td>{{v.minerals.sodium}}</td>
+                              <td>{{v.minerals.calcium}}</td>
+                              <td>{{v.minerals.magnesium}}</td>
+                              <td>{{v.minerals.chloride}}</td>
+                              <td>{{v.minerals.nitrate}}</td>
+                              <td>{{v.minerals.sulfate}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+ </div>
+{% endblock %}

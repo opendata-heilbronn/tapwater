@@ -1,0 +1,90 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+    {% if success %}
+        <div class="alert alert-success" id="save-successful">
+    {% trans "admin_manage_administrators_add_successful" %}
+        </div>
+    {% endif %}
+
+    {% if success == False %}
+        <div class="alert alert-danger" id="save-failure">
+    {% trans "admin_manage_administrators_add_failure" %}
+        </div>
+    {% endif %}
+
+    {% if messages %}
+
+    {% for message in messages %}
+    {% if 'success' in message.tags %}
+        <div class="alert alert-success" id="delete-successful">
+        {{ message }}
+        </div>
+    {% endif %}
+    {% endfor %}
+
+    {% endif %}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>{% trans "admin_manage_administrators_show_headline" %}</strong> <small></small></div>
+    <div class="panel-body">
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>{% trans "admin_manage_administrators_username" %}</td>
+                    <td>{% trans "admin_manage_administrators_first_name" %}</td>
+                    <td>{% trans "admin_manage_administrators_last_name" %}</td>
+                    <td>{% trans "admin_manage_administrators_email" %}</td>
+                    <td>&nbsp;</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in all_users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a href="{% url 'delete_admin' user_id=user.id %}" class="btn btn-danger" role="button" id="delete{{user.username}}">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>{% trans "admin_manage_administrators_add_headline" %}</strong> <small></small></div>
+    <div class="panel-body">
+        <form class="form-signin" method="POST" action="{% url 'add_admin' %}" id="frmAddAdmin">
+            {% csrf_token %}
+
+            {{ form.username.label_tag }}
+            {{ form.username}}<br>
+
+            {{ form.first_name.label_tag }}
+            {{ form.first_name}}<br>
+
+            {{ form.last_name.label_tag }}
+            {{ form.last_name}}<br>
+
+            {{ form.email.label_tag }}
+            {{ form.email}}<br>
+            <br>
+            <button class="btn btn-primary pull-right" id="btnAddAdmin" type="submit">{% trans "admin_manage_administrators_add" %}</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

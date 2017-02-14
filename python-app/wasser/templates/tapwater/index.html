@@ -1,0 +1,179 @@
+{% extends 'tapwater/base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load api_keys %}
+{% load template_user_tags %}
+
+{% block content %}
+ {% if messages %}
+
+    {% for message in messages %}
+        {% if 'logout_msg' in message.tags %}
+            <div class="messages">
+            <div class="alert alert-warning" id="logoutMessage">
+            {{message}}
+            </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+ {% endif %}
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+
+	<script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+
+    {% if user.is_authenticated and user.is_superuser %}
+        <h1>
+            <a href="{% url 'admin_logout' %}" id="logout_admin" class="btn btn-primary pull-right"> {% trans "tapwater_logout_button" %}</a>
+        </h1>
+        <h1>
+            <a href="{% url 'admin_index' %}" id="administration" class="btn btn-primary pull-right"> {% trans "tapwater_administration_button" %}</a>
+        </h1>
+     {% elif request.session.user  %}
+        <h1>
+            <a href="{% url 'users_logout' %}" id="logout" class="btn btn-primary pull-right">{% trans "tapwater_logout_button" %}</a>
+        </h1>
+        <h1>
+            <a href="{% url 'users_index' %}" id="management" class="btn btn-primary pull-right">{% trans "tapwater_user_area_button" %}</a>
+        </h1>
+    {% else %}
+        <h1>
+            <a href="{% url 'registration' %}" id="register" class="btn btn-primary pull-right"> {% trans "tapwater_registration_button" %}</a>
+        </h1>
+
+        <h1>
+            <a type="button" id="login" class="btn btn-primary pull-right js-create-login" data-url="{% url 'send_token_for_one_user' %}"> {% trans "tapwater_login_button" %}</a>
+        </h1>
+
+    {% endif %}
+	<h1>{% trans "tapwater_index_region_name" %}</h1>
+	<div class="choose-location">
+		<div class="well choose-location-well">
+			<form class="form-horizontal form-choose-location" role="form" method="GET" action="{% url 'show_tapwater_values' %}" id="frmLocation">
+
+                <div class="form-group select-city">
+					<label for="city" class="col-sm-2 control-label">{% trans "tapwater_index_place" %}</label>
+					<div class="col-sm-10">
+                        <div class="input-group">
+                            <input type="text" class="city form-control" id="city" name="city">
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning" type="button" id="search">
+                                    &nbsp;
+                                    <span class="glyphicon glyphicon-search"></span>
+                                    &nbsp;
+                                </button>
+                           </span>
+                        </div>
+					</div>
+				</div>
+				<div class="form-group select-district" style="display:none;">
+					<label for="district" class="col-sm-2 control-label">{% trans "tapwater_index_district" %}</label>
+					<div class="col-sm-10">
+						<select id="district" name="district" class="district form-control">
+						</select>
+					</div>
+				</div>
+				<div class="form-group select-street" style="display:none;">
+					<label for="streetZone" class="col-sm-2 control-label">{% trans "tapwater_index_street" %}</label>
+					<div class="col-sm-10">
+						<select id="streetZone" class="streetZone form-control" name="streetZone">
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-warning" id="btnContinue">
+							<span class="glyphicon glyphicon-chevron-right"></span>{% trans "tapwater_index_continue" %}
+						</button>
+						<br><br>
+						<p id="info"></p>
+					</div>
+				</div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a href="#" id="locateUser" class="btn btn-warning" onclick="getLocation()">
+                            <span class="glyphicon glyphicon-globe"></span> {% trans "admin_current_location" %}
+                        </a>
+                    </div>
+                </div>
+			</form>
+			<br />
+		</div>
+
+		<p><small>{% trans "tapwater_index_note" %}</small></p>
+	</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+          <div class="modal-content"></div>
+        </div>
+    </div>
+    <script src="{% static 'js/tapwater/login.js' %}"></script>
+    <script src="{% static 'js/tapwater/app.js' %}"></script>
+    <script src="{% static 'js/tapwater/geolocate.js' %}"></script>
+
+    {% block javascript %}
+
+	<script type="text/javascript">
+        /**
+         * Init geolocation error's and api keys
+         */
+        function initGeoLocation() {
+            // define api settings
+            geolocate.googleApiKey = "{% get_google_geo_api_key %}";
+			geolocate.hereMapsAppCode = "{% get_here_maps_geo_app_code %}";
+			geolocate.hereMapsAppId = "{% get_here_maps_geo_app_id %}";
+            geolocate.useGoogleApi = "{% get_google_api %}";
+
+            // define error msg
+            geolocate.noSupportError = "{% trans 'admin_gelocation_no_support_error' %}";
+            geolocate.positionError = "{% trans 'admin_browser_error_position' %}";
+            geolocate.timeoutError = "{% trans 'admin_browser_error_timeout' %}";
+            geolocate.unknownError = "{% trans 'admin_browser_error_unknown' %}";
+            geolocate.geolocationApiError = "{% trans 'admin_geolocation_api_error' %}";
+            geolocate.noDataPreError = "{% trans 'admin_no_data_pre' %}";
+            geolocate.noDataAfterError = " {% trans 'admin_no_data_after' %}";
+        }
+
+        /**
+         * Prevent textbox from sending by hitting enter
+         */
+        function preventEnterKey(id) {
+            $(id).keypress(function(event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                }
+            });
+        }
+
+        /**
+         * handle document ready
+         */
+		$(document).ready(function() {
+            $( "#city" ).focus();
+            $( "#logoutMessage" ).fadeOut( 3000 );
+
+            initGeoLocation();
+            initFormLocationSubmit();
+            initAutocompleteCities("{% url 'autocomplete_tapwater_cities' %}");
+            initCityFocusOut();
+            initOnClickSearch();
+            preventEnterKey('#city');
+
+            tw.position = {};
+            tw.locate = "False";
+            tw.dataUrl = "{% url 'load_tapwater_locations' %}";
+
+            bindChangeEvent();
+        });
+
+	</script>
+    {% endblock %}
+{% endblock %}

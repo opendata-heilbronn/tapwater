@@ -1,11 +1,4 @@
-.settings
-.hg
-*.iml
-.idea
-.DS_Store
-bin
-node_modules
-raw_data_measurements
+syntax: glob
 
 # Python "executables"
 *.pyc
@@ -13,6 +6,10 @@ raw_data_measurements
 __pycache__/*
 .tox/*
 *.egg-info/*
+
+# PyCharm and IntelliJ files
+.idea/*
+*.iml
 
 # Eclipse files
 .project

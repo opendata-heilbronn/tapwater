@@ -1,0 +1,29 @@
+version: '2'
+services:
+  nginx:
+      image: nginx:latest
+      container_name: global_nginx
+      ports:
+        - "8000:8000"
+      volumes:
+        - .:/src
+        - ./wasser/static:/www/static
+        - ./config/nginx:/etc/nginx/conf.d
+      depends_on:
+        - web
+  db:
+    image: postgres
+    environment:
+        POSTGRES_USER: wasser
+        POSTGRES_PASSWORD: docker
+    container_name: global_postgres
+  web:
+    build: .
+    container_name: wasser_web
+    command: gunicorn --workers=4 wasser.wsgi:WSGI_APPLICATION -b :8000
+    volumes:
+      - .:/code
+    expose:
+          - "8000"
+    depends_on:
+      - db

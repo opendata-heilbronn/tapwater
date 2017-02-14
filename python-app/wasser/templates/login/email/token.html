@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load l10n %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- If you delete this meta tag, Half Life 3 will never be released. -->
+<meta name="viewport" content="width=device-width" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{% trans login_email_token_subject %}</title>
+</head>
+
+<body bgcolor="transparent">
+
+	<h3>{% trans "login_email_token_greeting_first" %} {{ user.firstname }} {{ user.lastname }}, </h3>
+	<p class="lead">{% trans "login_email_token_greeting_second" %} </p>
+	<p>{% trans "login_email_token_link_address" %}</p>
+
+	<p><b><a href="http://{{ token }}">http://{{ token }}</a></b></p>
+	<p>{% trans "login_email_token_thanks" %}</p>
+	<br>
+	<p>{% trans "login_email_token_ending" %}</p>
+
+</body>
+</html>

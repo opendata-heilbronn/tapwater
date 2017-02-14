@@ -1,0 +1,74 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+ <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans "user_headline" %}</strong> <small></small></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>User-ID</th>
+                      <th>{% trans "user_firstname" %}</th>
+                      <th>{% trans "user_lastname" %}</th>
+                      <th>{% trans "user_email" %}</th>
+                      <th>{% trans "user_authority" %}</th>
+                      <th>{% trans "user_user_type" %}</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for user in users %}
+                    <tr>
+                      <td data-title="id">{{user.id}}</td>
+                      <td data-title="Firstnamen">{{user.firstname}}</td>
+                      <td data-title="Lastname">{{user.lastname}}</td>
+                      <td data-title="Email">{{user.email}}</td>
+                      <td data-title="Authority">{{user.authority}}</td>
+                      <td data-title="UserTyp">
+                          {{user.type.value}}
+                            {% if user.verified %}
+                                <span class="glyphicon glyphicon glyphicon-ok-sign"></span>
+                            {% endif %}
+                      </td>
+                      <form action="{% url 'delete_user' user_id=user.id %}" method="post" enctype="multipart/form-data">
+                         {% csrf_token %}
+                      <td data-title="UserTyp">
+                          <button type="submit" class="btn btn-danger">
+                              <span class="glyphicon glyphicon-remove"></span>
+                          </button>
+                      </td>
+                      </form>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+            {% if users.has_other_pages %}
+                <ul class="pagination">
+                  {% if users.has_previous %}
+                    <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                  {% endif %}
+                  {% for i in page_range %}
+                    {% if users.number == i %}
+                      <li class="active"><span>{{ i }}</span></li>
+                    {% else %}
+                       <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                  {% if users.has_next %}
+                    <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+        </div>
+ </div>
+{% endblock %}

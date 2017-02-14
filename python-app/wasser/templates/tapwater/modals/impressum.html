@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load l10n %}
+{% block impressum %}
+<div class="modal fade" id="imprintDialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{% trans "tapwater_modals_impressum_modal_impressum" %}</h4>
+            </div>
+            <div class="modal-body">
+                <address>
+                    {% trans "tapwater_modals_impressum_modal_name_of_company" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_street" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_postal_code" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_phon" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_fax" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_mailto" %}<br>
+                    <br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_district_court" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_IdNr" %}<br>
+                    {% trans "tapwater_modals_impressum_modal_adress_of_company_managing_director" %}<br>
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

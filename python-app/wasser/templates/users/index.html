@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+    <h1 style="text-align: center;">
+        {% trans 'users_index_welcome' %}
+    </h1>
+
+    <br>
+
+    <div style="text-align: center;">
+        {% trans 'users_index_thanks' %}
+    </div>
+{% endblock %}

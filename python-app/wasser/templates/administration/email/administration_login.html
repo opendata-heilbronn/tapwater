@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load l10n %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- If you delete this meta tag, Half Life 3 will never be released. -->
+    <meta name="viewport" content="width=device-width" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{% trans admin_manage_administrators_add_subject %}</title>
+</head>
+
+<body>
+
+<h3>{% trans "admin_manage_administrators_add_salutation" %} {{ user.first_name }} {{ user.last_name }}, </h3>
+<p>{% trans "admin_manage_administrators_add_intro" %}</p>
+
+{% trans "admin_manage_administrators_add_username" %}: {{user.username}} <br>
+{% trans "admin_manage_administrators_add_password" %}: {{password}} <br>
+
+<p>{% trans "admin_manage_administrators_add_ending" %}</p>
+<small>
+    <br>
+    <br>
+    <br>
+    {% trans "login_utilities_mail_auto_generated" %}
+</small>
+
+
+</body>
+</html>

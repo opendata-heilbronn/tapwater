@@ -1,0 +1,50 @@
+{% load i18n %}
+{% load l10n %}
+{% block login %}
+<div class="modal fade" id="login" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+
+            <div class="modal-body">
+            {% if messages %}
+            {% for message in messages %}
+                {% if 'login_msg_success' in message.tags %}
+                    <div class="messages">
+                    <div class="alert alert-success" id="successMessage">
+                    {{message}}
+                    </div>
+                    </div>
+                {%else%}
+                    <div class="messages">
+                    <div class="alert alert-danger" id="failedMessage">
+                    {{message}}
+                    </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+
+                <div style="max-height:400px;overflow:scroll;">
+                    <form class="form-signin" name="form1" action={% url 'send_token_for_one_user' %} method="post">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <p>{% trans "login_index_token_info_msg" %}</p>
+                            <p>{% trans "login_index_token_info_reg_msg" %} <a href="{% url 'registration' %}">{% trans "tapwater_registration_button" %}</a></p>
+                            <label for="authority_mail">{% trans "login_index_email_label" %}</label>
+                            <input id="authority_mail" type="email" class="form-control" name="authority_mail" >
+                        </div>
+
+
+                        <button class="btn btn-warning pull-right" id="submit" type="submit" >{% trans "login_index_email_button" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

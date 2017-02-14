@@ -1,0 +1,64 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+    {% if success %}
+        <div class="alert alert-success" id="save-successful">
+            {% trans "admin_av_measure_value_success" %}
+        </div>
+        {% endif %}
+
+        {% if success == False %}
+        <div class="alert alert-danger" id="save-error">
+            {% trans "admin_edit_av_measur_error" %}
+        </div>
+        {% endif %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="{% url 'show_average_measurement_value' %}"
+           class="btn btn-primary">
+            <span class="glyphicon glyphicon-backward"></span>
+            {% trans "admin_change_av_measure_value_back" %}
+        </a>
+        <strong>{% trans "admin_av_measur_value_edit_headline" %}</strong></div>
+    <div class="panel-body">
+
+        <form class="form-signin" method="POST" action="">
+            {% csrf_token %}
+
+            {{ form.potassium.label_tag }}
+            {{ form.potassium}}<br>
+
+            {{ form.sodium.label_tag }}
+            {{ form.sodium}}<br>
+
+            {{ form.calcium.label_tag }}
+            {{ form.calcium}}<br>
+
+            {{ form.magnesium.label_tag }}
+            {{ form.magnesium}}<br>
+
+            {{ form.chloride.label_tag }}
+            {{ form.chloride}}<br>
+
+            {{ form.nitrate.label_tag }}
+            {{ form.nitrate}}<br>
+
+            {{ form.sulfate.label_tag }}
+            {{ form.sulfate}}<br>
+
+            {{ form.hardness.label_tag }}
+            {{ form.hardness}}<br>
+
+        <br>
+        <button class="btn btn-primary pull-right" id="send_values" type="submit">{% trans "admin_change_av_measure_value_submit" %}</button>
+        <a href="{% url 'show_average_measurement_value' %}" class="btn btn-primary pull-left" id="cancel" name="cancel" style="text-decoration: none;">
+                {% trans "admin_change_av_measure_value_cancel_button" %}</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

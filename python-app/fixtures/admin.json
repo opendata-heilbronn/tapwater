@@ -1,0 +1,47 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$30000$eCg6UzcvxzU0$QrdXwDsYXzN5JFz3seasqh0zK8lFTC2MeQo1pOnMvVo=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@localhost",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2016-11-18T21:29:30.142Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "administration.TapwaterUserType",
+        "pk": 2,
+        "fields": {
+            "value": "PrivateUser"
+        }
+    },
+    {
+        "model": "administration.TapwaterUserType",
+        "pk": 3,
+        "fields": {
+            "value": "AuthorityUser"
+        }
+    },
+    {
+        "model": "administration.TapwaterUser",
+        "pk": 4,
+        "fields": {
+          "firstname": "Admin",
+          "lastname" : "Administrator",
+          "email": "admin@localhost",
+          "authority": "OpenDataLab HN",
+          "verified": true,
+          "registration_date": "2016-11-18T21:29:30.142Z",
+          "type": 2
+    }
+  }
+]

@@ -1,0 +1,131 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function(){
+            $('#sendAllToken').on('submit', function(e){
+                $.LoadingOverlay('show');
+            });
+        });
+    </script>
+
+    {% if success == False %}
+                <div class="alert alert-danger" id="failed-files">
+                    <strong>{% trans "import_user_dangeralert" %}</strong><br>
+                    <small>{% trans "import_user_dangeralert_msg" %}</small>
+                       {% if not_insert %}
+                        <div class="alert alert-warning">
+                            <strong>{% trans "import_user_warning_1" %}Hintergrund: </strong><br>{% trans "import_user_warning_2" %}
+                        <ul>
+                        {% for i in not_insert %}
+                            <li>{{i}}</li>
+                        {% endfor %}
+                        </ul>
+                            <br>
+                            {% trans "import_measure_warning_3" %}
+                            </div>
+                         {% endif %}
+                </div>
+             {% else %}
+
+                {% if success == True %}
+                    <div class="alert alert-success" id="save-successful">
+                       <strong> {% trans "import_measure_success" %} </strong>
+                         </div>
+                {% endif %}
+            {% endif %}
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans "user_administration" %}</strong> <small></small></div>
+        <div class="panel-body">
+
+
+         <!-- Standar Form -->
+            <div class="panel panel-default">
+            <div class="panel-heading"><strong>{% trans "user_import" %}</strong> <small></small></div>
+            <div class="panel-body">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{% trans "import_user_noteheadline" %}</h3>
+                        <p>{% trans "import_user_notetext_0" %}</p>
+                        <ol>
+                            <li><p>{% trans "import_user_notetext_1" %}</p>
+                            <div class="row">
+                                    <div class="col-md-6 pull-left"><b>{% trans "import_user_csv_sample" %}</b><pre><xmp>Vorname;Nachame;Mail;Gemeinde
+Hans;Peter;peter@musterstadt.de;Musterstadt
+Otto;Meier;meier@beispielhausen.de;Gemeinde Beispielhausen
+                                </xmp></pre></div>
+                                 </div>
+                            </li>
+                        </ol>
+                </div>
+            </div>
+          <h4>{% trans "import_user_selectfile" %}</h4>
+        <form action="{% url "import_contacts" %}" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+
+            <p>{{ form.non_field_errors }}</p>
+
+            <p>{{ form.contacts.label_tag }} {{ form.contacts.help_text }}</p>
+
+            <p>
+               {{ form.contacts.errors }}
+               {{ form.contacts }}
+            </p>
+
+            <p><input type="submit" id="submit" class="btn btn-primary pull-right" value="{% trans "import_contacts_submit" %}"/></p>
+          <p>{{ forms.content }}</p>
+
+        </form>
+
+      </div>
+     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans "user_send_token" %}</strong> <small></small></div>
+            <div class="panel-body">
+
+            {% if send_success %}
+            <div class="alert alert-success" id="send-successful">
+            {% trans "administration_token_send_successful" %}
+            </div>
+            {% endif %}
+
+            {% if send_success == False %}
+            <div class="alert alert-warning" id="send-failure">
+                {% trans "administration_token_send_failure" %}
+            </div>
+            {% endif %}
+
+                	<form class="form-signin" action="{% url 'send_token_for_all_users' %}" method="POST" id="sendAllToken">
+	                {% csrf_token %}
+	                <br>
+                    {% trans "send_token_title" %}
+	                <button class="btn btn-primary pull-right" type="submit" >{% trans "send_token_button" %}</button>
+                </form>
+            </div>
+            <div class="panel-body">
+                {% trans "administration_send_selected_token_title" %}
+                <a href="{% url 'send_token_for_selected_users' %}" class="btn btn-primary pull-right" type="submit" >{% trans "administration_authority_show_authority" %}</a>
+            </div>
+     </div>
+
+     <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans "administrator_verify_authority_user" %}</strong> <small></small></div>
+            <div class="panel-body">
+                  <div class="panel-body">
+                {% trans "administrator_verify_authority_user" %}
+                <a href="{% url 'confirm_authority_user' %}" class="btn btn-primary pull-right" type="submit" >{% trans "administrator_verify_authority_user_selection" %}</a>
+            </div>
+            </div>
+     </div>
+
+          </div>
+          </div>
+
+{% endblock %}

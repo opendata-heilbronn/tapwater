@@ -1,0 +1,93 @@
+[
+  {
+    "model": "tapwater.MineralWater",
+    "pk": 1,
+    "fields": {
+      "name": "Wüteria",
+      "key": "wueteria",
+      "sodium": "10.7",
+      "potassium": "2.6",
+      "calcium": "118",
+      "magnesium": "48",
+      "chloride": "43",
+      "nitrate": "0.05",
+      "sulfate": "68",
+      "referenced": false,
+      "sources": "http://www.wueteria.de/unser_wasser/index.php"
+    }
+  },
+  {
+    "model": "tapwater.MineralWater",
+    "pk": 2,
+    "fields": {
+      "name": "Teusser",
+      "key": "teusser",
+      "sodium": "53",
+      "potassium": "8",
+      "calcium": "565",
+      "magnesium": "82",
+      "chloride": "27",
+      "nitrate": "0.5",
+      "sulfate": "1450",
+      "referenced": false,
+      "sources": "http://www.teusser.de/index.php?id=225"
+    }
+  },
+  {
+    "model": "tapwater.MineralWater",
+    "pk": 3,
+    "fields": {
+      "name": "Volvic",
+      "key": "volvic",
+      "sodium": "11.6",
+      "potassium": "6.2",
+      "calcium": "11.5",
+      "magnesium": "8",
+      "chloride": "13.5",
+      "nitrate": "6.9",
+      "sulfate": "8.1",
+      "referenced": true,
+      "sources": "http://books.google.de/books?id=lzEoGWyqMBwC&pg=PA198&lpg=PA198&dq=volvic+nitrategehalt&source=bl&ots=pJEE0i9HwK&sig=OI_PeSr_QGBCfpeVCu70N4ohy8g&hl=de&ei=4-yvSuHrJ8jK_gbV0p3ZDA&sa=X&oi=book_result&ct=result&resnum=6#v=onepage&q&f=false"
+    }
+  },
+  {
+    "model": "tapwater.MineralWater",
+    "pk": 4,
+    "fields": {
+      "name": "Vittel",
+      "key": "vittel",
+      "sodium": "7.7",
+      "potassium": "5.2",
+      "calcium": "94",
+      "magnesium": "20",
+      "chloride": "3.8",
+      "nitrate": "0.1",
+      "sulfate": "120",
+      "referenced": false,
+      "sources": "http://books.google.de/books?id=lzEoGWyqMBwC&pg=PA198&lpg=PA198&dq=volvic+nitrategehalt&source=bl&ots=pJEE0i9HwK&sig=OI_PeSr_QGBCfpeVCu70N4ohy8g&hl=de&ei=4-yvSuHrJ8jK_gbV0p3ZDA&sa=X&oi=book_result&ct=result&resnum=6#v=onepage&q&f=false"
+    }
+  },
+  {
+    "model": "tapwater.AverageMeasurementValue",
+    "pk": 1,
+    "fields": {
+      "sodium": "8.5",
+      "potassium": "1.6",
+      "calcium": "77.4",
+      "magnesium": "17.9",
+      "chloride": "18",
+      "nitrate": "14.6",
+      "sulfate": "49.2",
+      "hardness": "14.9"
+    }
+  },
+  {
+    "model": "tapwater.NutrientDailyDosis",
+    "pk": 1,
+    "fields": {
+      "potassium": "~ 2000 mg",
+      "calcium": "~ 1000 mg",
+      "magnesium": "~ 350 mg"
+    }
+  }
+]

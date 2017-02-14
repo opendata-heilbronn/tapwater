@@ -1,0 +1,81 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+ <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans "admin_measurement_show_headline" %}</strong> <small></small></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>{% trans "admin_measurement_city" %}</th>
+                  <th>{% trans "admin_measurement_district" %}</th>
+                  <th>{% trans "admin_measurement_year" %}</th>
+                  <th>{% trans "admin_measurement_description" %}</th>
+                  <th>{% trans "admin_measurement_hardness" %}</th>
+                  <th>{% trans "admin_measurement_potassium" %}</th>
+                  <th>{% trans "admin_measurement_natrium" %}</th>
+                  <th>{% trans "admin_measurement_calcium" %}</th>
+                  <th>{% trans "admin_measurement_magnesium" %}</th>
+                  <th>{% trans "admin_measurement_chloride" %}</th>
+                  <th>{% trans "admin_measurement_nitrate" %}</th>
+                  <th>{% trans "admin_measurement_sulfate" %}</th>
+                  <th>{% trans "admin_measurement_street" %}</th>
+                  <th>{% trans "admin_measurement_zone" %}</th>
+                  <th>{% trans "admin_measurement_region" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for measurement in measurements %}
+                <tr>
+                  <td data-title="Stadt">{{measurement.location.city}}</td>
+                  <td data-title="Teilort">{{measurement.location.district}}</td>
+                  <td data-title="Jahr">{{measurement.date}}</td>
+                  <td data-title="Description">{{measurement.remarks}}</td>
+                  <td data-title="Härte">{{measurement.hardness}}</td>
+                  <td data-title="Kalium">{{measurement.minerals.potassium}}</td>
+                  <td data-title="Natrium">{{measurement.minerals.sodium}}</td>
+                  <td data-title="Calcium">{{measurement.minerals.calcium}}</td>
+                  <td data-title="Magnesium">{{measurement.minerals.magnesium}}</td>
+                  <td data-title="Chlorid">{{measurement.minerals.chloride}}</td>
+                  <td data-title="Nitrat">{{measurement.minerals.nitrate}}</td>
+                  <td data-title="Sulfat">{{measurement.minerals.sulfate}}</td>
+                  <td data-title="Straße">{{measurement.location.street}}</td>
+                  <td data-title="Zone">{{measurement.location.zone}}</td>
+                  <td data-title="Region">{{measurement.location.region}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+                 </div>
+           {% if measurements.has_other_pages %}
+                <ul class="pagination">
+                  {% if measurements.has_previous %}
+                    <li><a href="?page={{ measurements.previous_page_number }}">&laquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                  {% endif %}
+                  {% for i in page_range %}
+                    {% if measurements.number == i %}
+                      <li class="active"><span>{{ i }}</span></li>
+                    {% else %}
+                       <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                  {% if measurements.has_next %}
+                    <li><a href="?page={{ measurements.next_page_number }}">&raquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+
+          </div>
+     </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{%  extends "login/base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+    <h1>{% trans "login_admin_failed" %}</h1>
+    {% csrf_token %}
+<h4><p>{% trans "login_admin_failed_info" %} <b><a href="{% url 'admin_login' %}">{% trans "login_admin_page" %} </a></b> </p></h4>
+
+
+
+{%  endblock %}

@@ -1,0 +1,43 @@
+.navbar {
+   margin-bottom: 20px;
+   opacity: 0.5;
+   filter: alpha(opacity=50); 
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #007bc3;
+  color: black;
+
+}
+
+.panel-default>.panel-heading {
+    color: #FFF;
+    background-color: #2a9fd6;
+    border-color: #2a9fd6;
+}
+
+.panel-default {
+    background-color: rgba(255,255,255, 0.5);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: transparent;
+    border-color: #2a9fd6;
+}
+
+.footer {
+    margin: 100px 0;
+    text-align: center;
+    display: block;
+}
+.footer a, .footer {
+    color: #EEE;
+    font-size: 12px;
+}
+.myBackground {
+    background-color: rgba(255,255,255, 0.5);
+    color: inherit;
+}

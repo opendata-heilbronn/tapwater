@@ -1,0 +1,11 @@
+{%  extends "login/base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+    <h1>{% trans "login_authority_failed" %}</h1>
+
+<h4><p>{% trans "login_authority_failed_info" %}<b> <a href="{% url 'index' %}">{% trans "login_authority_page" %} </a></b> </p></h4>
+
+{%  endblock %}login

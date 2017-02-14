@@ -1,0 +1,88 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if 'delete_msg' in message.tags %}
+                <div class="messages">
+                <div class="alert alert-success" id="deleteMessage">
+                    {{ message }}
+                </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% block delete_water %}
+    {% include 'administration/modals/delete_water.html' %}
+    {% endblock %}
+
+    <script src="{% static 'js/administration/delete_mineral_water.js' %}"></script>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{% trans "admin_mineralwater_headline" %}</strong>
+            <small></small>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{% trans "admin_mineralwater_name" %}</th>
+                        <th>{% trans "admin_mineralwater_key" %}</th>
+                        <th>{% trans "admin_mineralwater_potassium" %}</th>
+                        <th>{% trans "admin_mineralwater_natrium" %}</th>
+                        <th>{% trans "admin_mineralwater_calium" %}</th>
+                        <th>{% trans "admin_mineralwater_magnesium" %}</th>
+                        <th>{% trans "admin_mineralwater_chloride" %}</th>
+                        <th>{% trans "admin_mineralwater_nitrate" %}</th>
+                        <th>{% trans "admin_mineralwater_sulfate" %}</th>
+                        <th data-title="New_mineral_water">
+                            <a href="{% url 'add_mineral_water' %}"
+                               class="btn btn-primary" id="new_mineral_water"
+                               style="text-decoration: none;">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span>{% trans "admin_add_mineral_water" %}</span>
+                            </a>
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for mineral_water in mineral_waters %}
+                        <tr>
+                            <td data-title="Name">{{ mineral_water.name }}</td>
+                            <td data-title="Key">{{ mineral_water.key }}</td>
+                            <td data-title="Kalium">{{ mineral_water.potassium }}</td>
+                            <td data-title="Natrium">{{ mineral_water.sodium }}</td>
+                            <td data-title="Calcium">{{ mineral_water.calcium }}</td>
+                            <td data-title="Magnesium">{{ mineral_water.magnesium }}</td>
+                            <td data-title="Chlorid">{{ mineral_water.chloride }}</td>
+                            <td data-title="Nitrat">{{ mineral_water.nitrate }}</td>
+                            <td data-title="Sulfat">{{ mineral_water.sulfate }}</td>
+                            <td data-title="Edit">
+                                <a href="{% url 'edit_mineral_water' mineral_water_id=mineral_water.id %}"
+                                   class="btn btn-primary"
+                                   style="text-decoration: none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    <span>{% trans "admin_edit_mineral_water" %}</span>
+                                </a>
+                                <button class="btn btn-danger" id="delete-mineral-water-{{ mineral_water.key }}"
+                                        style="text-decoration: none;"
+                                        onclick="setMineralWaterId('{% url "delete_mineral_water" mineral_water_id=mineral_water.id %}', '{{mineral_water.key}}');">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <span>{% trans "admin_delete_mineral_water" %}</span>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

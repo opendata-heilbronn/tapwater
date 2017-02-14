@@ -1,0 +1,43 @@
+{% extends "login/base.html" %}
+
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+    <h1 id="admin-save-successful">{% trans "login_admin_title" %}</h1>
+    {% if error_msg %}
+    <div class="alert alert-danger" id="admin-login-failed">
+        <strong>
+            {{ error_msg }}
+        </strong><br>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'admin_login' %}" method="post">
+    {% csrf_token %}
+        <br>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-5">
+            <label for="user">{% trans 'login_admin_login_user_label' %}</label>
+            <input id="user" class="form-control" name="user" type="text" value="" placeholder="{% trans "login_admin_username" %}">
+        </div>
+    </div>
+        <br>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-5">
+            <label for="password">{% trans 'login_admin_login_password_label' %}</label>
+            <input id="password" class="form-control" type="password" name="password" value="" placeholder="{% trans "login_admin_password" %}">
+        </div>
+    </div>
+        <br>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-5">
+            <input id="submit" class="btn btn-primary pull-right" type="submit" value="{% trans "login_admin_send_button" %}">
+        </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

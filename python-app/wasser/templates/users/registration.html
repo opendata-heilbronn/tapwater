@@ -1,0 +1,93 @@
+{% extends 'users/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% block content %}
+            {% if success == False %}
+                <div class="alert alert-danger" id="user-save-failed">
+                   <p>{% trans "users_registration_pr_fail" %}</p>
+                </div>
+             {% else %}
+
+                {% if success == True %}
+                    <div class="alert alert-success" id="user-save-successful">
+                        <strong>{% trans "users_registration_pr_success" %}</strong>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+ <div class="panel panel-default myBackground">
+        <div class="panel-heading"><strong>{% trans "users_registration_pr_title" %}</strong> <small></small></div>
+        <div class="panel-body">
+
+
+        <form action="{% url "registration" %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+            <p>{{ form.non_field_errors }}</p>
+
+              <p>{{ form.firstname.label_tag }}{{ form.firstname.help_text }}</p>
+            <p>
+                {{ form.firstname.errors }}
+                {{ form.firstname }}
+            </p>
+
+
+              <p>{{ form.lastname.label_tag }}{{ form.lastname.help_text }}</p>
+            <p>
+                {{ form.lastname.errors }}
+                {{ form.lastname }}
+            </p>
+
+            <p>{{ form.email.label_tag }}{{ form.email.help_text }}</p>
+            <p>
+                {{ form.email.errors }}
+                {{ form.email }}
+            </p>
+
+                {{form.authority_checkbox.label_tag}}
+                {{form.authority_checkbox}}
+
+              <p>{{ form.authority.help_text }}</p>
+            <p>
+                {{ form.authority.label_tag }}
+                {{ form.authority.errors }}
+                {{ form.authority }}
+            </p>
+
+            <script>
+
+            //show it when the checkbox is clicked
+
+            function hideAuthority(){
+                var isChecked = $('#id_authority_checkbox').is(':checked');
+                if ( isChecked ) {
+                    $('#id_authority').fadeIn();
+                    $('label[for="id_authority"]').fadeIn();
+                }
+                else {
+                    $('label[for="id_authority"]').hide();
+                    $('#id_authority').hide();
+                    $('#id_authority').val('');
+                }
+            }
+
+            $(document).ready(function() {
+
+                hideAuthority();
+
+                $('#id_authority_checkbox').on('click', function(){
+                    hideAuthority();
+                });
+
+            });
+
+            </script>
+
+            <p><input type="submit" id="submit" class="btn btn-primary pull-right" value="{% trans "users_registration_pr_submit" %}"/></p>
+          <p>{{ forms.content }}</p>
+
+        </form>
+
+      </div>
+     </div>
+{% endblock %}

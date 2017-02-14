@@ -1,0 +1,33 @@
+{% load i18n %}
+{% load l10n %}
+<form method="post" action="{% url 'send_token_for_one_user' %}" class="js-login-create-form">
+  {% csrf_token %}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Login</h4>
+  </div>
+  <div class="modal-body">
+    <p>{% trans "login_index_token_info_msg" %}</p>
+    <p>{% trans "login_index_token_info_reg_msg" %} <a href="{% url 'registration' %}">{% trans "tapwater_registration_button" %}</a></p>
+
+    {% if form.email.errors  %}
+    <div class="alert alert-danger" id="failedMessage">
+      <p>{% trans "send_token_failed" %}</p>
+    </div>
+    {% endif %}
+    <div class="alert alert-success" id="successMessage" style="display: none;">
+      <strong>{% trans "send_token_success" %}</strong>
+    </div>
+
+    <div class="form-group{% if form.email.errors %} has-error{% endif %}">
+      <p>{{ form.email.label_tag }}{{ form.email.help_text }}</p>
+        <p>{{ form.email }}</p>
+      <p class="help-block">{{ form.email.errors }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" id="submit_login" class="btn btn-warning pull-right">{% trans "login_index_email_button" %}</button>
+  </div>
+</form>

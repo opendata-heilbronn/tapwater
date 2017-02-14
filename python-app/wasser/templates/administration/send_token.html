@@ -1,0 +1,80 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function(){
+            $('#sendTokenForm').on('submit', function(e){
+                $.LoadingOverlay('show');
+            });
+        });
+    </script>
+
+     {% if success %}
+                <div class="alert alert-success" id="send-successful">
+            {% trans "administration_token_send_successful" %}
+                </div>
+            {% endif %}
+
+            {% if not success and checked_users_len == 0 %}
+                <div class="alert alert-warning" id="send-warning">
+            {% trans "administration_token_send_no_users_selected" %}
+                </div>
+            {% endif %}
+
+            {% if success == False %}
+                <div class="alert alert-danger" id="send-failure">
+            {% trans "administration_token_send_failure" %}
+                <br>
+                <br>
+            {% for user in failed_users %}
+                {{ user }} <br>
+            {% endfor %}
+                </div>
+            {% endif %}
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{% trans "administration_token_send_title" %}</strong> <small></small>
+        </div>
+        <div class="panel-body">
+
+            <form class="form-signin" action={% url 'send_token_for_selected_users' %} method="POST" id="sendTokenForm">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "administration_token_send_user_firstname" %}</th>
+                        <th>{% trans "administration_token_send_user_lastname" %}</th>
+                        <th>{% trans "administration_token_send_email" %}</th>
+                        <th>{% trans "administration_token_send_valid_token" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% csrf_token %}
+                    {% for user in users %}
+                        <tr>
+                            <td data-title="SendToken"><input type="checkbox" name="sendToken[]" id="sendToken{{ user.id }}" value="{{ user.id }}"></td>
+                            <td data-title="Name">{{user.firstname}}</td>
+                            <td data-title="Name">{{user.lastname}}</td>
+                            <td data-title="Email">{{user.email}}</td>
+                            {% if user.valid_token > 0 %}
+                                <td data-title="ValidToken">{% trans "administration_token_send_token_exists" %}</td>
+                            {% else %}
+                                <td data-title="ValidToken">{% trans "administration_token_send_no_token_exists" %}</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <button id="submitSendToken" class="btn btn-primary pull-right" type="submit" >{% trans "administration_token_send_token_button" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+[
+  {
+    "model": "users.Minerals",
+    "pk": 1,
+    "fields": {
+      "sodium": "12",
+      "potassium": "23",
+      "calcium": "43",
+      "magnesium": "1",
+      "chloride": "5",
+      "nitrate": "23",
+      "sulfate": "21"
+    }
+  },
+  {
+    "model": "users.Location",
+    "pk": 1,
+    "fields": {
+      "city": "Heilbronn",
+      "district": "Sontheim",
+      "region": "Heilbronn",
+      "street": "Max-Planck-Str",
+      "zone": "HN"
+    }
+  },
+  {
+    "model": "users.Measurement",
+    "pk": 1,
+    "fields": {
+      "hardness": "12",
+      "user": 1,
+      "created": "2016-05-12T10:00:00+00:00",
+      "date": "2016",
+      "remarks": "none",
+      "source": "Wikipedia",
+      "location": 1,
+      "minerals": 1
+    }
+  }
+]

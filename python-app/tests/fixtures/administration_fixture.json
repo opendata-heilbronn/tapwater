@@ -1,0 +1,113 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$eCg6UzcvxzU0$QrdXwDsYXzN5JFz3seasqh0zK8lFTC2MeQo1pOnMvVo=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@localhost",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2016-11-18T21:29:30.142Z",
+        "groups": [],
+        "user_permissions": []
+      }
+  },
+  {
+    "model": "administration.TapwaterUserType",
+    "pk": 1,
+    "fields": {
+      "value": "PrivateUser"
+    }
+  },
+  {
+    "model": "administration.TapwaterUserType",
+    "pk": 2,
+    "fields": {
+      "value": "AuthorityUser"
+    }
+  },
+  {
+    "model": "administration.TapwaterUser",
+    "pk": 1,
+    "fields": {
+      "firstname": "Hans",
+      "lastname": "Peter",
+      "email": "hans.peter@localhost",
+      "authority": "Stadt Heilbronn",
+      "verified": true,
+      "registration_date": "2016-11-18T21:29:30.142Z",
+      "type": 1
+    }
+  },
+  {
+    "model": "administration.Token",
+    "pk": 1,
+    "fields": {
+      "value": "d1d26d4aa203450d9492bf84fa9c3762",
+      "valid_until": "2050-01-01",
+      "user_id": 1
+    }
+  },
+  {
+    "model": "administration.TapwaterUser",
+    "pk": 2,
+    "fields": {
+      "firstname": "Karl",
+      "lastname": "Heinz",
+      "email": "",
+      "authority": "Stadt Heilbronn",
+      "verified": true,
+      "registration_date": "2016-11-18T21:29:30.142Z",
+      "type": 2
+    }
+  },
+  {
+    "model": "administration.Token",
+    "pk": 2,
+    "fields": {
+      "value": "d1d26d4aa203450d9492bf84fa9c3762",
+      "valid_until": "2050-01-01",
+      "user_id": 2
+    }
+  },
+  {
+    "model": "administration.TapwaterUser",
+    "pk": 3,
+    "fields": {
+      "firstname": "Hans",
+      "lastname": "Wurst",
+      "email": "peter@gedöns.com",
+      "authority": "Stadt Heilbronn",
+      "verified": true,
+      "registration_date": "2016-11-18T21:29:30.142Z",
+      "type": 2
+    }
+  },
+  {
+    "model": "administration.Token",
+    "pk": 3,
+    "fields": {
+      "value": "a2e6d4aa203450d9492bf84fa9c3984",
+      "valid_until": "2015-01-01",
+      "user_id": 3
+    }
+  },
+  {
+    "model": "administration.TapwaterUser",
+    "pk": 4,
+    "fields": {
+      "firstname": "Peter",
+      "lastname": "Ludwig",
+      "email": "peter.ludwig@local.com",
+      "authority": "Stadt Heilbronn",
+      "verified": false,
+      "registration_date": "2016-11-18T21:29:30.142Z",
+      "type": 2
+    }
+  }
+]

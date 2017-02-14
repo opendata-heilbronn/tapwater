@@ -1,0 +1,198 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>{% trans "admin_import_measure_heading" %}</strong> <small></small></div>
+        <div class="panel-body">
+            {% if success == False %}
+                <div class="alert alert-danger" id="failed-files">
+                    <strong>{% trans "admin_import_measure_dangeralert" %}</strong><br>
+                    <small>{% trans "admin_import_measure_dangeralert_msg" %}</small>
+                       {% if not_insert %}
+                        <div class="alert alert-warning">
+                            <strong>{% trans "admin_import_measure_warning_1" %}</strong><br>{% trans "admin_import_measure_warning_2" %}
+                        <ul>
+                        {% for i in not_insert %}
+                            <li>{{i}}</li>
+                        {% endfor %}
+                        </ul>
+                            <br>
+                            {% trans "admin_import_measure_warning_3" %}
+                            </div>
+                         {% endif %}
+                </div>
+             {% else %}
+
+                {% if success == True %}
+                    <div class="alert alert-success" id="save-successful">
+                       <strong> {% trans "admin_import_measure_success" %} </strong>
+                         </div>
+                {% endif %}
+            {% endif %}
+
+
+
+          <!-- Standar Form -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{% trans "admin_import_measure_noteheadline" %}</h3>
+                        <p>{% trans "admin_import_measure_notetext_0" %}</p>
+                        <ol>
+                            <li><p>{% trans "admin_import_measure_notetext_1" %}</p></li>
+                            <li><p>{% trans "admin_import_measure_notetext_2" %}</p>
+                               <div class="row">
+                                    <div class="col-md-6"><b>{% trans "admin_import_measure_location_json" %}</b><pre id="json_locations"></pre></div><div class="col-md-6"><b>{% trans "admin_import_measure_zones_json" %}</b><pre id="json_zones"></pre></div>
+                                 </div>
+                            </li>
+                            <li><p>{% trans "admin_import_measure_notetext_3" %}</p></li>
+                        </ol>
+                </div>
+            </div>
+          <h4>{% trans "admin_import_measure_selectfiles" %}</h4>
+        <form action="{% url "import_measurements" %}" method="post" enctype="multipart/form-data" onsubmit="waitingDialog.show('{% trans "admin_import_measure_onsubmit_msg" %}');">
+            {% csrf_token %}
+
+            <p>{{ form.non_field_errors }}</p>
+
+            <p>{{ form.region.label_tag }}{{ form.region.help_text }}</p>
+            <p>
+                {{ form.region.errors }}
+                {{ form.region }}
+            </p>
+
+            <p>{{ form.locations.label_tag }} {{ form.locations.help_text }}</p>
+
+            <p>
+               {{ form.locations.errors }}
+               {{ form.locations }}
+            </p>
+                <p>{{ form.zones.label_tag }} {{ form.zones.help_text }}</p>
+
+            <p>
+                {{ form.zones.errors }}
+                {{ form.zones }}
+            </p>
+
+            <p><input type="submit" id="submit" class="btn btn-primary pull-right" value="{% trans "admin_import_measure_submit" %}"/></p>
+          <p>{{ forms.content }}</p>
+
+        </form>
+
+      </div>
+     </div>
+
+<script>
+
+var sample_zones = {
+    "Zones": {
+	"Heilbronn 14-18": {
+		"natrium": "6-12",
+		"kalium": "1-3",
+		"calcium": "80-92",
+		"magnesium": "14-20",
+		"chlorid": "20-25",
+		"nitrat": "18-22",
+		"sulfat": "37-57",
+		"hardness": "14-18",
+		"year": "2013",
+		"description": ""
+	},
+	"....": {
+
+	}
+	}
+}
+
+document.getElementById("json_zones").innerHTML = JSON.stringify(sample_zones, undefined, 2);
+
+var locations = {
+  "Locations": {
+	"Zaberfeld": {
+		"Leonbronn": {},
+		"Michelbach": {},
+		"Zaberfeld": {
+			"Zone 1": [
+				"Sonnengasse"
+			],
+			"Zone 2": [
+				"Alle anderen Str."
+			]
+		}
+	},
+	"....": {
+
+	}
+	}
+}
+
+document.getElementById("json_locations").innerHTML = JSON.stringify(locations,undefined, 2);
+
+var waitingDialog = waitingDialog || (function ($) {
+    'use strict';
+
+	// Creating modal dialog's DOM
+	var $dialog = $(
+		'<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+		'<div class="modal-dialog modal-m">' +
+		'<div class="modal-content">' +
+			'<div class="modal-header"><h3 style="margin:0; color:#2a9fd6;"></h3></div>' +
+			'<div class="modal-body">' +
+				'<div class="progress progress-striped active" style="margin-bottom:0;"><div class="progress-bar" style="width: 100%"></div></div>' +
+			'</div>' +
+		'</div></div></div>');
+
+	return {
+		/**
+		 * Opens our dialog
+		 * @param message Custom message
+		 * @param options Custom options:
+		 * 				  options.dialogSize - bootstrap postfix for dialog size, e.g. "sm", "m";
+		 * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
+		 */
+		show: function (message, options) {
+			// Assigning defaults
+			if (typeof options === 'undefined') {
+				options = {};
+			}
+			if (typeof message === 'undefined') {
+				message = 'Loading';
+			}
+			var settings = $.extend({
+				dialogSize: 'm',
+				progressType: '',
+				onHide: null // This callback runs after the dialog was hidden
+			}, options);
+
+			// Configuring dialog
+			$dialog.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+			$dialog.find('.progress-bar').attr('class', 'progress-bar');
+			if (settings.progressType) {
+				$dialog.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+			}
+			$dialog.find('h3').text(message);
+			// Adding callbacks
+			if (typeof settings.onHide === 'function') {
+				$dialog.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+					settings.onHide.call($dialog);
+				});
+			}
+			// Opening dialog
+			$dialog.modal();
+		},
+		/**
+		 * Closes dialog
+		 */
+		hide: function () {
+			$dialog.modal('hide');
+		}
+	};
+
+})(jQuery);
+</script>
+
+
+
+{% endblock %}

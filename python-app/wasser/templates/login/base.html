@@ -1,0 +1,76 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+<html lang="de">
+<head>
+    <meta charset=utf-8"/>
+    <title>{% trans login_base_app_title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-cyborg.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body class="bg-gradient state-1">
+
+<div class="container">
+
+    {% block content %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <table>
+                <span class="glyphicon glyphicon-globe"></span>
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% ifequal LANGUAGE_CODE "de" %}
+                <a href="/en{{ request.get_full_path |slice:'3:'}}">
+                    {% trans "English" %}</a>
+                {% else %}
+                <a href="/de{{ request.get_full_path |slice:'3:'}}">
+                    {% trans "German" %}</a>
+                {% endifequal %}
+            </table>
+        </ul>
+    </div>
+
+
+
+
+    <footer class="footer">
+        <a data-toggle="modal" data-target="#contactDialog" class="footer-link">
+           <span
+                class="glyphicon glyphicon-envelope"></span> {% trans "administration_base_contact" %}</a>
+        |
+        <a data-toggle="modal" data-target="#aboutDialog" class="footer-link">
+           <span
+                class="glyphicon glyphicon-question-sign"></span> {% trans "administration_base_about_project" %}</a>
+        |
+        <a data-toggle="modal" data-target="#attributionDialog" class="footer-link">
+           <span
+                class="glyphicon glyphicon-user"></span> {% trans "administration_base_participants" %}</a>
+        |
+        <a data-toggle="modal" data-target="#imprintDialog" class="footer-link">
+          <span
+                class="glyphicon glyphicon-info-sign"></span>  {% trans "administration_base_impressum" %}</a>
+
+    </footer>
+    {% block contact %}
+        {% include 'tapwater/modals/contact.html' %}
+        {% endblock %}
+
+        {% block about %}
+        {% include 'tapwater/modals/about.html' %}
+        {% endblock %}
+
+        {% block impressum %}
+        {% include 'tapwater/modals/impressum.html' %}
+        {% endblock %}
+
+        {% block attribution %}
+        {% include 'tapwater/modals/attribution.html' %}
+        {% endblock %}
+
+</div>
+</body>
+</html>

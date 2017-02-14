@@ -1,0 +1,213 @@
+{% extends 'users/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load api_keys %}
+
+{% block content %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={% get_google_javascript_api_key %}&libraries=places"></script>
+
+    <link rel="stylesheet" href="{% static 'css/users/autocomplete.css' %}">
+
+    {% if success %}
+            <div class="alert alert-success" id="save-successful">
+                <strong>{% trans "users_insert_measure_success" %}</strong>
+            </div>
+            {% endif %}
+
+            {% if success == False %}
+            <div class="alert alert-danger" id="save-failed">
+            <strong>{% trans "users_insert_measure_dangeralert" %}</strong> {% trans "users_insert_measure_dangertxt" %}
+            </div>
+            {% endif %}
+
+    <form class="form-horizontal" action="{% url 'insert_measurement' %}" method="post">{% csrf_token %}
+        <div class="panel panel-default">
+            <div class="panel-heading">{% trans "users_insert_measure_enter" %}</div>
+            <div class="panel-body">
+
+            <br>
+             <div class="row">
+                <div class="col-md-6 ">
+
+            <div class="form-group">
+                <label for="city" class="control-label col-sm-2">{% trans "users_insert_measure_city" %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="city" name="city" placeholder="{% trans "users_insert_measure_city_placeholder" %}" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="district" class="control-label col-sm-2">{% trans "users_insert_measure_district" %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="district" name="district">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="region" class="control-label col-sm-2">{% trans "users_insert_measure_region" %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="region" name="region">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date" class="control-label col-sm-2">{% trans "users_insert_measure_date" %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="date" name="date" placeholder="{% trans "users_insert_measure_date_placeholder" %}" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="source" class="control-label col-sm-2">{% trans "users_insert_measure_source" %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="source" name="source">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remarks" class="control-label col-sm-2">{% trans "users_insert_measure_note" %}</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" id="remarks" name="remarks" rows="6">
+                    </textarea>
+                </div>
+            </div>
+            <br>
+             </div>
+             <div class="col-md-6">
+            <div class="form-group">
+                <label for="sodium" class="control-label col-sm-2">{% trans "users_insert_measure_natrium" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="sodium" name="sodium">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+            </div>
+            <div class="form-group">
+                <label for="potassium" class="control-label col-sm-2">{% trans "users_insert_measure_potassium" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="potassium" name="potassium">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+            </div>
+            <div class="form-group">
+                <label for="calcium" class="control-label col-sm-2">{% trans "users_insert_measure_calcium" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="calcium" name="calcium">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+            </div>
+            <div class="form-group">
+                <label for="magnesium" class="control-label col-sm-2">{% trans "users_insert_measure_magnesium" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="magnesium" name="magnesium">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+            </div>
+            <div class="form-group">
+                <label for="chloride" class="control-label col-sm-2">{% trans "users_insert_measure_chloride" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="chloride" name="chloride">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+            </div>
+            <div class="form-group">
+                <label for="nitrate" class="control-label col-sm-2">{% trans "users_insert_measure_nitrate" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="nitrate" name="nitrate">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+            </div>
+            <div class="form-group">
+                <label for="sulfate" class="control-label col-sm-2">{% trans "users_insert_measure_sulfate" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="sulfate" name="sulfate">
+                </div>
+                <span class="col-sm-1">mg/l</span>
+
+            </div>
+            <div class="form-group">
+                <label for="degree_of_hardness" class="control-label col-sm-2">{% trans "users_insert_measure_hardness" %}</label>
+                <div class="col-sm-8">
+                    <input type="decimal" class="form-control" id="degree_of_hardness" name="degree_of_hardness">
+                </div>
+                <span class="col-sm-1">°dH</span>
+            </div>
+                 </div>
+                 </div>
+
+            <br>
+            <table id="assignValues" class="table order-list">
+                <thead>
+                    <tr>
+                      <td>{% trans "users_insert_measure_street" %}</td>
+                      <td>{% trans "users_insert_measure_zone" %}
+                      <a href="#!" data-toggle="popover" data-html="true" data-trigger="hover" title="
+                         {% trans 'users_insert_measure_zone_info_title' %}" data-placement="top"  data-content="{% trans 'users_insert_measure_zone_info' %} ">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                      </a>
+                      </td>
+                    </tr>
+                </thead>
+
+                <tbody id="assignValuesBody">
+                    <tr>
+                        <td class="col-sm-3">
+
+                            <input type="text" name="street1" id="street1" class="form-control"/>
+                        </td>
+                        <td class="col-sm-2">
+                            <input type="text" name="zone1" id="zone1" class="form-control" />
+                        </td>
+                        <td class="col-sm-1">
+                            <a class="deleteRow"></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" style="text-align: left;">
+                            <input type="button"
+                                   class="btn btn-primary pull-right"
+                                   id="add_new_zone"
+                                   value="{% trans "users_insert_measure_addarea" %}"
+                                   name="add_new_zone"/>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <input type="submit" class="btn btn-primary pull-right" value="{% trans "users_insert_measure_sendbutton" %}" id="send_values">
+            <br>
+            </div>
+
+        </div>
+
+    </form>
+    {% get_google_javascript_api_key as autocomplete %}
+    {% if autocomplete|length > 0 %}
+        <script type="text/javascript" src="{% static 'js/users/autocomplete.js' %}"></script>
+    {% endif %}
+
+    <script>
+        $(document).ready(function () {
+            var counter = 0;
+
+            $("#add_new_zone").on("click", function () {
+                counter = $('#assignValuesBody tr').length + 1;
+
+                var newRow = $("<tr>");
+                var cols = "";
+                cols += '<td><input type="text" class="form-control" name="street' + counter + '" id="street' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" name="zone' + counter + '" id="zone' + counter + '"/></td>';
+                cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Löschen"></td>';
+                newRow.append(cols);
+
+                $("#assignValues").append(newRow);
+                counter++;
+            });
+
+            $("table.order-list").on("click", ".ibtnDel", function (event) {
+                $(this).closest("tr").remove();
+                $('#addrow').attr('disabled', false).prop('value', "Add Row");
+            });
+
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+{% endblock %}

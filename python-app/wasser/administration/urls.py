@@ -1,0 +1,90 @@
+"""
+URL Configuration for water project.
+
+The `url_patterns` as list for routes including views.
+
+:copyright: (c) 2016 by Rohan Ahmed, Gregor Schäfer, Simon Scheuermann,
+Florette Chamga, Benedikt Kurschatke
+:license: MIT, see LICENSE
+"""
+
+from django.conf.urls import url
+from wasser.login.utilities import admin_login_required
+
+from . import views
+
+
+urlpatterns = [
+    url(r'^$',
+        admin_login_required(views.admin_index),
+        name='admin_index'),
+    url(r'^' + 'measurement/show/$',
+        admin_login_required(views.show_measurements),
+        name='show_measurements'),
+    url(r'^' + 'measurement/import/$',
+        admin_login_required(views.import_measurements),
+        name='import_measurements'),
+    url(r'^' + 'mineral_waters/show/$',
+        admin_login_required(views.show_mineral_waters),
+        name='show_mineral_waters'),
+    url(r'^' + 'average_measurement_value/show/$',
+        admin_login_required(views.show_average_measurement_value),
+        name='show_average_measurement_value'),
+    url(r'^' + 'average_measurement_value/edit/$',
+        admin_login_required(views.edit_average_measurement_value),
+        name='edit_average_measurement_value'),
+    url(r'^' + 'nutrient_daily_dosis/show/$',
+        admin_login_required(views.show_nutrient_daily_dosis),
+        name='show_nutrient_daily_dosis'),
+    url(r'^' + 'users/import/$',
+        admin_login_required(views.import_contacts),
+        name='import_contacts'),
+    url(r'^' + 'users/show/$',
+        admin_login_required(views.show_users),
+        name='show_users'),
+    url(r'^' + 'token/send/all/$',
+        admin_login_required(views.send_token_for_all_users),
+        name='send_token_for_all_users'),
+    url(r'^' + 'token/send/selected/$',
+        admin_login_required(views.send_token_for_selected_user),
+        name='send_token_for_selected_users'),
+    url(r'^' + 'user/show/delete/(?P<user_id>.*)/$',
+        admin_login_required(views.delete_user),
+        name='delete_user'),
+    url(r'^' + 'locations/show/$',
+        admin_login_required(views.show_locations),
+        name='show_locations'),
+    url(r'^' + 'locations/show/history/(?P<location_id>.*)/$',
+        admin_login_required(views.show_history),
+        name='show_history'),
+    url(r'^' + 'mineral_waters/edit/(?P<mineral_water_id>.*)/$',
+        admin_login_required(views.edit_mineral_water),
+        name='edit_mineral_water'),
+    url(r'^' + 'mineral_waters/add/$',
+        admin_login_required(views.add_mineral_water),
+        name='add_mineral_water'),
+    url(r'^' + 'mineral_waters/delete/(?P<mineral_water_id>.*)/$',
+        admin_login_required(views.delete_mineral_water),
+        name='delete_mineral_water'),
+    url(r'^' + 'show_users/confirm/selected/$',
+        admin_login_required(views.confirm_authority_user),
+        name='confirm_authority_user'),
+    url(r'^' + 'logout/$',
+        views.admin_logout,
+        name='admin_logout'),
+    url(r'^' + 'users/manage/$',
+        admin_login_required(views.manage_users),
+        name='manage_users'),
+    url(r'^' + 'administrators/$',
+        admin_login_required(views.manage_administrators),
+        name='manage_administrators'),
+    url(r'^' + 'administrators/add/$',
+        admin_login_required(views.add_admin),
+        name='add_admin'),
+    url(r'^' + 'administrators/delete/(?P<user_id>.*)/$',
+        admin_login_required(views.delete_admin),
+        name='delete_admin'),
+    url(r'^' + 'change/password/$',
+        admin_login_required(views.change_password),
+        name='change_admin_password'),
+]

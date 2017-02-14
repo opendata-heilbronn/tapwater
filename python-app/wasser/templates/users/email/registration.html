@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load l10n %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- If you delete this meta tag, Half Life 3 will never be released. -->
+<meta name="viewport" content="width=device-width" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{% trans "login_utilities_registration_subject" %}</title>
+</head>
+
+<body>
+	<h3>{% trans "login_utilities_mail_reg_salutation" %} {{ user.firstname }} {{ user.lastname }}, </h3>
+	<p class="lead">{% trans "login_utilities_mail_reg_thanks" %}</p>
+	<p>{% trans "login_utilities_mail_reg_login" %}</p>
+	<br>
+	<p>{% trans "login_utilities_mail_reg_endingending" %}</p>
+
+	<small>
+		<br>
+		<br>
+		<br>
+		{% trans "login_utilities_mail_auto_generated" %}
+	</small>
+</body>
+</html>

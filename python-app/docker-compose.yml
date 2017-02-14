@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+    environment:
+          POSTGRES_USER: wasser
+          POSTGRES_PASSWORD: docker
+    image: postgres
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  mail:
+   image: djfarrelly/maildev
+   ports:
+     - "1080:80"
+     - "25:1025"

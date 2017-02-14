@@ -1,0 +1,46 @@
+[
+  {
+    "model": "administration.TapwaterUser",
+    "pk": 1,
+    "fields": {
+      "firstname": "Selenium",
+      "lastname" : "User",
+      "email": "selenium@localhost",
+      "authority": "Stadt Heilbronn",
+      "verified": true,
+      "registration_date": "2016-11-18T21:29:30.142Z",
+      "type": 2
+    }
+  },
+  {
+    "model": "administration.TapwaterUser",
+    "pk": 2,
+    "fields": {
+      "firstname": "Login ",
+      "lastname": "Test User",
+      "email": "unittest@localhost",
+      "authority": "Stadt Heilbronn",
+      "verified": true,
+      "registration_date": "2016-11-18T21:29:30.142Z",
+      "type": 2
+    }
+  },
+  {
+    "model": "administration.Token",
+    "pk": 1,
+    "fields": {
+      "value": "d1d26d4aa203450d9492bf84fa9c3762",
+      "valid_until": "2050-01-01",
+      "user_id": 1
+    }
+  },
+  {
+    "model": "administration.Token",
+    "pk": 2,
+    "fields": {
+      "value": "a1b26c4aa203450d872638bf84fa9c3761",
+      "valid_until": "2015-01-01",
+      "user_id": 2
+    }
+  }
+]

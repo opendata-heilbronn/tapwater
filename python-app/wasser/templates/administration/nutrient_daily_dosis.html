@@ -1,0 +1,32 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>{% trans "admin_nutrient_daily_dosis_heading" %}</strong> <small></small></div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{% trans "admin_nutrient_daily_dosis_potassium" %}</th>
+                    <th>{% trans "admin_nutrient_daily_dosis_calcium" %}</th>
+                    <th>{% trans "admin_nutrient_daily_dosis_magnesium" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td data-title="Kalium">{{nutrient_daily_dosis.potassium}}</td>
+                    <td data-title="Calcium">{{nutrient_daily_dosis.calcium}}</td>
+                    <td data-title="Magnesium">{{nutrient_daily_dosis.magnesium}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

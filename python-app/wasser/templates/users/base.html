@@ -1,0 +1,146 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load template_user_tags %}
+{% get_available_languages as languages %}
+
+<html lang="de">
+
+<head>
+    <meta charset=utf-8"/>
+    <title>{% trans "users_base_title" %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-cyborg.css' %}">
+	<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/tapwater/login.js' %}"></script>
+</head>
+<body class="bg-gradient state-1">
+<div class="container">
+    <!-- Static navbar -->
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}">{% trans "users_base_title" %}</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    {% if request.session.user %}
+                    <li class="{% if '/measurement/insert' in request.path %}active{% endif %}">
+                        <a href="{% url 'insert_measurement' %}">{% trans "users_base_add_measurment" %}</a>
+                    </li>
+                    <li class="{% if '/measurements/user/show' in request.path %}active{% endif %}">
+                        <a href="{% url 'show_measurements_user' %}">{% trans "users_base_my_measurments" %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% if request.session.user  %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "users_base_choose_language" %}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% ifequal LANGUAGE_CODE "de" %}
+                                <li><a href="/en{{ request.get_full_path |slice:'3:'}}">{% trans "English" %}</a></li>
+                                {% else %}
+                                <li><a href="/de{{ request.get_full_path |slice:'3:'}}">{% trans "German" %}</a></li>
+                                {% endifequal %}
+                            </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% get_username_from_userid request.session.user %}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                             <li><a href="{% url 'users_logout' %}">{% trans "users_base_logout" %}</a></li>
+                            </ul>
+                    </li>
+                </ul>
+                {% else %}
+                     {% if messages %}
+
+                    {% for message in messages %}
+                    {% if 'logout_msg' in message.tags %}
+                    <div class="messages">
+                    <div class="alert alert-warning" id="logoutMessage">
+                    {{message}}
+                    </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                     {% endif %}
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "users_base_choose_language" %}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% ifequal LANGUAGE_CODE "de" %}
+                                <li><a href="/en{{ request.get_full_path |slice:'3:'}}">{% trans "English" %}</a></li>
+                                {% else %}
+                                <li><a href="/de{{ request.get_full_path |slice:'3:'}}">{% trans "German" %}</a></li>
+                                {% endifequal %}
+                            </ul>
+                    </li>
+                    <li>
+                        <a class="js-create-login" data-url="{% url 'send_token_for_one_user' %}"> {% trans "tapwater_login_button" %}</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+          <div class="modal-content"></div>
+        </div>
+    </div>
+
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="footer">
+        <a data-toggle="modal" data-target="#contactDialog" class="footer-link">
+           <span
+                class="glyphicon glyphicon-envelope"></span> {% trans "administration_base_contact" %}</a>
+        |
+        <a data-toggle="modal" data-target="#aboutDialog" class="footer-link">
+           <span
+                class="glyphicon glyphicon-question-sign"></span> {% trans "administration_base_about_project" %}</a>
+        |
+        <a data-toggle="modal" data-target="#attributionDialog" class="footer-link">
+           <span
+                class="glyphicon glyphicon-user"></span> {% trans "administration_base_participants" %}</a>
+        |
+        <a data-toggle="modal" data-target="#imprintDialog" class="footer-link">
+          <span
+                class="glyphicon glyphicon-info-sign"></span>  {% trans "administration_base_impressum" %}</a>
+
+    </footer>
+        {% block contact %}
+        {% include 'tapwater/modals/contact.html' %}
+        {% endblock %}
+
+        {% block about %}
+        {% include 'tapwater/modals/about.html' %}
+        {% endblock %}
+
+        {% block impressum %}
+        {% include 'tapwater/modals/impressum.html' %}
+        {% endblock %}
+
+        {% block attribution %}
+        {% include 'tapwater/modals/attribution.html' %}
+        {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load l10n %}
+{% block delete_water %}
+<div class="modal fade" id="deleteDialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{% trans "administration_delete_minral_water" %}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "admin_delete_mineral_water_confirmation_question" %}?</p>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <center>
+                            <button class="btn btn-success" id="cancel_id" data-dismiss="modal" name="btnCancel">
+                                {% trans "admin_delete_mineral_water_noCancel" %}
+                            </button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger" id="yes_id" onclick="deleteMineralWaterWithId();" name="btnConfirm">
+                                {% trans "admin_delete_mineral_water_yesDelete" %}
+                            </button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

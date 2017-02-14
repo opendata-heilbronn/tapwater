@@ -1,0 +1,5 @@
+{
+  "DATABASE_ENGINE": "django.db.backends.sqlite3",
+  "DATABASE_NAME": "temp.db",
+  "HTTP_BASIC_AUTH_URL": null
+}

@@ -1,0 +1,73 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+        {% if success %}
+        <div class="alert alert-success" id="save-successful">
+            {% trans "admin_edit_mineral_water_success" %}
+        </div>
+        {% endif %}
+
+        {% if success == False %}
+        <div class="alert alert-danger" id="save-failure">
+            {% trans "admin_edit_mineral_water_failure" %}
+        </div>
+        {% endif %}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="{% url 'show_mineral_waters' %}"
+           class="btn btn-primary" id="btnBack">
+            <span class="glyphicon glyphicon-backward"></span>
+            {% trans "admin_edit_mineral_water_back" %}
+        </a>
+        <strong>{% trans "admin_edit_mineral_water_headline" %}</strong>
+    </div>
+    <div class="panel-body">
+
+        <form class="form-signin" method="POST" action="" id="formEditMineralWater">
+            {% csrf_token %}
+
+            {{ form.name.label_tag }}
+            {{ form.name}}<br>
+
+            {{ form.key.label_tag }}
+            {{ form.key}}<br>
+
+            {{ form.sources.label_tag }}
+            {{ form.sources}}<br>
+
+            {{ form.potassium.label_tag }}
+            {{ form.potassium}}<br>
+
+            {{ form.sodium.label_tag }}
+            {{ form.sodium}}<br>
+
+            {{ form.calcium.label_tag }}
+            {{ form.calcium}}<br>
+
+            {{ form.magnesium.label_tag }}
+            {{ form.magnesium}}<br>
+
+            {{ form.chloride.label_tag }}
+            {{ form.chloride}}<br>
+
+            {{ form.nitrate.label_tag }}
+            {{ form.nitrate}}<br>
+
+            {{ form.sulfate.label_tag }}
+            {{ form.sulfate}}<br>
+
+            {{ form.hardness.label_tag }}
+            {{ form.hardness}}<br>
+
+            <br>
+            <button class="btn btn-primary pull-right" id="send_values" type="submit">{% trans "admin_edit_mineral_water_submit" %}</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

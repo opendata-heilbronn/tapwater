@@ -1,0 +1,2335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-02 22:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wasser/administration/forms.py:25
+msgid "admin_forms_no_valid_json"
+msgstr "Kein gültiges JSON-File"
+
+#: wasser/administration/forms.py:36
+msgid "admin_forms_value_csv"
+msgstr "Keine gültige CSV-Datei"
+
+#: wasser/administration/forms.py:46
+msgid "admin_forms_value_region"
+msgstr "Kein gültiger Wert für Region"
+
+#: wasser/administration/forms.py:53
+msgid "admin_forms_json_for_city"
+msgstr "Bitte wählen Sie ein JSON-File mit Orten:"
+
+#: wasser/administration/forms.py:58
+msgid "admin_forms_enter_json_for_zone"
+msgstr "Bitte wählen Sie ein JSON-File mit Zonen und Messwerten:"
+
+#: wasser/administration/forms.py:63
+msgid "admin_forms_location_of_region"
+msgstr ""
+"Bitte geben Sie eine Region an, für welche Sie Daten importieren möchten:"
+
+#: wasser/administration/forms.py:73
+msgid "admin_forms_csv_with_contacts"
+msgstr "Bitte wählen Sie eine gültige CSV mit Kontakten"
+
+#: wasser/administration/forms.py:98
+#: wasser/templates/administration/average_measurement_value.html:17
+msgid "admin_av_measure_value_natrium"
+msgstr "Natrium"
+
+#: wasser/administration/forms.py:104
+#: wasser/templates/administration/average_measurement_value.html:16
+msgid "admin_av_measure_value_potassium"
+msgstr "Kalium"
+
+#: wasser/administration/forms.py:110
+#: wasser/templates/administration/average_measurement_value.html:18
+msgid "admin_av_measure_value_calcium"
+msgstr "Calcium"
+
+#: wasser/administration/forms.py:116
+#: wasser/templates/administration/average_measurement_value.html:19
+msgid "admin_av_measure_value_magnesium"
+msgstr "Magnesium"
+
+#: wasser/administration/forms.py:122
+#: wasser/templates/administration/average_measurement_value.html:20
+msgid "admin_av_measure_value_chloride"
+msgstr "Chlorid"
+
+#: wasser/administration/forms.py:128
+#: wasser/templates/administration/average_measurement_value.html:21
+msgid "admin_av_measure_value_nitrate"
+msgstr "Nitrat"
+
+#: wasser/administration/forms.py:134
+#: wasser/templates/administration/average_measurement_value.html:22
+msgid "admin_av_measure_value_sulfate"
+msgstr "Sulfat"
+
+#: wasser/administration/forms.py:140
+#: wasser/templates/administration/average_measurement_value.html:23
+msgid "admin_av_measure_value_hardness"
+msgstr "Härte"
+
+#: wasser/administration/forms.py:167
+msgid "admin_mineral_water_name"
+msgstr "Name"
+
+#: wasser/administration/forms.py:172
+msgid "admin_mineral_water_key"
+msgstr "Key"
+
+#: wasser/administration/forms.py:177
+msgid "admin_mineral_water_sources"
+msgstr "Quelle"
+
+#: wasser/administration/forms.py:182
+msgid "admin_mineral_water_natrium"
+msgstr "Natrium"
+
+#: wasser/administration/forms.py:188
+msgid "admin_mineral_water_potassium"
+msgstr "Kalium"
+
+#: wasser/administration/forms.py:194
+msgid "admin_mineral_water_calcium"
+msgstr "Calcium"
+
+#: wasser/administration/forms.py:200
+msgid "admin_mineral_water_magnesium"
+msgstr "Magnesium"
+
+#: wasser/administration/forms.py:206
+msgid "admin_mineral_water_chloride"
+msgstr "Chlorid"
+
+#: wasser/administration/forms.py:212
+msgid "admin_mineral_water_nitrate"
+msgstr "Nitrat"
+
+#: wasser/administration/forms.py:218
+msgid "admin_mineral_water_sulfate"
+msgstr "Sulfat"
+
+#: wasser/administration/forms.py:228
+#: wasser/templates/administration/administrate_administrators.html:37
+msgid "admin_manage_administrators_username"
+msgstr "Username"
+
+#: wasser/administration/forms.py:234
+#: wasser/templates/administration/administrate_administrators.html:38
+msgid "admin_manage_administrators_first_name"
+msgstr "Vorname"
+
+#: wasser/administration/forms.py:240
+#: wasser/templates/administration/administrate_administrators.html:39
+msgid "admin_manage_administrators_last_name"
+msgstr "Nachname"
+
+#: wasser/administration/forms.py:246
+#: wasser/templates/administration/administrate_administrators.html:40
+msgid "admin_manage_administrators_email"
+msgstr "Email"
+
+#: wasser/administration/utilities.py:282
+msgid "admin_manage_administrators_add_subject"
+msgstr "Trinkwassertool - Administrator Zugangsdaten"
+
+#: wasser/administration/views.py:407
+msgid "administration_token_no_valid_user"
+msgstr "Kein gültiger Benutzer!"
+
+#: wasser/administration/views.py:458
+msgid "administration_verifikation_no_valid_user"
+msgstr "Kein gültiger Benutzer!"
+
+#: wasser/administration/views.py:565
+msgid "administration_delete_water_msg"
+msgstr "Mineralwasser erfolgreich gelöscht."
+
+#: wasser/administration/views.py:580 wasser/users/views.py:231
+msgid "login_index_logout_msg"
+msgstr "Sie haben Sich erfolgreich abgemeldet!"
+
+#: wasser/administration/views.py:671
+msgid "admin_manage_administrators_delete_successful"
+msgstr "Löschen erfolgreich."
+
+#: wasser/administration/views.py:692
+msgid "admin_change_password_successful"
+msgstr "Passwort wurde erfolgreich geändert."
+
+#: wasser/administration/views.py:699
+msgid "admin_change_password_error_different"
+msgstr "Beide Passwörter müssen übereinstimmen."
+
+#: wasser/administration/views.py:703
+msgid "admin_change_password_error_empty"
+msgstr "Beide Pflichtfelder müssen gefüllt sein."
+
+#: wasser/login/utilities.py:142
+msgid "login_email_token_subject"
+msgstr "Trinkwasser Tool"
+
+#: wasser/login/utilities.py:169
+#: wasser/templates/users/email/registration.html:9
+msgid "login_utilities_registration_subject"
+msgstr "Trinkwasser Tool | Registrierung"
+
+#: wasser/login/views.py:38
+msgid "index_login_invalid_token"
+msgstr ""
+"Ihr Token ist abgelaufen! Bitte fordern Sie einen neuen Token über den Login "
+"an"
+
+#: wasser/login/views.py:68
+msgid "admin_login_failed_error_msg"
+msgstr "Login fehlgeschlagen! bitte erneut anmelden"
+
+#: wasser/settings.py:132 wasser/templates/administration/base.html:119
+#: wasser/templates/login/base.html:28 wasser/templates/tapwater/base.html:66
+#: wasser/templates/users/base.html:82
+msgid "English"
+msgstr "Englisch"
+
+#: wasser/settings.py:133 wasser/templates/administration/base.html:122
+#: wasser/templates/login/base.html:31 wasser/templates/tapwater/base.html:69
+#: wasser/templates/users/base.html:84
+msgid "German"
+msgstr "Deutsch"
+
+#: wasser/templates/404.html:11
+msgid "404_page_title"
+msgstr "Oops!"
+
+#: wasser/templates/404.html:14
+msgid "404_page_error_type"
+msgstr "404 Not Found"
+
+#: wasser/templates/404.html:17
+msgid "404_page_error_text"
+msgstr "Die von Ihnen aufgerufene Seite konnte nicht gefunden werden."
+
+#: wasser/templates/404.html:22
+msgid "404_page_back_to_home_link"
+msgstr "Zurück zur Startseite"
+
+#: wasser/templates/500.html:10
+msgid "500_page_title"
+msgstr "Oops!"
+
+#: wasser/templates/500.html:13
+msgid "500_page_error_type"
+msgstr "500 Internal Server Error"
+
+#: wasser/templates/500.html:16
+msgid "500_page_error_text"
+msgstr "Ihr Aufruf konnte nicht vom Server verarbeitet werden."
+
+#: wasser/templates/500.html:21
+msgid "500_page_back_to_home_link"
+msgstr "Zurück zur Startseite"
+
+#: wasser/templates/administration/add_mineral_water.html:13
+msgid "admin_add_mineral_water_back"
+msgstr "Zurück"
+
+#: wasser/templates/administration/add_mineral_water.html:15
+msgid "admin_add_mineral_water_headline"
+msgstr "Neues Mineralwasser hinzufügen"
+
+#: wasser/templates/administration/add_mineral_water.html:20
+msgid "admin_add_mineral_water_success"
+msgstr "Speichern erfolgreich!"
+
+#: wasser/templates/administration/add_mineral_water.html:26
+msgid "admin_add_mineral_water_failure"
+msgstr ""
+"Speichern fehlgeschlagen! Das gewählte Mineralwasser ist schon vorhanden."
+
+#: wasser/templates/administration/add_mineral_water.html:67
+msgid "admin_add_mineral_water_submit"
+msgstr "Speichern"
+
+#: wasser/templates/administration/add_mineral_water.html:69
+msgid "admin_add_mineral_water_cancel"
+msgstr "Abbrechen"
+
+#: wasser/templates/administration/administrate_administrators.html:9
+msgid "admin_manage_administrators_add_successful"
+msgstr "Anlegen und Senden der Email erfolgreich."
+
+#: wasser/templates/administration/administrate_administrators.html:15
+msgid "admin_manage_administrators_add_failure"
+msgstr "Anlegen ist fehlgeschlagen. Bitte Eingaben überprüfen."
+
+#: wasser/templates/administration/administrate_administrators.html:31
+msgid "admin_manage_administrators_show_headline"
+msgstr "Übersicht - Administratoren"
+
+#: wasser/templates/administration/administrate_administrators.html:65
+msgid "admin_manage_administrators_add_headline"
+msgstr "Administrator anlegen"
+
+#: wasser/templates/administration/administrate_administrators.html:82
+msgid "admin_manage_administrators_add"
+msgstr "Anlegen"
+
+#: wasser/templates/administration/administrate_authority.html:17
+msgid "user_administration"
+msgstr "Nutzerverwaltung"
+
+#: wasser/templates/administration/administrate_authority.html:21
+msgid "import_user_dangeralert"
+msgstr "Import fehlgeschlagen!"
+
+#: wasser/templates/administration/administrate_authority.html:22
+msgid "import_user_dangeralert_msg"
+msgstr "Bitte wählen Sie eine gültige Datei für den Upload und Import!"
+
+#: wasser/templates/administration/administrate_authority.html:25
+msgid "import_user_warning_1"
+msgstr "Hintergrund: "
+
+#: wasser/templates/administration/administrate_authority.html:25
+msgid "import_user_warning_2"
+msgstr ""
+"Wir haben den Import Vorgang abgebrochen, da ein Problem in folgenden Zeilen "
+"ihrer csv-Datei aufgetaucht ist (möglicherweise existieren die Benutzer  "
+"schon in der Datenbank oder sind mehrfach in der csv enthalten):"
+
+#: wasser/templates/administration/administrate_authority.html:32
+msgid "import_measure_warning_3"
+msgstr ""
+"Daher haben wir ein Rollback durchgeführt und alle bereitsvorgenommen "
+"Änderungen in der Datenbank rückgängig gemacht."
+
+#: wasser/templates/administration/administrate_authority.html:40
+msgid "import_measure_success"
+msgstr "Import erfolgreich!"
+
+#: wasser/templates/administration/administrate_authority.html:47
+msgid "user_import"
+msgstr "User Import"
+
+#: wasser/templates/administration/administrate_authority.html:52
+msgid "import_user_noteheadline"
+msgstr "Hinweise für einen erfolgreichen Import:"
+
+#: wasser/templates/administration/administrate_authority.html:53
+msgid "import_user_notetext_0"
+msgstr ""
+"Bitte lesen Sie diese Hinweise aufmerksam durch, bevor sie mit dem Import "
+"ihrer Kontakte beginnen."
+
+#: wasser/templates/administration/administrate_authority.html:55
+msgid "import_user_notetext_1"
+msgstr ""
+"Stellen Sie sicher, dass ihre CSV-Datei utf-8 kodiert ist und über die 4 "
+"Spalten(Vorname, Nachname, Mail, Gemeinde) verfügt die durch Semikolon "
+"getrennt sind."
+
+#: wasser/templates/administration/administrate_authority.html:57
+msgid "import_user_csv_sample"
+msgstr "contacts.csv (Struktur-Muster):"
+
+#: wasser/templates/administration/administrate_authority.html:66
+msgid "import_user_selectfile"
+msgstr "Bitte CSV-File wählen:"
+
+#: wasser/templates/administration/administrate_authority.html:79
+msgid "import_contacts_submit"
+msgstr "Hochladen und Importieren"
+
+#: wasser/templates/administration/administrate_authority.html:88
+msgid "user_send_token"
+msgstr "Token an alle versenden"
+
+#: wasser/templates/administration/administrate_authority.html:93
+#: wasser/templates/administration/send_token.html:18
+msgid "administration_token_send_successful"
+msgstr "Senden erfolgreich."
+
+#: wasser/templates/administration/administrate_authority.html:99
+#: wasser/templates/administration/send_token.html:30
+msgid "administration_token_send_failure"
+msgstr "Senden ist für folgende User fehlgeschlagen:"
+
+#: wasser/templates/administration/administrate_authority.html:106
+msgid "send_token_title"
+msgstr "Token an alle Gemeinden senden:"
+
+#: wasser/templates/administration/administrate_authority.html:107
+msgid "send_token_button"
+msgstr "Emails senden"
+
+#: wasser/templates/administration/administrate_authority.html:111
+msgid "administration_send_selected_token_title"
+msgstr "Token an einen oder meherere Gemeinden senden"
+
+#: wasser/templates/administration/administrate_authority.html:112
+msgid "administration_authority_show_authority"
+msgstr "Behördenübersicht"
+
+#: wasser/templates/administration/administrate_authority.html:117
+#: wasser/templates/administration/administrate_authority.html:120
+msgid "administrator_verify_authority_user"
+msgstr "Behördenmitarbeiter als verifiziert (überprüft) markieren: "
+
+#: wasser/templates/administration/administrate_authority.html:121
+msgid "administrator_verify_authority_user_selection"
+msgstr "Behördenmitarbeiter verifizieren"
+
+#: wasser/templates/administration/average_measurement_value.html:9
+msgid "admin_av_measure_value_headline"
+msgstr "Übersicht der Durchschnittswerte"
+
+#: wasser/templates/administration/average_measurement_value.html:41
+msgid "admin_av_measure_value_button"
+msgstr "Wasser Mittelwerte"
+
+#: wasser/templates/administration/base.html:8
+#: wasser/templates/administration/base.html:32
+msgid "admin_base_headline"
+msgstr "Trinkwasser-Tool"
+
+#: wasser/templates/administration/base.html:40
+msgid "admin_base_import_measurement_and_comparison"
+msgstr "Messwerte und Vergleich"
+
+#: wasser/templates/administration/base.html:45
+msgid "admin_base_import_measurement"
+msgstr "Messwerte importieren"
+
+#: wasser/templates/administration/base.html:49
+msgid "admin_base_show_measurement"
+msgstr "Messwerte anzeigen"
+
+#: wasser/templates/administration/base.html:53
+msgid "admin_show_locations"
+msgstr "Orte anzeigen"
+
+#: wasser/templates/administration/base.html:57
+msgid "admin_base_show_water"
+msgstr "Mineralwasser"
+
+#: wasser/templates/administration/base.html:61
+msgid "admin_base_average_value"
+msgstr "Durchschnittsmesswerte"
+
+#: wasser/templates/administration/base.html:65
+msgid "admin_base_daily_dosis"
+msgstr "Tägliche Dosis"
+
+#: wasser/templates/administration/base.html:75
+msgid "admin_base_administration"
+msgstr "Administration"
+
+#: wasser/templates/administration/base.html:81
+msgid "admin_base_showuser"
+msgstr "User anzeigen"
+
+#: wasser/templates/administration/base.html:86
+msgid "admin_base_edituser"
+msgstr "User verwalten"
+
+#: wasser/templates/administration/base.html:91
+msgid "admin_base_administrators"
+msgstr "Administratoren verwalten"
+
+#: wasser/templates/administration/base.html:102
+msgid "admin_base_change_password"
+msgstr "Passwort ändern"
+
+#: wasser/templates/administration/base.html:103
+msgid "admin_base_logout"
+msgstr "Logout"
+
+#: wasser/templates/administration/base.html:113
+msgid "admin_base_choose_language"
+msgstr "Sprache"
+
+#: wasser/templates/administration/base.html:138
+#: wasser/templates/login/base.html:43 wasser/templates/tapwater/base.html:77
+#: wasser/templates/users/base.html:100
+msgid "administration_base_contact"
+msgstr "Kontakt "
+
+#: wasser/templates/administration/base.html:142
+#: wasser/templates/login/base.html:47 wasser/templates/tapwater/base.html:81
+#: wasser/templates/users/base.html:104
+msgid "administration_base_about_project"
+msgstr "Über das Projekt"
+
+#: wasser/templates/administration/base.html:146
+#: wasser/templates/login/base.html:51 wasser/templates/tapwater/base.html:85
+#: wasser/templates/users/base.html:108
+msgid "administration_base_participants"
+msgstr "Mitwirkende"
+
+#: wasser/templates/administration/base.html:150
+#: wasser/templates/login/base.html:55 wasser/templates/tapwater/base.html:89
+#: wasser/templates/users/base.html:112
+msgid "administration_base_impressum"
+msgstr "Impressum"
+
+#: wasser/templates/administration/change_password.html:26
+msgid "admin_change_password_new_password"
+msgstr "Neues Passwort"
+
+#: wasser/templates/administration/change_password.html:29
+msgid "admin_change_password_new_password_repeat"
+msgstr "Passwort wiederholen"
+
+#: wasser/templates/administration/change_password.html:32
+msgid "admin_change_password_save"
+msgstr "Speichern"
+
+#: wasser/templates/administration/confirm_users.html:19
+msgid "administration_verify_user_title"
+msgstr "Verifikation Behördenmitarbeiter"
+
+#: wasser/templates/administration/confirm_users.html:25
+msgid "administration_verify_user_successful"
+msgstr "Verifikation erfolgreich."
+
+#: wasser/templates/administration/confirm_users.html:31
+msgid "administration_verify_user_no_users_selected"
+msgstr "Es wurden keine Benutzer ausgewählt!"
+
+#: wasser/templates/administration/confirm_users.html:37
+msgid "administration_verify_user_failure"
+msgstr "Verifikation ist für folgende User fehlgeschlagen:"
+
+#: wasser/templates/administration/confirm_users.html:53
+msgid "administration_verify_user_firstname"
+msgstr "Vorname"
+
+#: wasser/templates/administration/confirm_users.html:54
+msgid "administration_verify_user_lastname"
+msgstr "Nachname"
+
+#: wasser/templates/administration/confirm_users.html:55
+msgid "administration_verify_user_email"
+msgstr "E-Mail"
+
+#: wasser/templates/administration/confirm_users.html:56
+msgid "administration_verify_user_authority"
+msgstr "Behörde"
+
+#: wasser/templates/administration/confirm_users.html:73
+msgid "administration_verify_user_submit"
+msgstr "Benutzer verifizieren"
+
+#: wasser/templates/administration/edit_average_measurement_value.html:12
+msgid "admin_change_av_measure_value_back"
+msgstr "Zurück"
+
+#: wasser/templates/administration/edit_average_measurement_value.html:14
+msgid "admin_av_measur_value_edit_headline"
+msgstr "Durchschnittswerte bearbeiten"
+
+#: wasser/templates/administration/edit_average_measurement_value.html:18
+msgid "admin_av_measure_value_success"
+msgstr "Speichern erfolgreich!"
+
+#: wasser/templates/administration/edit_average_measurement_value.html:24
+msgid "admin_edit_av_measur_error"
+msgstr "Fehler beim speichern des Durchschnittswerts!"
+
+#: wasser/templates/administration/edit_average_measurement_value.html:55
+msgid "admin_change_av_measure_value_submit"
+msgstr "Speichern"
+
+#: wasser/templates/administration/edit_average_measurement_value.html:57
+msgid "admin_change_av_measure_value_cancel_button"
+msgstr "Abbrechen"
+
+#: wasser/templates/administration/edit_mineral_water.html:13
+msgid "admin_edit_mineral_water_back"
+msgstr "Zurück"
+
+#: wasser/templates/administration/edit_mineral_water.html:15
+msgid "admin_edit_mineral_water_headline"
+msgstr "Mineralwasser editieren"
+
+#: wasser/templates/administration/edit_mineral_water.html:20
+msgid "admin_edit_mineral_water_success"
+msgstr "Speichern erfolgreich!"
+
+#: wasser/templates/administration/edit_mineral_water.html:26
+msgid "admin_edit_mineral_water_failure"
+msgstr "Speichern fehlgeschlagen!"
+
+#: wasser/templates/administration/edit_mineral_water.html:66
+msgid "admin_edit_mineral_water_submit"
+msgstr "Speichern"
+
+#: wasser/templates/administration/email/administration_login.html:14
+msgid "admin_manage_administrators_add_salutation"
+msgstr "Hallo"
+
+#: wasser/templates/administration/email/administration_login.html:15
+msgid "admin_manage_administrators_add_intro"
+msgstr "Folgend Ihre Daten für den Administrationsbereich."
+
+#: wasser/templates/administration/email/administration_login.html:17
+msgid "admin_manage_administrators_add_username"
+msgstr "Benutzername"
+
+#: wasser/templates/administration/email/administration_login.html:18
+msgid "admin_manage_administrators_add_password"
+msgstr "Passwort"
+
+#: wasser/templates/administration/email/administration_login.html:20
+msgid "admin_manage_administrators_add_ending"
+msgstr "Viel Spaß und denken Sie daran, Ihr Passwort zuändern."
+
+#: wasser/templates/administration/email/administration_login.html:22
+#: wasser/templates/tapwater/modals/impressum.html:9
+#: wasser/templates/users/email/registration.html:19
+msgid "tapwater_modals_impressum_modal_impressum"
+msgstr "Über uns:"
+
+#: wasser/templates/administration/email/administration_login.html:25
+#: wasser/templates/tapwater/modals/impressum.html:13
+#: wasser/templates/users/email/registration.html:22
+msgid "tapwater_modals_impressum_modal_name_of_company"
+msgstr "IF-Core IT Services GmbH"
+
+#: wasser/templates/administration/email/administration_login.html:26
+#: wasser/templates/tapwater/modals/impressum.html:14
+#: wasser/templates/users/email/registration.html:23
+msgid "tapwater_modals_impressum_modal_adress_of_company_street"
+msgstr "Clemenshaller Str. 5"
+
+#: wasser/templates/administration/email/administration_login.html:27
+#: wasser/templates/tapwater/modals/impressum.html:15
+#: wasser/templates/users/email/registration.html:24
+msgid "tapwater_modals_impressum_modal_adress_of_company_postal_code"
+msgstr "74254 Offenau"
+
+#: wasser/templates/administration/email/administration_login.html:28
+#: wasser/templates/tapwater/modals/impressum.html:16
+#: wasser/templates/users/email/registration.html:25
+msgid "tapwater_modals_impressum_modal_adress_of_company_phon"
+msgstr " T. 07136 / 830 26 30"
+
+#: wasser/templates/administration/email/administration_login.html:29
+#: wasser/templates/tapwater/modals/impressum.html:17
+#: wasser/templates/users/email/registration.html:26
+msgid "tapwater_modals_impressum_modal_adress_of_company_fax"
+msgstr "F. 07136 / 830 26 27"
+
+#: wasser/templates/administration/email/administration_login.html:30
+#: wasser/templates/tapwater/modals/impressum.html:18
+#: wasser/templates/users/email/registration.html:27
+msgid "tapwater_modals_impressum_modal_adress_of_company_mailto"
+msgstr "E-Mail: info<!--nospam@blockscanners121987.de-->@if-core.de"
+
+#: wasser/templates/administration/email/administration_login.html:32
+#: wasser/templates/tapwater/modals/impressum.html:20
+#: wasser/templates/users/email/registration.html:29
+msgid "tapwater_modals_impressum_modal_adress_of_company_district_court"
+msgstr " HRB 108620 (Amtsgericht Stuttgart)"
+
+#: wasser/templates/administration/email/administration_login.html:33
+#: wasser/templates/tapwater/modals/impressum.html:21
+#: wasser/templates/users/email/registration.html:30
+msgid "tapwater_modals_impressum_modal_adress_of_company_IdNr"
+msgstr " USt-IdNr.: DE236085681"
+
+#: wasser/templates/administration/email/administration_login.html:34
+#: wasser/templates/tapwater/modals/impressum.html:22
+#: wasser/templates/users/email/registration.html:31
+msgid "tapwater_modals_impressum_modal_adress_of_company_managing_director"
+msgstr "Geschäftsführer: Felix Ebert"
+
+#: wasser/templates/administration/email/administration_login.html:42
+#: wasser/templates/users/email/registration.html:40
+msgid "login_utilities_mail_auto_generated"
+msgstr ""
+"Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht auf "
+"diese E-Mail."
+
+#: wasser/templates/administration/import_measurements.html:8
+msgid "admin_import_measure_heading"
+msgstr "JSON-Import für Wasserwerte"
+
+#: wasser/templates/administration/import_measurements.html:12
+msgid "admin_import_measure_dangeralert"
+msgstr "Import fehlgeschlagen!"
+
+#: wasser/templates/administration/import_measurements.html:13
+msgid "admin_import_measure_dangeralert_msg"
+msgstr "Bitte wählen Sie gültige Dateien für den Upload und Import!"
+
+#: wasser/templates/administration/import_measurements.html:16
+msgid "admin_import_measure_warning_1"
+msgstr "Hintergrund: "
+
+#: wasser/templates/administration/import_measurements.html:16
+msgid "admin_import_measure_warning_2"
+msgstr ""
+"Wir haben den Import Vorgang abgebrochen, da ein Problem bei folgenden Orten "
+"aufgetaucht ist:"
+
+#: wasser/templates/administration/import_measurements.html:23
+msgid "admin_import_measure_warning_3"
+msgstr ""
+"Daher haben wir ein Rollback durchgeführt und alle bereitsvorgenommen "
+"Änderungen in der Datenbank rückgängig gemacht."
+
+#: wasser/templates/administration/import_measurements.html:31
+msgid "admin_import_measure_success"
+msgstr "Import erfolgreich!"
+
+#: wasser/templates/administration/import_measurements.html:41
+msgid "admin_import_measure_noteheadline"
+msgstr "Hinweise für einen erfolgreichen Import:"
+
+#: wasser/templates/administration/import_measurements.html:42
+msgid "admin_import_measure_notetext_0"
+msgstr ""
+"Bitte lesen Sie diese Hinweise aufmerksam durch, bevor sie mit dem "
+"Datenimport beginnen."
+
+#: wasser/templates/administration/import_measurements.html:44
+msgid "admin_import_measure_notetext_1"
+msgstr ""
+"Stellen Sie sicher, dass Ihnen zwei JSON-Files (.json) vorliegen. Das eine "
+"JSON-File enthält die Orte (Locations), das andere JSON-File die Zonen und "
+"Messwerte (Zones). "
+
+#: wasser/templates/administration/import_measurements.html:45
+msgid "admin_import_measure_notetext_2"
+msgstr ""
+"Prüfen Sie ob ihre JSON-Files dem erwarteten Format (siehe unten) "
+"entsprechen und ob in den JSON-Files tatsächlich nur Orte bzw. Zonen "
+"enthalten sind. "
+
+#: wasser/templates/administration/import_measurements.html:47
+msgid "admin_import_measure_location_json"
+msgstr "locations.json (Struktur-Muster):"
+
+#: wasser/templates/administration/import_measurements.html:47
+msgid "admin_import_measure_zones_json"
+msgstr "zones.json (Struktur-Muster)"
+
+#: wasser/templates/administration/import_measurements.html:50
+msgid "admin_import_measure_notetext_3"
+msgstr ""
+"Stellen Sie sicher, dass im JSON-File mit den Orten, alle Orte dem Object "
+"\"Locations\" zugehören und im JSON-File mit den Zonen, alle Zonen dem "
+"Object \"Zones\". "
+
+#: wasser/templates/administration/import_measurements.html:54
+msgid "admin_import_measure_selectfiles"
+msgstr "Bitte JSON-Files wählen:"
+
+#: wasser/templates/administration/import_measurements.html:55
+msgid "admin_import_measure_onsubmit_msg"
+msgstr "Die Verarbeitung läuft, bitte haben Sie einen Moment geduld..."
+
+#: wasser/templates/administration/import_measurements.html:79
+msgid "admin_import_measure_submit"
+msgstr "Hochladen und Importieren"
+
+#: wasser/templates/administration/locations.html:9
+#: wasser/templates/administration/measurements.html:9
+#: wasser/templates/users/show_measurements.html:9
+msgid "admin_measurement_show_headline"
+msgstr "Übersicht der Messwerte"
+
+#: wasser/templates/administration/locations.html:16
+#: wasser/templates/administration/measurements.html:16
+#: wasser/templates/users/show_measurements.html:18
+msgid "admin_measurement_city"
+msgstr "Stadt"
+
+#: wasser/templates/administration/locations.html:17
+#: wasser/templates/administration/measurements.html:17
+#: wasser/templates/users/show_measurements.html:19
+msgid "admin_measurement_district"
+msgstr "Teilort"
+
+#: wasser/templates/administration/locations.html:18
+#: wasser/templates/administration/measurements.html:18
+#: wasser/templates/users/show_measurements.html:20
+msgid "admin_measurement_year"
+msgstr "Jahr"
+
+#: wasser/templates/administration/locations.html:19
+#: wasser/templates/administration/measurements.html:29
+#: wasser/templates/users/show_measurements.html:31
+msgid "admin_measurement_zone"
+msgstr "Zone"
+
+#: wasser/templates/administration/locations.html:20
+#: wasser/templates/administration/measurements.html:30
+#: wasser/templates/users/show_measurements.html:32
+msgid "admin_measurement_region"
+msgstr "Region"
+
+#: wasser/templates/administration/locations.html:21
+msgid "admin_measurement_measurements"
+msgstr "Messungen"
+
+#: wasser/templates/administration/measurements.html:19
+#: wasser/templates/users/show_measurements.html:21
+msgid "admin_measurement_description"
+msgstr "Beschreibung"
+
+#: wasser/templates/administration/measurements.html:20
+#: wasser/templates/users/show_measurements.html:22
+msgid "admin_measurement_hardness"
+msgstr "Härte"
+
+#: wasser/templates/administration/measurements.html:21
+#: wasser/templates/users/show_measurements.html:23
+msgid "admin_measurement_potassium"
+msgstr "Kalium"
+
+#: wasser/templates/administration/measurements.html:22
+#: wasser/templates/users/show_measurements.html:24
+msgid "admin_measurement_natrium"
+msgstr "Natrium"
+
+#: wasser/templates/administration/measurements.html:23
+#: wasser/templates/users/show_measurements.html:25
+msgid "admin_measurement_calcium"
+msgstr "Calcium"
+
+#: wasser/templates/administration/measurements.html:24
+#: wasser/templates/users/show_measurements.html:26
+msgid "admin_measurement_magnesium"
+msgstr "Magnesium"
+
+#: wasser/templates/administration/measurements.html:25
+#: wasser/templates/users/show_measurements.html:27
+msgid "admin_measurement_chloride"
+msgstr "Chlorid"
+
+#: wasser/templates/administration/measurements.html:26
+#: wasser/templates/users/show_measurements.html:28
+msgid "admin_measurement_nitrate"
+msgstr "Nitrat"
+
+#: wasser/templates/administration/measurements.html:27
+#: wasser/templates/users/show_measurements.html:29
+msgid "admin_measurement_sulfate"
+msgstr "Sulfat"
+
+#: wasser/templates/administration/measurements.html:28
+#: wasser/templates/users/show_measurements.html:30
+msgid "admin_measurement_street"
+msgstr "Straße"
+
+#: wasser/templates/administration/mineral_waters.html:20
+msgid "admin_mineralwater_headline"
+msgstr "Übersicht der in der Datenbank gespeicherten Werte"
+
+#: wasser/templates/administration/mineral_waters.html:29
+msgid "admin_mineralwater_name"
+msgstr "Name"
+
+#: wasser/templates/administration/mineral_waters.html:30
+msgid "admin_mineralwater_key"
+msgstr "Key"
+
+#: wasser/templates/administration/mineral_waters.html:31
+msgid "admin_mineralwater_potassium"
+msgstr "Kalium"
+
+#: wasser/templates/administration/mineral_waters.html:32
+msgid "admin_mineralwater_natrium"
+msgstr "Natrium"
+
+#: wasser/templates/administration/mineral_waters.html:33
+msgid "admin_mineralwater_calium"
+msgstr "Calcium"
+
+#: wasser/templates/administration/mineral_waters.html:34
+msgid "admin_mineralwater_magnesium"
+msgstr "Magnesium"
+
+#: wasser/templates/administration/mineral_waters.html:35
+msgid "admin_mineralwater_chloride"
+msgstr "Chlorid"
+
+#: wasser/templates/administration/mineral_waters.html:36
+msgid "admin_mineralwater_nitrate"
+msgstr "Nitrat"
+
+#: wasser/templates/administration/mineral_waters.html:37
+msgid "admin_mineralwater_sulfate"
+msgstr "Sulfat"
+
+#: wasser/templates/administration/mineral_waters.html:43
+msgid "admin_add_mineral_water"
+msgstr "Neues Mineralwasser"
+
+#: wasser/templates/administration/mineral_waters.html:66
+msgid "admin_edit_mineral_water"
+msgstr "Editieren"
+
+#: wasser/templates/administration/mineral_waters.html:74
+msgid "admin_delete_mineral_water"
+msgstr "Löschen"
+
+#: wasser/templates/administration/nutrient_daily_dosis.html:9
+msgid "admin_nutrient_daily_dosis_heading"
+msgstr "Übersicht: Tägliche Dosis"
+
+#: wasser/templates/administration/nutrient_daily_dosis.html:15
+msgid "admin_nutrient_daily_dosis_potassium"
+msgstr "Kalium"
+
+#: wasser/templates/administration/nutrient_daily_dosis.html:16
+msgid "admin_nutrient_daily_dosis_calcium"
+msgstr "Calcium"
+
+#: wasser/templates/administration/nutrient_daily_dosis.html:17
+msgid "admin_nutrient_daily_dosis_magnesium"
+msgstr "Magnesium"
+
+#: wasser/templates/administration/send_token.html:24
+msgid "administration_token_send_no_users_selected"
+msgstr "Es wurden keine Benutzer ausgewählt!"
+
+#: wasser/templates/administration/send_token.html:40
+msgid "administration_token_send_title"
+msgstr "Behördenübersicht"
+
+#: wasser/templates/administration/send_token.html:49
+msgid "administration_token_send_user_firstname"
+msgstr "Vorname"
+
+#: wasser/templates/administration/send_token.html:50
+msgid "administration_token_send_user_lastname"
+msgstr "Nachname"
+
+#: wasser/templates/administration/send_token.html:51
+msgid "administration_token_send_email"
+msgstr "E-Mail"
+
+#: wasser/templates/administration/send_token.html:52
+msgid "administration_token_send_valid_token"
+msgstr "Token vorhanden"
+
+#: wasser/templates/administration/send_token.html:64
+msgid "administration_token_send_token_exists"
+msgstr "Ja"
+
+#: wasser/templates/administration/send_token.html:66
+msgid "administration_token_send_no_token_exists"
+msgstr "Nein"
+
+#: wasser/templates/administration/send_token.html:73
+msgid "administration_token_send_token_button"
+msgstr "Email senden"
+
+#: wasser/templates/administration/show_history.html:11
+msgid "administration_show_history_title"
+msgstr "Historie"
+
+#: wasser/templates/administration/show_history.html:17
+#: wasser/templates/tapwater/show_values.html:769
+msgid "administration_show_history_creation_date"
+msgstr "Erstellungsdatum"
+
+#: wasser/templates/administration/show_history.html:18
+#: wasser/templates/tapwater/show_values.html:770
+msgid "administration_show_history_user"
+msgstr "Benutzer"
+
+#: wasser/templates/administration/show_history.html:19
+#: wasser/templates/tapwater/show_values.html:771
+msgid "administration_show_history_date_of_measurement"
+msgstr "Datum der Messung"
+
+#: wasser/templates/administration/show_history.html:20
+#: wasser/templates/tapwater/show_values.html:50
+#: wasser/templates/tapwater/show_values.html:641
+#: wasser/templates/tapwater/show_values.html:772
+msgid "tapwater_index_sodium"
+msgstr "Natrium"
+
+#: wasser/templates/administration/show_history.html:21
+#: wasser/templates/tapwater/show_values.html:52
+#: wasser/templates/tapwater/show_values.html:683
+#: wasser/templates/tapwater/show_values.html:773
+msgid "tapwater_index_potassium"
+msgstr "Kalium"
+
+#: wasser/templates/administration/show_history.html:22
+#: wasser/templates/tapwater/show_values.html:54
+#: wasser/templates/tapwater/show_values.html:669
+#: wasser/templates/tapwater/show_values.html:774
+msgid "tapwater_index_calcium"
+msgstr "Calcium"
+
+#: wasser/templates/administration/show_history.html:23
+#: wasser/templates/tapwater/show_values.html:56
+#: wasser/templates/tapwater/show_values.html:739
+#: wasser/templates/tapwater/show_values.html:775
+msgid "tapwater_index_magnesium"
+msgstr "Magnesium"
+
+#: wasser/templates/administration/show_history.html:24
+#: wasser/templates/tapwater/show_values.html:58
+#: wasser/templates/tapwater/show_values.html:725
+#: wasser/templates/tapwater/show_values.html:776
+msgid "tapwater_index_chloride"
+msgstr "Chlorid"
+
+#: wasser/templates/administration/show_history.html:25
+#: wasser/templates/tapwater/show_values.html:60
+#: wasser/templates/tapwater/show_values.html:711
+#: wasser/templates/tapwater/show_values.html:777
+msgid "tapwater_index_nitrate"
+msgstr "Nitrat"
+
+#: wasser/templates/administration/show_history.html:26
+#: wasser/templates/tapwater/show_values.html:62
+#: wasser/templates/tapwater/show_values.html:697
+#: wasser/templates/tapwater/show_values.html:778
+msgid "tapwater_index_sulfate"
+msgstr "Sulfat"
+
+#: wasser/templates/administration/show_history.html:27
+#: wasser/templates/tapwater/show_values.html:64
+#: wasser/templates/tapwater/show_values.html:655
+#: wasser/templates/tapwater/show_values.html:779
+msgid "tapwater_index_hardness"
+msgstr "Härte"
+
+#: wasser/templates/administration/show_users.html:9
+msgid "user_headline"
+msgstr "User Übersicht"
+
+#: wasser/templates/administration/show_users.html:16
+msgid "user_firstname"
+msgstr "Vorname"
+
+#: wasser/templates/administration/show_users.html:17
+msgid "user_lastname"
+msgstr "Nachname"
+
+#: wasser/templates/administration/show_users.html:18
+msgid "user_email"
+msgstr "User E-mail"
+
+#: wasser/templates/administration/show_users.html:19
+msgid "user_authority"
+msgstr "Gemeinde"
+
+#: wasser/templates/administration/show_users.html:20
+msgid "user_user_type"
+msgstr "User Typ"
+
+#: wasser/templates/login/admin.html:8
+msgid "login_admin_title"
+msgstr "Login für Admin-User"
+
+#: wasser/templates/login/admin.html:20
+msgid "login_admin_login_user_label"
+msgstr "Benutzername"
+
+#: wasser/templates/login/admin.html:21
+msgid "login_admin_username"
+msgstr "Benutzername eingeben"
+
+#: wasser/templates/login/admin.html:24
+msgid "login_admin_login_password_label"
+msgstr "Passwort"
+
+#: wasser/templates/login/admin.html:25
+msgid "login_admin_password"
+msgstr "Passwort eingeben"
+
+#: wasser/templates/login/admin.html:27
+msgid "login_admin_send_button"
+msgstr "Login"
+
+#: wasser/templates/login/admin_login_failed.html:7
+msgid "login_admin_failed"
+msgstr "Login fehlgeschlagen!"
+
+#: wasser/templates/login/admin_login_failed.html:9
+msgid "login_admin_failed_info"
+msgstr ""
+"Ihr Login ist fehlgeschlagen! Bitte versuchen Sie es erneut über die Login-"
+"Seite:"
+
+#: wasser/templates/login/admin_login_failed.html:9
+msgid "login_admin_page"
+msgstr "Login für Administratoren"
+
+#: wasser/templates/login/email/token.html:15
+msgid "login_email_token_greeting_first"
+msgstr "Hallo"
+
+#: wasser/templates/login/email/token.html:16
+msgid "login_email_token_greeting_second"
+msgstr "danke, dass Sie das Trinkwasser Tool mit Messdaten unterstützen."
+
+#: wasser/templates/login/email/token.html:17
+msgid "login_email_token_link_address"
+msgstr "Bitte nutzen Sie diesen Link zur Anmeldung im Trinkwasser Tool:"
+
+#: wasser/templates/login/email/token.html:21
+msgid "login_email_token_thanks"
+msgstr "Mit freundlichen Grüßen"
+
+#: wasser/templates/login/email/token.html:23
+msgid "login_email_token_ending"
+msgstr "Ihr Trinkwasser-Tool Team"
+
+#: wasser/templates/login/email/token.html:25
+msgid "login_email_token_impressum"
+msgstr "Über uns:"
+
+#: wasser/templates/login/email/token.html:28
+msgid "login_email_token_company"
+msgstr "IF-Core IT Services GmbH"
+
+#: wasser/templates/login/email/token.html:29
+msgid "login_email_token_adress_of_company_street"
+msgstr "Clemenshaller Str. 5"
+
+#: wasser/templates/login/email/token.html:30
+msgid "login_email_token_adress_of_company_postal_code"
+msgstr "74254 Offenau"
+
+#: wasser/templates/login/email/token.html:31
+msgid "login_email_token_adress_of_company_phon"
+msgstr "T. 07136 / 830 26 30"
+
+#: wasser/templates/login/email/token.html:32
+msgid "login_email_token_adress_of_company_fax"
+msgstr "F. 07136 / 830 26 27"
+
+#: wasser/templates/login/email/token.html:33
+msgid "login_email_token_adress_of_company_mailto"
+msgstr "E-Mail: info@if-core.de"
+
+#: wasser/templates/login/email/token.html:35
+msgid "login_email_token_adress_of_company_district_court"
+msgstr "HRB 108620 (Amtsgericht Stuttgart)"
+
+#: wasser/templates/login/email/token.html:36
+msgid "login_email_token_adress_of_company_IdNr"
+msgstr "USt-IdNr.: DE236085681"
+
+#: wasser/templates/login/email/token.html:37
+msgid "login_email_token_adress_of_company_managing_director"
+msgstr "Geschäftsführer: Felix Ebert"
+
+#: wasser/templates/login/login_failed.html:7
+msgid "login_authority_failed"
+msgstr "Login fehlgeschlagen"
+
+#: wasser/templates/login/login_failed.html:9
+msgid "login_authority_failed_info"
+msgstr ""
+"Ihr Login ist fehlgeschlagen! Bitte versuchen Sie es erneut auf der "
+"Startseite: "
+
+#: wasser/templates/login/login_failed.html:9
+msgid "login_authority_page"
+msgstr "Startseite"
+
+#: wasser/templates/login/token.html:7
+msgid "login_authority_headline"
+msgstr "Behörde"
+
+#: wasser/templates/tapwater/base.html:10
+msgid "tapwater_base_the_title"
+msgstr "Was steckt in meinem Leitungswasser?"
+
+#: wasser/templates/tapwater/base.html:11
+msgid "tapwater_base_title_description"
+msgstr ""
+"Weißt du eigentlich, wie gut das Trinkwasser an deinem Wohnort ist? Hier "
+"kannst du es herausfinden - für den Stadt- und Landkreis Heilbronn "
+
+#: wasser/templates/tapwater/index.html:32
+#: wasser/templates/tapwater/index.html:39
+msgid "tapwater_logout_button"
+msgstr "Abmelden"
+
+#: wasser/templates/tapwater/index.html:35
+msgid "tapwater_administration_button"
+msgstr "Administration"
+
+#: wasser/templates/tapwater/index.html:42
+msgid "tapwater_user_area_button"
+msgstr "Benutzerbereich"
+
+#: wasser/templates/tapwater/index.html:46
+#: wasser/templates/tapwater/modals/login_modal.html:37
+msgid "tapwater_registration_button"
+msgstr "Registrieren"
+
+#: wasser/templates/tapwater/index.html:50 wasser/templates/users/base.html:70
+msgid "tapwater_login_button"
+msgstr "Anmelden"
+
+#: wasser/templates/tapwater/index.html:57
+msgid "tapwater_index_region_name"
+msgstr "Trinkwasser-Tool"
+
+#: wasser/templates/tapwater/index.html:63
+msgid "tapwater_index_place"
+msgstr "Ort"
+
+#: wasser/templates/tapwater/index.html:78
+msgid "tapwater_index_district"
+msgstr "Ortsteil"
+
+#: wasser/templates/tapwater/index.html:85
+msgid "tapwater_index_street"
+msgstr "Straße"
+
+#: wasser/templates/tapwater/index.html:95
+msgid "tapwater_index_continue"
+msgstr "Weiter"
+
+#: wasser/templates/tapwater/index.html:105
+msgid "admin_current_location"
+msgstr "Aktueller Standort"
+
+#: wasser/templates/tapwater/index.html:113
+msgid "tapwater_index_note"
+msgstr "Derzeit sind Daten aus dem Stadt- und Landkreis Heilbronn auswählbar."
+
+#: wasser/templates/tapwater/index.html:133
+msgid "admin_gelocation_no_support_error"
+msgstr "Die Standortermittlung wird von diesem Browser nicht unterstützt."
+
+#: wasser/templates/tapwater/index.html:134
+msgid "admin_browser_error_position"
+msgstr "Browser-Geolokalisierungsfehler! Position nicht verfügbar."
+
+#: wasser/templates/tapwater/index.html:135
+msgid "admin_browser_error_timeout"
+msgstr "Browser-Geolokalisierungsfehler! Timeout-Error."
+
+#: wasser/templates/tapwater/index.html:136
+msgid "admin_browser_error_unknown"
+msgstr "Browser-Geolokalisierungsfehler! Position nicht verfügbar."
+
+#: wasser/templates/tapwater/index.html:137
+msgid "admin_geolocation_api_error"
+msgstr "API Geolocation Fehler!"
+
+#: wasser/templates/tapwater/index.html:138
+msgid "admin_no_data_pre"
+msgstr "Sorry, wir haben leider keine Daten für "
+
+#: wasser/templates/tapwater/index.html:139
+msgid "admin_no_data_after"
+msgstr " in unserer Datenbank."
+
+#: wasser/templates/tapwater/modals/about.html:9
+msgid "tapwater_modals_about_modal_about_impressum"
+msgstr "Über uns:"
+
+#: wasser/templates/tapwater/modals/about.html:13
+msgid "tapwater_modals_about_modal_how_drinking_water_tool_developed"
+msgstr "Wie das Trinkwasser-Tool entstanden ist"
+
+#: wasser/templates/tapwater/modals/about.html:15
+msgid "tapwater_modals_about_modal_drinking_water_as_controlled_foods"
+msgstr ""
+"Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
+"Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei uns "
+"aus dem Hahn kommt. Viele Kommunen veröffentlichen die "
+"Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese Daten "
+"abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? Sind 200 "
+"Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich unser "
+"Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem Handel "
+"vergleichen."
+
+#: wasser/templates/tapwater/modals/about.html:16
+msgid "tapwater_modals_about_modal_idea_february"
+msgstr ""
+"Das ist für die Region Heilbronn jetzt möglich. Die Idee dazu entstand Ende "
+"Februar beim Open Data Day in Heilbronn. Obwohl viele Daten online verfügbar "
+"waren, mussten sie zuerst in eine maschinenlesbare Form gebracht werden. "
+"Viele Kommunen veröffentlichen nur PDF-Dateien mit den "
+"Jahresdurchschnittswerten. Diese sind nicht maschinenlesbar und mussten von "
+"der Redaktion übertragen werden.  Um die Anwendung zu programmieren, ist ein "
+"einheitlicher Datensatz notwendig. Auf manchen Webseiten der Kommunen waren "
+"die gesuchten Informationen über das Trinkwasser auf Unterseiten versteckt, "
+"veraltet oder nicht vollständig. Bei vielen Städten und Gemeinden haben wir "
+"deshalb per Email die Daten abgefragt. Nur von drei Kommunen kam bisher "
+"keine Rückmeldung."
+
+#: wasser/templates/tapwater/modals/about.html:17
+msgid "tapwater_modals_about_modal_surprise_drinking_water_in_heilbronn"
+msgstr ""
+"Überraschend war für uns, wie unterschiedlich das Trinkwasser in der Region "
+"zusammengesetzt ist. Teilweise differiert der Mineraliengehalt innerhalb "
+"einer Ortschaft sehr stark - nämlich dann, wenn es verschiedene "
+"Versorgungsbereiche gibt. Kommunen wie Bad Friedrichshall, Neckarsulm oder "
+"Zaberfeld sind in mehrere Gebiete eingeteilt. Dies war in der Phase der "
+"Datenerhebung eine besondere Herausforderung. Die Gebiete mussten teilweise "
+"noch den Straßen zugeordnet werden, damit der Benutzer auch die korrekten "
+"Werte für seine eigene Straße angezeigt bekommt. Zu den Trinkwasserpreisen "
+"bietet das Statistische Landesamt einen vollständigen Datensatz für alle "
+"Landkreise - für die Trinkwasserqualität gibt es einen solchen öffentlichen "
+"Datensatz leider nicht."
+
+#: wasser/templates/tapwater/modals/about.html:18
+msgid "tapwater_modals_about_modal_application_as_research_project"
+msgstr ""
+"Der dieser Anwendung zugrundliegende Datensatz war deshalb ein aufwändiges "
+"Rechercheprojekt. Nicht weniger aufwändig waren für die Entwickler Felix "
+"Ebert, Ulrich Stech und Tom Görner Umsetzung und Visualisierung. Eine große "
+"Rolle spielten dabei Benutzerfreundlichkeit und Design. Aus trockenen Zahlen "
+"sollte eine interaktive Grafik entstehen, durch die der Benutzer einen "
+"Zugang zu seinem Trinkwasser bekommt. Für die grafischen Elemente war Heiko "
+"Nicht verantwortlich."
+
+#: wasser/templates/tapwater/modals/about.html:19
+msgid "tapwater_modals_about_modal_application_beta-version"
+msgstr ""
+"Die Trinkwasser-Anwendung ist eine Beta-Version. Vor allem die Datenerhebung "
+"kann nie abgeschlossen werden. Viele Kommunen veröffentlichen bald wieder "
+"die aktuellen Jahresmittelwerte - diese sollen auch in unserer Anwendung "
+"aktualisiert werden. Wir sind dabei auf die Mitarbeit der Rathäuser "
+"angewiesen und haben einen Kontaktbereich eingerichtet. Aufgrund des großen "
+"Datensatzes kann es zu fehlerhaften Angaben kommen. Wer Auffälligkeifen "
+"entdeckt, kann uns jederzeit kontaktieren. Wir freuen uns auch über Feedback."
+
+#: wasser/templates/tapwater/modals/about.html:20
+msgid "tapwater_modals_about_modal_code_for_application"
+msgstr ""
+"Datensatz und Code der Anwendung sind öffentlich zugänglich und stehen unter "
+"einer Open Source-Lizenz."
+
+#: wasser/templates/tapwater/modals/about.html:21
+msgid "tapwater_modals_about_modal_interest_open data"
+msgstr ""
+"Du bist an weiteren Open Data Anwendungen interessiert oder möchtest selbst "
+"mitwirken? In Heilbronn treffen wir uns regelmäßig im Rahmen von "
+
+#: wasser/templates/tapwater/modals/about.html:22
+msgid "tapwater_modals_about_modal_code_for_germany"
+msgstr "Code for Germany"
+
+#: wasser/templates/tapwater/modals/about.html:23
+msgid "tapwater_modals_about_modal_common_open_data_project"
+msgstr ""
+", um gemeinsam Open Data Projekten umzusetzen - wir würden uns über deinen "
+"Besuch freuen!"
+
+#: wasser/templates/tapwater/modals/attribution.html:9
+msgid "tapwater_modals_attribution_modal_participants"
+msgstr "Mitwirkende"
+
+#: wasser/templates/tapwater/modals/attribution.html:12
+msgid "tapwater_modals_attribution_modal_editorial_realization"
+msgstr "Redaktionelle Umsetzung"
+
+#: wasser/templates/tapwater/modals/attribution.html:18
+msgid "tapwater_modals_attribution_modal_design"
+msgstr "Gestaltung"
+
+#: wasser/templates/tapwater/modals/attribution.html:23
+msgid "tapwater_modals_attribution_modal_programming"
+msgstr "Programmierung"
+
+#: wasser/templates/tapwater/modals/attribution.html:29
+msgid "tapwater_modals_attribution_hshnn"
+msgstr "Hochschule Heilbronn"
+
+#: wasser/templates/tapwater/modals/attribution.html:40
+msgid "tapwater_modals_attribution_modal_collaboration"
+msgstr "Mitarbeit"
+
+#: wasser/templates/tapwater/modals/attribution.html:47
+msgid "tapwater_modals_attribution_modal_meeting_in_heilbronn"
+msgstr "In Heilbronn treffen wir uns regelmäßig im Rahmen von"
+
+#: wasser/templates/tapwater/modals/attribution.html:48
+msgid "tapwater_modals_attribution_modal_code_for_germany"
+msgstr "Code for Germany"
+
+#: wasser/templates/tapwater/modals/attribution.html:49
+msgid "tapwater_modals_attribution_modal_common_open_data_project"
+msgstr ""
+", um gemeinsam Open Data Projekten umzusetzen - wir würden uns über deinen "
+"Besuch freuen!"
+
+#: wasser/templates/tapwater/modals/contact.html:9
+msgid "tapwater_modals_contact_modal_contact"
+msgstr "Kontakt"
+
+#: wasser/templates/tapwater/modals/contact.html:12
+msgid "tapwater_modals_contact_modal_feedback"
+msgstr "Wir freuen uns über Feedback:"
+
+#: wasser/templates/tapwater/modals/contact.html:14
+msgid "tapwater_modals_contact_modal_mailto"
+msgstr "E-Mail Adresse: wasser@opendatalab.de - Vielen Dank!"
+
+#: wasser/templates/tapwater/modals/contact.html:15
+msgid "tapwater_modals_contact_modal_incorrect_data"
+msgstr ""
+"Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben "
+"kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!"
+
+#: wasser/templates/tapwater/modals/contact.html:16
+msgid "tapwater_modals_contact_modal_employees_of_municipalicity"
+msgstr ""
+"Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? "
+"Schicken Sie uns einfach Ihre Daten per E-Mail."
+
+#: wasser/templates/tapwater/modals/delete_water.html:9
+msgid "administration_delete_minral_water"
+msgstr "Mineralwasser löschen"
+
+#: wasser/templates/tapwater/modals/delete_water.html:12
+msgid "admin_delete_mineral_water_confirmation_question"
+msgstr "Wollen Sie wirklich löschen"
+
+#: wasser/templates/tapwater/modals/delete_water.html:15
+msgid "admin_delete_mineral_water_noCancel"
+msgstr "Nein, Abbrechen"
+
+#: wasser/templates/tapwater/modals/delete_water.html:17
+msgid "admin_delete_mineral_water_yesDelete"
+msgstr "Ja, Löschen"
+
+#: wasser/templates/tapwater/modals/login_modal.html:36
+msgid "login_index_token_info_msg"
+msgstr ""
+"Sie erhalten per Email einen Link mit welchem Sie direkt eingeloggt sind! "
+"Sie können sich diesen Link nur zusenden lassen, wenn Sie registriert sind."
+
+#: wasser/templates/tapwater/modals/login_modal.html:37
+msgid "login_index_token_info_reg_msg"
+msgstr ""
+"Sollten Sie noch nicht registriert sein, können Sie sich hier registrieren: "
+
+#: wasser/templates/tapwater/modals/login_modal.html:38
+msgid "login_index_email_label"
+msgstr "Ihre Email Adresse:"
+
+#: wasser/templates/tapwater/modals/login_modal.html:43
+msgid "login_index_email_button"
+msgstr "Link anfordern"
+
+#: wasser/templates/tapwater/modals/share.html:9
+msgid "tapwater_share_modal_measurement_values"
+msgstr "Wasserwerte teilen"
+
+#: wasser/templates/tapwater/modals/share.html:13
+msgid "tapwater_share_modal_info"
+msgstr ""
+"Zum Teilen der Wasserwerte senden Sie den folgenden Link an andere Personen."
+
+#: wasser/templates/tapwater/show_values.html:14
+msgid "tapwater_index_home_name"
+msgstr "Trinkwasser-Tool"
+
+#: wasser/templates/tapwater/show_values.html:19
+msgid "tapwater_index_back_to_start"
+msgstr "Zum Start"
+
+#: wasser/templates/tapwater/show_values.html:24
+msgid "tapwater_share_measurement_values"
+msgstr "Teilen"
+
+#: wasser/templates/tapwater/show_values.html:30
+msgid "tapwater_index_administration_area"
+msgstr "Administration"
+
+#: wasser/templates/tapwater/show_values.html:35
+msgid "tapwater_index_user_area"
+msgstr "Benutzerbereich"
+
+#: wasser/templates/tapwater/show_values.html:67
+msgid "tapwater_index_questions_and_answers"
+msgstr "Fragen und Anworten"
+
+#: wasser/templates/tapwater/show_values.html:71
+msgid "tapwater_index_response_message"
+msgstr "Es liegen leider keine Werte für diesen Inhaltsstoff vor."
+
+#: wasser/templates/tapwater/show_values.html:81
+msgid "tapwater_index_role_of_sodium"
+msgstr "Natrium reguliert den Wasserhaushalt."
+
+#: wasser/templates/tapwater/show_values.html:82
+msgid "tapwater_index_required_quantity_of_sodium"
+msgstr ""
+"Wieviel Natrium für wen geeignet ist, hängt stark vom Einzelnen ab: "
+"Sportlern ist natriumreiches Wasser zu empfehlen, Menschen mit Bluthochdruck "
+"oder Säuglinge sollten natriumarmes Wasser (weniger als 20 Milligramm pro "
+"Liter) trinken."
+
+#: wasser/templates/tapwater/show_values.html:83
+msgid "tapwater_index_lack_of_sodium"
+msgstr ""
+"Ein Mangel an Natrium äußert sich in körperlicher Schwäche, Übelkeit und "
+"Muskelkrämpfen bis hin zum Kreislaufkollaps."
+
+#: wasser/templates/tapwater/show_values.html:84
+msgid "tapwater_index_recommendation_of_sodium"
+msgstr ""
+"Empfohlen sind mindestens 550 mg Natrium pro Tag. Für eine ärztlich "
+"empfohlene natriumarme Ernährung oder für Säuglinge sind weniger als 20 mg/l "
+"Natrium geeignet."
+
+#: wasser/templates/tapwater/show_values.html:87
+msgid "tapwater_index_role_of_potassium"
+msgstr ""
+"Kalium hält den Wasser- und Elektrolythaushalt im Gleichgewicht, reguliert "
+"den Blutdruck und ist wichtig für einen regelmäßigen Herzschlag sowie die "
+"Nerven."
+
+#: wasser/templates/tapwater/show_values.html:88
+msgid "tapwater_index_lack_of_potassium"
+msgstr ""
+"Zu einem Kaliummangel kann es nach größeren Flüssigkeitsverlusten, z. B. "
+"durch lang andauernde Durchfallerkrankungen, Erbrechen oder längere Einnahme "
+"von Entwässerungs- und Abführmitteln"
+
+#: wasser/templates/tapwater/show_values.html:89
+msgid "tapwater_index_high_potassium_content"
+msgstr ""
+"Ein zu hoher Kaliumgehalt im Blut kann zu Herzversagen führen, da Kalium die "
+"Kontraktion des Herzmuskels hemmt."
+
+#: wasser/templates/tapwater/show_values.html:92
+msgid "tapwater_index_role_of_calcium"
+msgstr ""
+"Calcium wird zur Bildung der Knochen und Zähne gebraucht. Auch für die "
+"Muskeln und die Blutgerinnung ist Calcium wichtig"
+
+#: wasser/templates/tapwater/show_values.html:93
+msgid "tapwater_index_lack_of_calcium"
+msgstr ""
+"An Calcium mangelt es oft, was was zu einer Verringerung der "
+"Knochenfestigkeit und damit zu Osteoporose führen kann."
+
+#: wasser/templates/tapwater/show_values.html:96
+msgid "tapwater_index_role_of_magnesium"
+msgstr ""
+"Magnesium beeinflusst den Energiestoffwechsel, das Zusammenspiel von Nerven "
+"auf Muskeln, für den Eiweißaufbau sowie und die Knochenmineralisation. "
+"Außerdem ist es für die Aktivierung von über 300 Enzymen im Stoffwechsel "
+"verantwortlich."
+
+#: wasser/templates/tapwater/show_values.html:97
+msgid "tapwater_index_high_magnesium_content"
+msgstr ""
+"Ein Zuviel an Magnesium ist sehr unwahrscheinlich. In großen Mengen bewirkt "
+"der Mineralstoff einen weicheren Stuhl."
+
+#: wasser/templates/tapwater/show_values.html:100
+msgid "tapwater_index_role_of_chloride"
+msgstr ""
+"Chlorid ist ein Bestandteil von Kochsalz und ist daher für die Regulation "
+"des Wasserhaushaltes mitverantwortlich. Auch für die Nerven, das Herz und "
+"die Muskeln sowie den Säure-Basenhaushalt ist Chlorid wichtig."
+
+#: wasser/templates/tapwater/show_values.html:101
+msgid "tapwater_index_high_chloride_content"
+msgstr ""
+"Da es in vielen Lebensmitteln vorkommt, wird meist mehr als genügend Chlorid "
+"aufgenommen. Eine dauerhafte Überversorgung mit Chlorid kann zu "
+"Bluthochdruck führen."
+
+#: wasser/templates/tapwater/show_values.html:104
+msgid "tapwater_index_role_of_nitrate"
+msgstr ""
+"Nitrat wird im Körper in giftiges Nitrit umgewandelt. Zudem können aus "
+"Nitriten krebserregende Nitrosamine entstehen."
+
+#: wasser/templates/tapwater/show_values.html:105
+msgid "tapwater_index_content_of_nitrate"
+msgstr ""
+"Das Nitrit selbst kann eine Sauerstoffunterversorgung aller Organe und "
+"Gewebe bewirken. Säuglinge sind hierfür besonders anfällig."
+
+#: wasser/templates/tapwater/show_values.html:106
+msgid "tapwater_limit_value_of_nitrate"
+msgstr ""
+"Daher beträgt der Grenzwert in Mineralwasser 50 mg/l. Die im Trinkwasser der "
+"Region enthaltenen Nitratwerte liegen mit 5 bis 38 mg/l unter dem Grenzwert "
+"und sind daher als unbedenklich einzustufen."
+
+#: wasser/templates/tapwater/show_values.html:107
+msgid "tapwater_index_quantity_of_nitrate"
+msgstr "Zum Vergleich: Bodensee-Wasser enthält nur 4 mg Nitrat pro Liter."
+
+#: wasser/templates/tapwater/show_values.html:110
+msgid "tapwater_index_role_of_sulfate"
+msgstr ""
+"Sulfate wirken verdauungsfördernd, ab einem Gehalt von 1200 mg/l sogar "
+"abführend."
+
+#: wasser/templates/tapwater/show_values.html:111
+msgid "tapwater_index_mineral_water"
+msgstr ""
+"Enthält ein Mineralwasser mehr als 1200 mg/l und gleichzeitig hohe "
+"Kontentrationen an Mineralstoffen wie Magnesium, Calcium, Flourid, "
+"Hydrogencarbonat sowie Kohlendioxid, wird es als Heilwasser bezeichnet."
+
+#: wasser/templates/tapwater/show_values.html:112
+msgid "tapwater_index_effect_of_sulfate_on_health"
+msgstr ""
+"Säuglinge und Patienten mit Erkrankungen des Verdauungstraktes und Neigung "
+"zur Bildung von Harnsäuresteinen sollten jedoch wenig Sulfat zu sich nehmen "
+"(Gehalt < 240 mg/l)."
+
+#: wasser/templates/tapwater/show_values.html:113
+msgid "tapwater_index_less_sulfate"
+msgstr ""
+"Doch auch Wasser mit wenig Sulfat hat etwas Gutes: Es wird geschmacklich "
+"meist positiv empfunden. Hohe Sulfatgehalte hingegen äußern sich in einem "
+"süßen bis bitterem Geschmack."
+
+#: wasser/templates/tapwater/show_values.html:118
+#: wasser/templates/tapwater/show_values.html:303
+msgid "tapwater_index_comparison_with_mineral_water"
+msgstr "Vergleich mit Mineralwasser"
+
+#: wasser/templates/tapwater/show_values.html:123
+#: wasser/templates/tapwater/show_values.html:173
+#: wasser/templates/tapwater/show_values.html:209
+msgid "tapwater_index_mg_l"
+msgstr "mg/l"
+
+#: wasser/templates/tapwater/show_values.html:172
+msgid "tapwater_index_value:"
+msgstr "Wert:"
+
+#: wasser/templates/tapwater/show_values.html:179
+#: wasser/templates/tapwater/show_values.html:237
+#: wasser/templates/tapwater/show_values.html:791
+msgid "tapwater_index_values_unknown_user"
+msgstr "Unbekannt"
+
+#: wasser/templates/tapwater/show_values.html:185
+#: wasser/templates/tapwater/show_values.html:243
+msgid "tapwater_index_values_verified_authority_title"
+msgstr "Messwert von verifizierten Behördenmitarbeiter"
+
+#: wasser/templates/tapwater/show_values.html:185
+#: wasser/templates/tapwater/show_values.html:243
+msgid "tapwater_index_values_verified_authority"
+msgstr ""
+"Dieser Messwert wurde von einem verifizierten Behördenmitarbeiter "
+"bereitgestellt."
+
+#: wasser/templates/tapwater/show_values.html:191
+#: wasser/templates/tapwater/show_values.html:249
+msgid "tapwater_index_values_not_verified_authority_title"
+msgstr "Messwert von nicht verifizierten Behördenmitarbeiter"
+
+#: wasser/templates/tapwater/show_values.html:191
+#: wasser/templates/tapwater/show_values.html:249
+msgid "tapwater_index_values_not_verified_authority"
+msgstr ""
+"Dieser Messwert wurde von einem (noch) nicht verifizierten "
+"Behördenmitarbeiter bereitgestellt."
+
+#: wasser/templates/tapwater/show_values.html:196
+#: wasser/templates/tapwater/show_values.html:254
+msgid "tapwater_index_values_private_person_title"
+msgstr "Messwert von Privatperson"
+
+#: wasser/templates/tapwater/show_values.html:196
+#: wasser/templates/tapwater/show_values.html:254
+msgid "tapwater_index_values_private_person"
+msgstr "Dieser Messwert wurde von einer Privatperson bereitgestellt. "
+
+#: wasser/templates/tapwater/show_values.html:206
+msgid "tapwater_index_limit_value"
+msgstr "Grenzwert:"
+
+#: wasser/templates/tapwater/show_values.html:208
+#: wasser/templates/tapwater/show_values.html:273
+msgid "tapwater_index_average"
+msgstr "Durchschnitt"
+
+#: wasser/templates/tapwater/show_values.html:210
+msgid "tapwater_index_bracket_region_name_point_red_line"
+msgstr "(Region Heilbronn: rote Linie)"
+
+#: wasser/templates/tapwater/show_values.html:212
+msgid "tapwater_index_daily_requirement"
+msgstr "Tagesbedarf:"
+
+#: wasser/templates/tapwater/show_values.html:221
+msgid "tapwater_index_water_hardness"
+msgstr ""
+"Die Wasserhärte gibt an, wie weich oder hart ein Wasser ist. Je mehr Calcium "
+"und Magnesium in einem Wasser enthalten sind, desto härter ist es."
+
+#: wasser/templates/tapwater/show_values.html:222
+msgid "tapwater_index_hard_water"
+msgstr ""
+"Hartes Wasser kann in Küche und Bad Kalkflecken verursachen. Wegen seinem "
+"hohen Calcium- und Magnesiumgehalt ist es gesünder als weiches Wasser.<br /"
+">(Calcium: Aufbau von Knochen und Zähnen, Magnesium: Aufbau von Muskeln und "
+"Nerven?"
+
+#: wasser/templates/tapwater/show_values.html:230
+msgid "tapwater_index_value"
+msgstr "Wert"
+
+#: wasser/templates/tapwater/show_values.html:232
+#: wasser/templates/tapwater/show_values.html:266
+#: wasser/templates/tapwater/show_values.html:276
+msgid "tapwater_index_dH"
+msgstr "°dH"
+
+#: wasser/templates/tapwater/show_values.html:265
+msgid "tapwater_index_residual_alkalinity"
+msgstr "Restalkalität"
+
+#: wasser/templates/tapwater/show_values.html:269
+msgid "tapwater_index_area"
+msgstr "Bereich"
+
+#: wasser/templates/tapwater/show_values.html:274
+msgid "tapwater_index_region_avg_show"
+msgstr "(roter Punkt)"
+
+#: wasser/templates/tapwater/show_values.html:317
+#: wasser/templates/tapwater/show_values.html:332
+msgid "tapwater_index_my_tap_water"
+msgstr "Mein Leitungswasser"
+
+#: wasser/templates/tapwater/show_values.html:334
+msgid "tapwater_index_bracket_red_line"
+msgstr "(Rote Linie)"
+
+#: wasser/templates/tapwater/show_values.html:337
+msgid "tapwater_index_bracket_daily_requirement"
+msgstr "Tagesbedarf"
+
+#: wasser/templates/tapwater/show_values.html:344
+msgid "tapwater_index_importance_of_sodium"
+msgstr "Natrium reguliert den Wasserhaushalt."
+
+#: wasser/templates/tapwater/show_values.html:345
+msgid "tapwater_index_importance_of_sodium_rich_water"
+msgstr ""
+"Sportlern ist natriumreiches Wasser zu empfehlen, Menschen mit Bluthochdruck "
+"oder Säuglinge sollten natriumarmes Wasser trinken.<br /><em>(weniger als 20 "
+"mg/l)</em>"
+
+#: wasser/templates/tapwater/show_values.html:348
+msgid "tapwater_index_importance_of_potassium_rich_water"
+msgstr ""
+"Kalium hält den Wasser- und Elektrolythaushalt im Gleichgewicht, reguliert "
+"den Blutdruck und ist wichtig für einen regelmäßigen Herzschlag sowie die "
+"Nerven."
+
+#: wasser/templates/tapwater/show_values.html:351
+msgid "tapwater_index_importance_of_calcium_teeth"
+msgstr "Calcium wird zur Bildung der Knochen und Zähne gebraucht."
+
+#: wasser/templates/tapwater/show_values.html:352
+msgid "tapwater_index_importance_of_calcium_blood"
+msgstr "Auch für die Muskeln und die Blutgerinnung ist Calcium wichtig."
+
+#: wasser/templates/tapwater/show_values.html:355
+msgid "tapwater_index_influence_of_magnesium_on_energy"
+msgstr ""
+"Magnesium beeinflusst den Energiestoffwechsel, das Zusammenspiel von Nerven "
+"auf Muskeln, für den Eiweißaufbau sowie und die Knochenmineralisation."
+
+#: wasser/templates/tapwater/show_values.html:358
+msgid "tapwater_index_influence_of_chloride_on_water_balance"
+msgstr ""
+"Chlorid ist für Regulation des Wasserhaushaltes, die Nerven, das Herz und "
+"die Muskeln sowie den Säure-Basenhaushalt wichtig."
+
+#: wasser/templates/tapwater/show_values.html:359
+msgid "tapwater_index_chloride_in_nutrition"
+msgstr ""
+"Da Chlorid ein Bestandteil von Kochsalz ist, wird über die Nahrung meist "
+"mehr als genügend Chlorid aufgenommen."
+
+#: wasser/templates/tapwater/show_values.html:362
+msgid "tapwater_index_nitrate_in_body"
+msgstr ""
+"Nitrat wird im Körper in giftiges Nitrit umgewandelt. Zudem können aus "
+"Nitriten krebserregende Nitrosamine entstehen."
+
+#: wasser/templates/tapwater/show_values.html:363
+msgid "tapwater_index_effect_of_nitrite"
+msgstr ""
+"Das Nitrit selbst kann eine Sauerstoffunterversorgung aller Organe und "
+"Gewebe bewirken. Säuglinge sind hierfür besonders anfällig."
+
+#: wasser/templates/tapwater/show_values.html:366
+msgid "tapwater_index_effect_of_sulfate"
+msgstr ""
+"Sulfate wirken verdauungsfördernd, ab einem Gehalt von 1200 mg/l sogar "
+"abführend."
+
+#: wasser/templates/tapwater/show_values.html:428
+msgid "tapwater_index_return"
+msgstr "Zurück"
+
+#: wasser/templates/tapwater/show_values.html:430
+msgid "tapwater_index_nationally_acclaimed_water"
+msgstr ""
+"Beispielhaft wurden zwei überregional bekannte Wasser sowie zwei Wasser aus "
+"dem Landkreis Heilbronn ausgewählt. Alle vier sind stille Mineralwasser."
+
+#: wasser/templates/tapwater/show_values.html:434
+msgid "tapwater_index_availibility_of_map"
+msgstr ""
+"Die Karte steht derzeit nur für die Stadt Heilbronn zur Verfügung und "
+"befindet sich noch in einem experimentellen Stadium."
+
+#: wasser/templates/tapwater/show_values.html:436
+msgid "tapwater_index_streets_with_lowest_values"
+msgstr ""
+"Die Straßen mit den niedrigsten Werten sind tiefblau, die Straßen mit den "
+"höchsten Werten rot eingefärbt."
+
+#: wasser/templates/tapwater/show_values.html:453
+msgid "tapwater_index_information_on"
+msgstr "Information zu"
+
+#: wasser/templates/tapwater/show_values.html:458
+msgid "tapwater_index_data_from_year"
+msgstr "Die Daten stammen aus dem Jahr"
+
+#: wasser/templates/tapwater/show_values.html:471
+msgid "tapwater_index_water_origin"
+msgstr "Woher kommt unser Trinkwasser?"
+
+#: wasser/templates/tapwater/show_values.html:476
+msgid "tapwater_index_sources_wells_in_municipality_and_district"
+msgstr ""
+"Im Stadtkreis gibt es etwa 40 Quellen und Brunnen, im Landkreis sind es etwa "
+"130."
+
+#: wasser/templates/tapwater/show_values.html:477
+msgid "tapwater_index_nitrate_in_heilbronn_water"
+msgstr ""
+"Da das Heilbronner Wasser aber sehr hart und stark mit giftigem Nitrat "
+"belastet ist, kauft die Stadt seit 43 Jahren Wasser vom Bodensee "
+"(Zweckverband Bodensee-Wasserversorgung)."
+
+#: wasser/templates/tapwater/show_values.html:478
+msgid "tapwater_index_water_demand_in_heilbronn"
+msgstr ""
+"Zuvor deckte die Stadt den Wasserbedarf über 60 bis 70 Prozent Eigenwasser. "
+"Dies hat sich ins Gegenteil gekehrt. Der Anteil an Bodenseewasser liegt "
+"heute bei 80 bis 85 Prozent."
+
+#: wasser/templates/tapwater/show_values.html:486
+msgid "tapwater_index_admixture_of_lake_constance_water"
+msgstr ""
+"Warum verzichten manche Kommunen auf die Beimischung von Bodenseewasser? "
+
+#: wasser/templates/tapwater/show_values.html:491
+msgid "tapwater_index_drinking_water_from_own_source"
+msgstr ""
+"Günstiger ist es für die Kommunen, wenn sie ihr Trinkwasser ausschließlich "
+"aus eigenen Quellen beziehen."
+
+#: wasser/templates/tapwater/show_values.html:492
+msgid "tapwater_index_commune_Jagsthausen_own_water"
+msgstr ""
+"Die Gemeinde Jagsthausen beispielsweise versorgt ihre Einwohner zu 100 "
+"Prozent mit Eigenwasser."
+
+#: wasser/templates/tapwater/show_values.html:494
+msgid "tapwater_index_admixture_of_water_other_communes"
+msgstr ""
+"“Wir haben hier ordentliches Wasser, das zwar hart ist. Aber wir sehen "
+"keinen Anlass für eine Beimischung von Fremdwasser, wie es andere Kommunen "
+"tun”"
+
+#: wasser/templates/tapwater/show_values.html:495
+msgid "tapwater_index_mayor_Roland_Halter"
+msgstr "Bürgermeister Roland Halter"
+
+#: wasser/templates/tapwater/show_values.html:497
+msgid "tapwater_index_compliant_from_authority"
+msgstr ""
+"Beschwerden aus der Gemeinde gäbe es keine, viele Einwohner hätten eine "
+"Enthärtungsanlage. Eine Anbindung an Bodenseewasser sei im Fall von "
+"Jagsthausen mit hohen Investitionskosten verbunden und derzeit kein Thema."
+
+#: wasser/templates/tapwater/show_values.html:505
+msgid "tapwater_index_taste_of_drinking_water"
+msgstr "Warum schmeckt mein Trinkwasser nicht so gut wie Mineralwasser? "
+
+#: wasser/templates/tapwater/show_values.html:510
+msgid "tapwater_index_taste_of_water_from_minerals"
+msgstr ""
+"Der Geschmack von Wasser wird durch die in ihm enthaltenen Mineralien "
+"bestimmt."
+
+#: wasser/templates/tapwater/show_values.html:511
+msgid "tapwater_index_water_with_much_sodium_potasium"
+msgstr ""
+"Wasser mit viel Natrium und Kalium, wird als salziger im Geschmack "
+"empfunden. Natriumarmes Wasser - wie das Heilbronner Trinkwasser - hingegen "
+"schmeckt milder."
+
+#: wasser/templates/tapwater/show_values.html:512
+msgid "tapwater_index_unpleasant_taste_of_water"
+msgstr ""
+"Ein unangenehmer Geschmack kann entstehen, wenn die Rohrleitungen im Gebäude "
+"verunreinigt sind. Die Stadtwerke kontrollieren die Trinkwasserqualität nur "
+"bis zur jeweiligen Haustüre. Im Haus liegt die Verantwortung beim "
+"Gebäudeeigentümer."
+
+#: wasser/templates/tapwater/show_values.html:520
+msgid "tapwater_index_meaning_of_water_hardness_for_me"
+msgstr "Was bedeutet die Wasserhärte für mich?"
+
+#: wasser/templates/tapwater/show_values.html:525
+msgid "tapwater_index_hard_water_everywhere"
+msgstr ""
+"Überall dort, wo hartes Wasser langsam fließt oder auf über 60 Grad erhitzt "
+"wird, setzt sich Kalk ab. In Küche und Bad entstehen so Kalkflecken, beim "
+"Wäschewaschen ist mehr Waschmittel nötig, manche Haushaltsgeräte müssen "
+"regelmäßig entkalkt werden. Dies gilt ab einem Wasserhärtegrad von 21."
+
+#: wasser/templates/tapwater/show_values.html:526
+msgid "tapwater_index_limit_of_water_hardness_in_heilbronn"
+msgstr ""
+"In Heilbronn liegt die Obergrenze der Wasserhärte bei 18 Grad. "
+"Gesundheitlich birgt hartes Wasser keine Gefahren, im Gegenteil: wegen des "
+"hohen Calcium- und Magnesiumgehaltes ist es gesünder als weiches Wasser."
+
+#: wasser/templates/tapwater/show_values.html:534
+msgid "tapwater_index_why_we_dont_have_soft_water"
+msgstr "Warum gibt es bei uns kein weiches Trinkwasser?"
+
+#: wasser/templates/tapwater/show_values.html:539
+msgid "tapwater_index_most_of_heilbronn_drinking_water_wells"
+msgstr ""
+"Die meisten der Heilbronner Trinkwasserbrunnen befinden sich in der "
+"Gesteinsschicht Gipskeuper, der für den sehr hohen Magnesium- und "
+"Calciumgehalt im Wasser verantwortlich ist. Da diese beiden Mineralien den "
+"Härtegrad des Wassers bestimmen, gibt es in Heilbronn kein weiches Wasser"
+
+#: wasser/templates/tapwater/show_values.html:540
+msgid "tapwater_index_hardness_degree_of_heilbronn_water"
+msgstr ""
+"Das Heilbronner Wasser hat einen Härtegrad von bis zu 28 Grad deutscher "
+"Härte, in manchen der 40 Brunnen fließt Wasser mit 30 Grad deutscher Härte."
+
+#: wasser/templates/tapwater/show_values.html:548
+msgid "tapwater_index_how_different_hardness_degree_developed"
+msgstr "Wie entstehen die verschiedenen Härtegrade?"
+
+#: wasser/templates/tapwater/show_values.html:553
+msgid "tapwater_index_the_taste_of_water_from_minerals"
+msgstr ""
+"Der Geschmack von Wasser wird durch die in ihm enthaltenen Mineralien "
+"bestimmt."
+
+#: wasser/templates/tapwater/show_values.html:554
+msgid "tapwater_index_minerals_substances_in_drinking_water"
+msgstr ""
+"Trinkwasser enthält verschiedene Mengen der Mineralstoffe Calcium und "
+"Magnesium - je nachdem ob es sich um Oberflächen-, Grund oder Quellwasser "
+"handelt."
+
+#: wasser/templates/tapwater/show_values.html:555
+msgid "tapwater_index_hardness_of_water_depending_on_minerals"
+msgstr "Je mehr Calcium und Magnesium im Wasser sind, desto härter ist es."
+
+#: wasser/templates/tapwater/show_values.html:563
+msgid "tapwater_index_unit_german_hardness"
+msgstr "Einheit °dH - “Grad deutscher Härte”?"
+
+#: wasser/templates/tapwater/show_values.html:568
+msgid "tapwater_index_outdated_unit"
+msgstr ""
+"Die Einheit °dH (Grad deutscher Härte) ist veraltet, aber in der Praxis nach "
+"wie vor gebräuchlich. Neben °dH wird Millimol pro Liter (mmol/l) verwendet."
+
+#: wasser/templates/tapwater/show_values.html:569
+msgid "tapwater_index_areas:"
+msgstr "Bereiche"
+
+#: wasser/templates/tapwater/show_values.html:571
+msgid "tapwater_index_soft"
+msgstr ""
+"weich: weniger als 1,5 Millimol Calciumcarbonat je Liter (entspricht weniger "
+"als 8,4 Grad deutscher Härte)"
+
+#: wasser/templates/tapwater/show_values.html:572
+msgid "tapwater_index_normal"
+msgstr ""
+"mittel: 1,5 bis 2,5 Millimol Calciumcarbonat je Liter (entspricht 8,4 bis 14 "
+"Grad deutscher Härte)"
+
+#: wasser/templates/tapwater/show_values.html:573
+msgid "tapwater_index_hard"
+msgstr ""
+"hart: mehr als 2,5 Millimol Calciumcarbonat je Liter (entspricht mehr als 14 "
+"Grad deutscher Härte)"
+
+#: wasser/templates/tapwater/show_values.html:582
+msgid "tapwater_index_additional_links"
+msgstr "Weiterführende Links"
+
+#: wasser/templates/tapwater/show_values.html:589
+msgid "tapwater_index_heilbronn_water_mineral_richness"
+msgstr "Heilbronner Wasser: Reich an Mineralien (Stimme.de, 22.03.2014)"
+
+#: wasser/templates/tapwater/show_values.html:591
+msgid "tapwater_index_drinking_water_approvisioning"
+msgstr "Trinkwasserverordnung"
+
+#: wasser/templates/tapwater/show_values.html:593
+msgid "tapwater_index_labor_examination_of_drinking_water_quality"
+msgstr "Liste an Laboren zur Untersuchung der Trinkwasserqualität"
+
+#: wasser/templates/tapwater/show_values.html:596
+msgid "tapwater_index_broschure_of_federal_environment_agency"
+msgstr "Broschüre des Umweltbundesamts “Rund um das Trinkwasser”"
+
+#: wasser/templates/tapwater/show_values.html:599
+msgid "tapwater_index_municipal utility_heilbron_section_water"
+msgstr "Stadtwerke Heilbronn, Rubrik Wasser"
+
+#: wasser/templates/tapwater/show_values.html:609
+msgid "tapwater_index_sources"
+msgstr "Quellen"
+
+#: wasser/templates/tapwater/show_values.html:615
+msgid "tapwater_index_company_name"
+msgstr "Heilbronner Versorgungs Gmbh"
+
+#: wasser/templates/tapwater/show_values.html:616
+msgid "tapwater_index_german_society_for_nutrition"
+msgstr "Deutsche Gesellschaft für Ernährung"
+
+#: wasser/templates/tapwater/show_values.html:617
+msgid "tapwater_index_federal_instituf_of_risk_assessment"
+msgstr "Bundesinstitut für Risikobewertung"
+
+#: wasser/templates/tapwater/show_values.html:618
+msgid "tapwater_index_website_of_communes_in_heilbronn_district"
+msgstr "Webseiten der Gemeinden im Landkreis Heilbron"
+
+#: wasser/templates/tapwater/show_values.html:641
+#: wasser/templates/tapwater/show_values.html:655
+#: wasser/templates/tapwater/show_values.html:669
+#: wasser/templates/tapwater/show_values.html:683
+#: wasser/templates/tapwater/show_values.html:697
+#: wasser/templates/tapwater/show_values.html:711
+#: wasser/templates/tapwater/show_values.html:725
+#: wasser/templates/tapwater/show_values.html:739
+msgid "tapwater_chart_title"
+msgstr "Entwicklung der Messwerte für"
+
+#: wasser/templates/tapwater/show_values.html:642
+#: wasser/templates/tapwater/show_values.html:656
+#: wasser/templates/tapwater/show_values.html:670
+#: wasser/templates/tapwater/show_values.html:684
+#: wasser/templates/tapwater/show_values.html:698
+#: wasser/templates/tapwater/show_values.html:712
+#: wasser/templates/tapwater/show_values.html:726
+#: wasser/templates/tapwater/show_values.html:740
+msgid "tapwater_index_chart_info"
+msgstr ""
+"Bei Messwerten bei denen nur ein Wertebereich angegeben ist, wird ein "
+"Mittelwert angezeigt."
+
+#: wasser/templates/tapwater/show_values.html:760
+msgid "tapwater_history"
+msgstr "Historie"
+
+#: wasser/templates/tapwater/show_values.html:797
+#: wasser/templates/tapwater/show_values.html:807
+msgid "authority_user"
+msgstr "Behördenmitarbeiter"
+
+#: wasser/templates/tapwater/show_values.html:798
+#: wasser/templates/tapwater/show_values.html:808
+msgid "authority"
+msgstr "Behörde:"
+
+#: wasser/templates/tapwater/show_values.html:799
+#: wasser/templates/tapwater/show_values.html:809
+#: wasser/templates/tapwater/show_values.html:817
+msgid "registered_since"
+msgstr "Registriert seit:"
+
+#: wasser/templates/tapwater/show_values.html:816
+msgid "private_user"
+msgstr "Privatperson"
+
+#: wasser/templates/tapwater/show_values.html:941
+msgid "tapwater_index_hardnessSoft"
+msgstr "weich"
+
+#: wasser/templates/tapwater/show_values.html:942
+msgid "tapwater_index_hardnessMiddle"
+msgstr "mittel"
+
+#: wasser/templates/tapwater/show_values.html:943
+msgid "tapwater_index_hardnessHard"
+msgstr "hart"
+
+#: wasser/templates/tapwater/show_values.html:944
+msgid "tapwater_index_hardnessVeryHard"
+msgstr "(sehr) hart"
+
+#: wasser/templates/tapwater/show_values.html:965
+msgid "tapwater_chart_xaxis"
+msgstr "Zeitpunkt der Messung"
+
+#: wasser/templates/tapwater/show_values.html:966
+msgid "tapwater_chart_yaxis"
+msgstr "Messwert"
+
+#: wasser/templates/users/base.html:11 wasser/templates/users/base.html:31
+msgid "users_base_title"
+msgstr "Trinkwasser - Tool"
+
+#: wasser/templates/users/base.html:37
+msgid "users_base_add_measurment"
+msgstr "Messwerte hinzufügen"
+
+#: wasser/templates/users/base.html:40
+msgid "users_base_my_measurments"
+msgstr "Meine Messungen"
+
+#: wasser/templates/users/base.html:49
+msgid "users_base_logout"
+msgstr "Logout"
+
+#: wasser/templates/users/base.html:78
+msgid "users_base_choose_language"
+msgstr "Sprache"
+
+#: wasser/templates/users/email/registration.html:13
+msgid "login_utilities_mail_reg_salutation"
+msgstr "Hallo"
+
+#: wasser/templates/users/email/registration.html:14
+msgid "login_utilities_mail_reg_thanks"
+msgstr "vielen Dank für Ihre Registrierung beim Trinkwasser-Tool."
+
+#: wasser/templates/users/email/registration.html:15
+msgid "login_utilities_mail_reg_login"
+msgstr ""
+"Ihr Nutzerkonto wurde angelegt und Sie können sich nun auf unserer Webseite "
+"einen Login-Token anfordern."
+
+#: wasser/templates/users/email/registration.html:17
+msgid "login_utilities_mail_reg_endingending"
+msgstr "Ihr Trinkwasser-Tool Team"
+
+#: wasser/templates/users/index.html:8
+msgid "users_index_welcome"
+msgstr "Herzlich willkommen!"
+
+#: wasser/templates/users/index.html:14
+msgid "users_index_thanks"
+msgstr "Vielen Dank für die Unterstützung des Trinkwasser-Tools."
+
+#: wasser/templates/users/insert_measurement.html:14
+msgid "users_insert_measure_success"
+msgstr "Speichern erfolgreich!"
+
+#: wasser/templates/users/insert_measurement.html:20
+msgid "users_insert_measure_dangeralert"
+msgstr "Speichern fehlgeschlagen!"
+
+#: wasser/templates/users/insert_measurement.html:20
+msgid "users_insert_measure_dangertxt"
+msgstr "Das Formular wurde nicht ordnungsgemäß ausgefüllt."
+
+#: wasser/templates/users/insert_measurement.html:25
+msgid "users_insert_measure_enter"
+msgstr "Eingabe der Messung"
+
+#: wasser/templates/users/insert_measurement.html:32
+msgid "users_insert_measure_city"
+msgstr "Stadt"
+
+#: wasser/templates/users/insert_measurement.html:34
+msgid "users_insert_measure_city_placeholder"
+msgstr "Ort eingeben..."
+
+#: wasser/templates/users/insert_measurement.html:40
+msgid "users_insert_measure_district"
+msgstr "Ortsteil (optional)"
+
+#: wasser/templates/users/insert_measurement.html:46
+msgid "users_insert_measure_region"
+msgstr "Region"
+
+#: wasser/templates/users/insert_measurement.html:52
+msgid "users_insert_measure_date"
+msgstr "Messdatum"
+
+#: wasser/templates/users/insert_measurement.html:54
+msgid "users_insert_measure_date_placeholder"
+msgstr "dd.mm.jjjj"
+
+#: wasser/templates/users/insert_measurement.html:58
+msgid "users_insert_measure_source"
+msgstr "Quelle"
+
+#: wasser/templates/users/insert_measurement.html:64
+msgid "users_insert_measure_note"
+msgstr "Anmerkung"
+
+#: wasser/templates/users/insert_measurement.html:74
+msgid "users_insert_measure_natrium"
+msgstr "Natrium"
+
+#: wasser/templates/users/insert_measurement.html:81
+msgid "users_insert_measure_potassium"
+msgstr "Kalium"
+
+#: wasser/templates/users/insert_measurement.html:88
+msgid "users_insert_measure_calcium"
+msgstr "Calcium"
+
+#: wasser/templates/users/insert_measurement.html:95
+msgid "users_insert_measure_magnesium"
+msgstr "Magnesium"
+
+#: wasser/templates/users/insert_measurement.html:102
+msgid "users_insert_measure_chloride"
+msgstr "Chlorid"
+
+#: wasser/templates/users/insert_measurement.html:109
+msgid "users_insert_measure_nitrate"
+msgstr "Nitrat"
+
+#: wasser/templates/users/insert_measurement.html:116
+msgid "users_insert_measure_sulfate"
+msgstr "Sulfat"
+
+#: wasser/templates/users/insert_measurement.html:124
+msgid "users_insert_measure_hardness"
+msgstr "Härte"
+
+#: wasser/templates/users/insert_measurement.html:137
+msgid "users_insert_measure_street"
+msgstr "Straße"
+
+#: wasser/templates/users/insert_measurement.html:138
+msgid "users_insert_measure_zone"
+msgstr "Zone"
+
+#: wasser/templates/users/insert_measurement.html:140
+msgid "users_insert_measure_zone_info_title"
+msgstr "Wichtiger Hinweis:"
+
+#: wasser/templates/users/insert_measurement.html:140
+msgid "users_insert_measure_zone_info"
+msgstr ""
+"Bitte geben Sie nur dann eine Zone ein, wenn Ihnen der Zonenname für das "
+"entsprechende Gebiet des örtlichen Trinkwasserversorgers bekannt ist."
+
+#: wasser/templates/users/insert_measurement.html:167
+msgid "users_insert_measure_addarea"
+msgstr "Weiteren Bereich hinzufügen"
+
+#: wasser/templates/users/insert_measurement.html:173
+msgid "users_insert_measure_sendbutton"
+msgstr "Messwerte senden"
+
+#: wasser/templates/users/registration.html:7
+msgid "users_registration_pr_title"
+msgstr "Registrierung"
+
+#: wasser/templates/users/registration.html:11
+msgid "users_registration_pr_fail"
+msgstr "Die Registrierung ist fehlgeschlagen, bitte prüfen Sie Ihre Angaben."
+
+#: wasser/templates/users/registration.html:17
+msgid "users_registration_pr_success"
+msgstr "Ihre Registrierung war erfolgreich!"
+
+#: wasser/templates/users/registration.html:84
+msgid "users_registration_pr_submit"
+msgstr "Registrierung senden"
+
+#: wasser/templates/users/show_measurements.html:11
+msgid "users_measurement_measurements"
+msgstr "Messungen"
+
+#: wasser/templates/users/show_measurements.html:12
+msgid "users_measurement_info_one"
+msgstr "Sie haben bislang"
+
+#: wasser/templates/users/show_measurements.html:12
+msgid "users_measurement_info_two"
+msgstr "Messungen im Trinkwasser Tool eingestellt. Vielen Dank dafür!"
+
+#: wasser/users/forms.py:24
+msgid "email_not_in_db"
+msgstr "Email Adresse ist nicht registriert"
+
+#: wasser/users/forms.py:24
+msgid "users_registration_firstname"
+msgstr "Vorname"
+
+#: wasser/users/forms.py:31
+msgid "users_registration_lastname"
+msgstr "Nachname"
+
+#: wasser/users/forms.py:38
+msgid "users_registration_authority"
+msgstr "Von welcher Gemeinde sind Sie?"
+
+#: wasser/users/forms.py:44
+msgid "users_registration_email"
+msgstr "E-Mail Adresse"
+
+#: wasser/users/forms.py:48
+msgid "users_registration_check_box"
+msgstr "Sind Sie Behördenmitarbeiter?"
+
+#: wasser/users/forms.py:58
+msgid "email_already_in_db"
+msgstr "Die folgende E-Mail Adresse ist bereits registriert: "
+
+#: wasser/users/views.py:249
+msgid "send_token_success"
+msgstr "Der Link wurde per Email versendet"
+
+#: wasser/users/views.py:253
+msgid "send_token_failed"
+msgstr ""
+"Der Link konnte nicht an die von Ihnen angegebene Email-Adresse gesendet "
+"werden! Bitte registrieren Sie sich."
+
+msgid "admin_measurement_locations_headline"
+msgstr "Übersicht der Orte"

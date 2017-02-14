@@ -1,0 +1,26 @@
+{% extends 'tapwater/base.html' %}
+{% load i18n %}
+{% load l10n %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                {% trans "500_page_title" %}
+            </h1>
+            <h2>
+                {% trans "500_page_error_type" %}
+            </h2>
+            <div class="error-details">
+                {% trans "500_page_error_text" %}
+            </div>
+            <br>
+            <div class="error-actions">
+                <a href="{% url 'index' %}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    {% trans "500_page_back_to_home_link" %} </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

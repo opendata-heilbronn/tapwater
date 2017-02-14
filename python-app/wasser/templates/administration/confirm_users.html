@@ -1,0 +1,87 @@
+{% extends 'administration/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% block content %}
+
+
+    <script>
+        $(document).ready(function(){
+            $('#sendTokenForm').on('submit', function(e){
+                $.LoadingOverlay('show');
+            });
+        });
+    </script>
+
+    {% if success %}
+        <div class="alert alert-success" id="send-successful">
+            {% trans "administration_verify_user_successful" %}
+        </div>
+    {% endif %}
+
+    {% if not success and checked_users_len == 0 %}
+        <div class="alert alert-warning" id="send-warning">
+            {% trans "administration_verify_user_no_users_selected" %}
+        </div>
+    {% endif %}
+
+    {% if success == False %}
+        <div class="alert alert-danger" id="send-failure">
+            {% trans "administration_verify_user_failure" %}
+            <br>
+            <br>
+            {% for user in failed_users %}
+                {{ user }} <br>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{% trans "administration_verify_user_title" %}</strong> <small></small>
+        </div>
+    <div class="panel-body">
+
+            <form class="form-signin" action={% url 'confirm_authority_user' %} method="POST" id="sendTokenForm">
+            <div id="result" class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "administration_verify_user_firstname" %}</th>
+                        <th>{% trans "administration_verify_user_lastname" %}</th>
+                        <th>{% trans "administration_verify_user_email" %}</th>
+                        <th>{% trans "administration_verify_user_authority" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% csrf_token %}
+                    {% for user in users %}
+                        <tr>
+                            <td data-title="VerifyUser"><input type="checkbox" name="verifyUsers[]" id="verifyUser{{ user.id }}" value="{{ user.id }}"></td>
+                            <td data-title="Name">{{user.firstname}}</td>
+                            <td data-title="Name">{{user.lastname}}</td>
+                            <td data-title="Email">{{user.email}}</td>
+                            <td data-title="Email">{{user.authority}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <button id="submitVerifyUser" class="btn btn-primary pull-right" type="submit" >{% trans "administration_verify_user_submit" %}</button>
+            </form>
+        </div>
+    </div>
+
+{% if success or success == False %}
+
+<script type="text/javascript">
+  setTimeout (function() {
+        $('#result').load(document.URL + ' #result');
+  }, 500);
+</script>
+
+{% endif %}
+
+{% endblock %}
