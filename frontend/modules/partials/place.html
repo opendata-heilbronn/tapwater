@@ -1,21 +1,25 @@
 Place: {{placeID}}
 
-<!--
-<ul>
-    <li ng-repeat="(key, value) in placevalues">{{key}}: {{value}}</li>
-</ul>
--->
 <div>
   <md-content class="md-padding">
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab ng-repeat="mineralName in minerals" label="{{mineralName}}">
-        <md-content class="md-padding">
-          <h1 class="md-display-2 capitalizeFirst">{{mineralName}}</h1>
-          <p>Mineralien-Wert: {{getPlaceValue(mineralName)}} | Max: {{getMineralMax(mineralName)}} | Grenzwert: {{getMineralLegalLimit(mineralName)}}</p>
-          <div style="height:400px; width:150px;background:#ccc; position:relative;">
-            <div style="bottom:0;height:{{calculateHeight(mineralName)}}px; width:100%; background:blue; position:absolute;"></div>
+        <md-content layout="row" class="md-padding">
+          <div flex>
+            <p>Mineralien-Wert: {{getPlaceValue(mineralName)}} | Max: {{getMineralMax(mineralName)}} | ScannedMax: {{scanMineralMax(mineralName)}} | MineralAverage: {{mineralAverage(mineralName)}} | Grenzwert: {{getMineralLegalLimit(mineralName)}}</p>
+            <div class="gauge">
+            <div style="position:absolute;top:6px;left:-140px;color:#808080;font-size:14px;" >Grenzwert: {{getMineralLegalLimit(mineralName)}}</div>
+            <div class="gauge-fill" style="height:{{calculateHeight(mineralName)}}px;"></div>
+              <div ng-repeat="scaleValue in calculateScaleValues(mineralName)">
+                <div style="position:absolute;bottom:{{400-100*$index}}px;left:170px;height:1px;width:10px;background:#808080;"></div>
+                <div style="position:absolute;bottom:{{392-100*$index}}px;left:190px;color:#808080;font-size:14px;">{{scaleValue}}</div>
+              </div>            
+            </div>
           </div>
-		</md-content>
+          <div flex>
+            Here comes the description
+          </div>
+		    </md-content>
       </md-tab>
     </md-tabs>
   </md-content>

@@ -1,10 +1,11 @@
+/* Defines the max and the legal limit value */
 tw.data.minerals = {
-	"natrium": [200,200],
-	"kalium": [300,300],
-	"calcium": [300,300],
-	"magnesium": [300,300],
-	"chlorid": [300,300],
-	"nitrat": [300,300],
-	"sulfat": [300,300],
-	"hardness": [300,300]
+	"natrium": [32,200],
+	"kalium": [8	,0],
+	"calcium": [152,0],
+	"magnesium": [40,0],
+	"chlorid": [60,250],
+	"nitrat": [40,50],
+	"sulfat": [252,250],
+	"hardness": [32,0]
 };

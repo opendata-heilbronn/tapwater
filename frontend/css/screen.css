@@ -1,6 +1,10 @@
 body {
 }
 
+.half {
+  width:50%;
+}
+
 .capitalizeFirst:first-letter {
 	text-transform: uppercase;	
 }
@@ -23,3 +27,21 @@ md-content {
       background: white; }
   md-content h1:first-child {
     margin-top: 0; }
+
+.gauge {
+  position:relative;
+  height:420px; 
+  width:120px;
+  background:#eeeeee; 
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+}
+ 
+.gauge-fill {
+  position:absolute;
+  bottom:0;
+  width:100%; 
+  background:#4f60a9;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+}

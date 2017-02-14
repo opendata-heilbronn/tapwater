@@ -48,3 +48,4 @@ media/*
 # Django i18n files
 locale/de/LC_MESSAGES/django.mo
 locale/en/LC_MESSAGES/django.mo
+node_modules
